@@ -12,6 +12,15 @@
   border-bottom: solid 1px #D6D6D6;
 }
 
+#logo-img {
+  width: 40px;
+}
+
+.logo-label-div {
+  display: flex;
+  align-items: center;
+}
+
 .log-in-button {
   width: 80px;
   height: 35px;
@@ -53,11 +62,11 @@
   height: 40px;
   margin: 0px 15px 0px 15px ;
   border-style: none;
-  transition-duration: 400ms;
+  transition-duration: 100ms;
 }
 
 .header-links:hover {
   background: #F1FAFF;
   border-bottom: solid black 5px;
-  transition-duration: 400ms;
+  transition-duration: 100ms;
 }

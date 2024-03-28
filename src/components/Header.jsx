@@ -1,5 +1,6 @@
 import React from 'react'
 import './Header.css'
+import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
  
@@ -16,12 +17,27 @@ export const Header = () => {
       TODO: implement logIn screen
     */}
   }
-
+  
   return (
     <div className='header-container'>
-      {/*
-      TODO: implement routes on header to different screens 
-      */}
+      
+      <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+      <img src='' alt='logo'/>
+      <label>appname</label>
+      </NavLink>
+
+      <NavLink to='/calculator' style={{ textDecoration: 'none', color: 'inherit' }}>
+      <span id='calcu' className='header-links'>calculator</span>
+      </NavLink>
+
+      <NavLink to='/macros' style={{ textDecoration: 'none', color: 'inherit' }}>
+      <span id='macro' className='header-links'>macros</span>
+      </NavLink>
+
+      <NavLink to='/prices' style={{ textDecoration: 'none', color: 'inherit' }}>
+      <span id='price' className='header-links'>prices</span>
+      </NavLink>
+
       <button className='log-in-button' onClick={ logIn }>Log in</button>
       <button className='sign-in-button' onClick={ signIn }>Sign in</button>
     </div>

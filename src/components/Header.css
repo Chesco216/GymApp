@@ -1,4 +1,5 @@
 .header-container {
+  /* position: fixed; */
   display: grid;
   /* flex-direction: row-reverse; */
   /* columns: ; */

@@ -1,0 +1,45 @@
+.header-container {
+  display: flex;
+  align-items: center;
+  /* background: red; */
+  width: 100vw;
+  height: 40px;
+}
+
+.log-in-button {
+  width: 80px;
+  height: 35px;
+  margin: 0px 10px 0px 10px;
+  border-style: solid;
+  border-color: blueviolet;
+  border-radius: 5px;
+  background: blueviolet;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  transition-duration: 500ms;
+}
+
+.log-in-button:hover {
+  background: white;
+  color: blueviolet;
+}
+
+.sign-in-button {
+  width: 80px;
+  height: 35px;
+  border-style: solid;
+  border-color: blueviolet;
+  border-radius: 5px;
+  background: white;
+  color: blueviolet;
+  font-weight: bold;
+  font-size: 15px;
+  transition-duration: 500ms;
+}
+
+.sign-in-button:hover {
+  background: blueviolet;
+  color: white;
+}
+

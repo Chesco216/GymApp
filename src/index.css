@@ -1,3 +1,5 @@
 #root {
   background: white;
+  /* PERF: this is probably wrong but it works  */
+  margin: -8px 0px 0px -8px;
 }

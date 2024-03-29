@@ -5,12 +5,12 @@
   /* columns: ; */
   grid-template-columns: 2fr 1fr 1fr 1fr 120px 120px;
   align-items: center;
-  /* background: red; */
   width: 100vw;
   height: 50px;
   padding: 0px 0px 10px 0px;
   border-style: none;
-  border-bottom: solid 1px #D6D6D6;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px 0px black;
 }
 
 #logo-img {

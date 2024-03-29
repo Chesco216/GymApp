@@ -22,20 +22,22 @@ export const Header = () => {
     <div className='header-container'>
       
       <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
-      <img src='' alt='logo'/>
-      <label>appname</label>
+        <div className='logo-label-div'>
+          <img id='logo-img' src='../../public/logo.jpg' alt='logo'/>
+          <label>BEST ME</label>
+        </div>
       </NavLink>
 
       <NavLink to='/calculator' style={{ textDecoration: 'none', color: 'inherit' }}>
-      <span id='calcu' className='header-links'>calculator</span>
+        <span id='calcu' className='header-links'>calculator</span>
       </NavLink>
 
       <NavLink to='/macros' style={{ textDecoration: 'none', color: 'inherit' }}>
-      <span id='macro' className='header-links'>macros</span>
+        <span id='macro' className='header-links'>macros</span>
       </NavLink>
 
       <NavLink to='/prices' style={{ textDecoration: 'none', color: 'inherit' }}>
-      <span id='price' className='header-links'>prices</span>
+        <span id='price' className='header-links'>prices</span>
       </NavLink>
 
       <button className='log-in-button' onClick={ logIn }>Log in</button>

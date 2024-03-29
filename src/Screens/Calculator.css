@@ -1,0 +1,25 @@
+.calc-form-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-label-calc {
+  width: 100px;
+  margin: 10px 0px 10px 0px;
+}
+
+.calc-input {
+  width: 150px;
+  margin: 10px 0px 10px 0px;
+  height: 30px;
+  font-size: 20px;
+  border-radius: 8px;
+}
+
+.calc-input:focus {
+  border: solid 3px
+}
+
+.gender-checkbox {
+  
+}

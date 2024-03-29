@@ -1,15 +1,25 @@
 .header-container {
+  /* position: fixed; */
   display: grid;
   /* flex-direction: row-reverse; */
   /* columns: ; */
   grid-template-columns: 2fr 1fr 1fr 1fr 120px 120px;
   align-items: center;
-  /* background: red; */
   width: 100vw;
   height: 50px;
   padding: 0px 0px 10px 0px;
   border-style: none;
-  border-bottom: solid 1px #D6D6D6;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px 0px black;
+}
+
+#logo-img {
+  width: 40px;
+}
+
+.logo-label-div {
+  display: flex;
+  align-items: center;
 }
 
 .log-in-button {
@@ -53,11 +63,11 @@
   height: 40px;
   margin: 0px 15px 0px 15px ;
   border-style: none;
-  transition-duration: 400ms;
+  transition-duration: 100ms;
 }
 
 .header-links:hover {
   background: #F1FAFF;
   border-bottom: solid black 5px;
-  transition-duration: 400ms;
+  transition-duration: 100ms;
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Header } from '../components/Header'
 import './Calculator.css'
 import { SelectBox } from '../components/SelectBox'
@@ -8,6 +8,7 @@ export const Calculator = () => {
 
   const act = document.querySelector('.select-box-component')
   const inVals = document.querySelectorAll('.calc-input')
+  const check = document.querySelector('.gender-checkbox')
 
   const selectProps = [
     {
@@ -37,9 +38,15 @@ export const Calculator = () => {
     },
   ]
 
-  // TODO: insert hooks useState
+  const [prot, setProt] = useState(0)
+  const [cal, setCal] = useState(0)
+
   const getMacros = () => {
-    const { prote, cals } = getProtCal( inVals[0], inVals[2], inVals[1], act.value )
+    let gen
+    check.checked ? gen = 5 : gen = -161
+    const { prote, cals } = getProtCal( inVals[0].value, inVals[2].value, inVals[1].value, act.value, gen )
+    setCal(cals)
+    setProt(prote)
   }
 
   return (
@@ -58,22 +65,19 @@ export const Calculator = () => {
         <SelectBox title={'Activity'} options={selectProps}/>
         
 
-        {/* TODO: fix radio buttom, only one checed*/}
-        <label className='input-label-calc'>Gender</label>
+        <label className='input-label-calc'>Select Gender</label>
         <label>
-          <input className='gender-checkbox' type='radio'/>
+          <input className='gender-checkbox' type='radio'name='gender' />
           Male
         </label>
-
         <label>
-          <input className='gender-checkbox' type='radio'/>
+          <input className='gender-checkbox' type='radio' name='gender' />
           Female
         </label>
-        {/* FIX: this doesnt work
-        <label>{ prote | cals }</label>
-        {/*}<input className='calc-input' type='checkbox'/>*/}
 
-        <button onClick={ getMacros }>Get</button>
+        <label>{ `Protein: ${prot}   |   Calories: ${cal}` }</label>
+
+        <button className='get-macros-button' onClick={ getMacros }>Get</button>
 
       </div>
     </>

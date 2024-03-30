@@ -1,6 +1,8 @@
 .calc-form-div {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  /* align-content: center; */
 }
 
 .input-label-calc {
@@ -13,13 +15,30 @@
   margin: 10px 0px 10px 0px;
   height: 30px;
   font-size: 20px;
+  border: 2px solid blueviolet;
   border-radius: 8px;
 }
 
 .calc-input:focus {
-  border: solid 3px
+  border: solid 3px blueviolet
 }
 
-.gender-checkbox {
-  
+.get-macros-button {
+  width: 150px;
+  height: 40px;
+  margin: 10px 0px 10px 0px;
+  box-sizing: border-box;
+  background: white;
+  border: 3px solid blueviolet;
+  border-radius: 10px;
+  transition-duration: 800ms;
 }
+
+.get-macros-button:hover {
+  background: blueviolet;
+  transition-duration: 500ms;
+}
+
+/* .gender-checkbox { */
+/*    */
+/* } */

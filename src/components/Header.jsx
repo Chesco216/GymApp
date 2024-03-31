@@ -3,7 +3,7 @@ import './Header.css'
 import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
- 
+
   const signIn = () => {
     console.log('signin')
     {/*

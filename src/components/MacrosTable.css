@@ -1,0 +1,15 @@
+tr:nth-child(even) {
+  background-color: #D5C5E7;
+}
+
+td {
+  padding: 0px 20px 0px 20px;
+  height: 35px;
+}
+
+th {
+  background-color: blueviolet;
+  height: 35px;
+  color: white;
+  padding: 0px 20px 0px 20px ;
+}

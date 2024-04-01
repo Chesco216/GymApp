@@ -1,0 +1,9 @@
+
+.price-card-container{
+    width: 415px;
+    height: 635px;
+    padding: 10px 32px;
+    border-radius: 15px;
+    background: #0C1527;
+    color: #5E8EED;
+}

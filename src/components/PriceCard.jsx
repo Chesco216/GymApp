@@ -23,7 +23,7 @@ export const PriceCard = ({time}) => {
           <span>
             {
               "+"
-              //TODO: Add and SVG for a + Symbol
+              //TODO: Add an + Symbol
             } 
           </span>
           <p>Beneficios extra</p>

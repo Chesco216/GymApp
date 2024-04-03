@@ -1,0 +1,45 @@
+
+tr:nth-child(even) {
+  background-color: #D5C5E7;
+}
+
+td {
+  padding: 0px 20px 0px 20px;
+  height: 35px;
+}
+
+th {
+  background-color: blueviolet;
+  height: 35px;
+  color: white;
+  padding: 0px 20px 0px 20px ;
+}
+
+.no-data {
+  /* position: relative; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 5px 5px 5px 20px;
+  margin: 0px 0px 15px 10px;
+  width: 500px;
+  height: 40px;
+  background: #FFB0B0;
+  border: 2px solid red;
+  border-radius: 8px;
+  color: red;
+}
+
+.close-not-found {
+  background: none;
+  border: none;
+  margin: 0px 0px 0px 180px;
+  padding: auto;
+  color: red;
+  font-size: 15px;
+}
+
+.macros-table {
+  margin-left: 30px;
+}

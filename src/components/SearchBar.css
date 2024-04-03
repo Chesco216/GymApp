@@ -1,4 +1,7 @@
 .search-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   margin: 20px 0px 20px 100px;
 }
 
@@ -43,8 +46,9 @@
 }
 
 .search-food-button:hover {
-  color: blueviolet;
-  background: white;
+  color: white;
+  background: #8E68BA;
+  border: #8E68BA;
   transition-duration: 300ms;
 }
 

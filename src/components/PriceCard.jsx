@@ -3,8 +3,8 @@ import { PriceBenefit } from './PriceBenefit'
 import "./PriceCard.css"
 /**
  * 
- * @param {String} time especify the time in month, months or year 
- * @returns PriceCard component
+ * @param {String} time especify the time in month, months or year for the susbscription type
+ * @returns 
  */
 export const PriceCard = ({time}) => {
   return (
@@ -23,7 +23,7 @@ export const PriceCard = ({time}) => {
           <span>
             {
               "+"
-              //TODO: Add and SVG for a + Symbol
+              //TODO: Add an + Symbol
             } 
           </span>
           <p>Beneficios extra</p>

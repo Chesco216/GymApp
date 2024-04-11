@@ -8,7 +8,9 @@ export const Prices = () => {
     <>
       <Header/>
       <div className="price-card">
-        <PriceCard time = "month"/>
+        <PriceCard time = "month" classColor= "price-card-container-blue"/>
+        <PriceCard time = "months" classColor= "price-card-container-purple"/>
+        <PriceCard time = "year" classColor= "price-card-container-green"/>
       </div>
     </>
   )

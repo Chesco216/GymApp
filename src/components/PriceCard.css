@@ -1,9 +1,45 @@
+:root{
+    --gantariFont: "Gantari", sans-serif;
+    --aksharFont:  "Akshar", sans-serif;
+}
 
-.price-card-container{
-    width: 415px;
-    height: 635px;
+.price-card-container-blue{
+    margin-top: 50px;
+    width: 315px;
+    height: 535px;
     padding: 10px 32px;
     border-radius: 15px;
-    background: #0C1527;
+    background: hsl(220, 55%, 10%);
     color: #5E8EED;
 }
+
+.price-card-container-purple{
+    margin-top: 50px;
+    width: 315px;
+    height: 535px;
+    padding: 10px 32px;
+    border-radius: 15px;
+    background: hsl(270, 38%, 12%);    
+    color: #9F79C6;
+}
+
+.price-card-container-green{
+    margin-top: 50px;
+    width: 315px;
+    height: 535px;
+    padding: 10px 32px;
+    border-radius: 15px;
+    background: hsl(180, 15%, 10%);
+    color: #72C09C;
+}
+
+.name-price h1{
+    font-family: var(--gantariFont);
+    margin: 0;
+}
+
+.name-price p{
+    font-family: var(--aksharFont);
+    margin-top: 0;
+}
+

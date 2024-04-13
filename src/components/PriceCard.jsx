@@ -29,13 +29,13 @@ export const PriceCard = ({time, classColor}) => {
           </span>
           <p>Beneficios extra</p>
         </div>
-        <hr className='price-br'/>
-        <ul className="price-benefits">
-        <PriceBenefit benefitInfo = "Lorem Ipsum"/>
-        <PriceBenefit benefitInfo = "Lorem Ipsum"/>
-        <PriceBenefit benefitInfo = "Lorem Ipsum"/>
-        <PriceBenefit benefitInfo = "Lorem Ipsum"/>
-        <PriceBenefit benefitInfo = "Lorem Ipsum"/>
+        <hr className='price-hr'/>
+        <ul className="price-benefits"> 
+          <PriceBenefit benefitInfo = "Lorem Ipsum"/>
+          <PriceBenefit benefitInfo = "Lorem Ipsum"/>
+          <PriceBenefit benefitInfo = "Lorem Ipsum"/>
+          <PriceBenefit benefitInfo = "Lorem Ipsum"/>
+          <PriceBenefit benefitInfo = "Lorem Ipsum"/>
         </ul>
         <button className="btn-subscribe">
           <a href="">Subscribe now</a>

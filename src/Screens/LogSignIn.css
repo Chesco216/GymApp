@@ -1,0 +1,119 @@
+.logsign-container {
+  width: 100vw;
+  height: 100vh;
+  /* background-image: '../../public/logo.jpg'; */
+  background: white;
+  background-repeat: repeat;
+  /* opacity: 0.2; */
+}
+
+.formlogin-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 1200px;
+  height: 750px;
+  padding: 6px;
+  /* box-sizing: border-box; */
+  background: black;
+  border-radius: 30px;
+  /* padding: 30px 50px 30px 50px; */
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.logsign-form {
+  background: #E0E0E0;
+  /* width: 400px; */
+  height: 100%;
+  box-sizing: border-box;
+  padding: 30px 50px 30px 50px;
+  border-radius: 30px;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  margin: 30px auto;
+}
+
+.form-input {
+  width: 80%;
+  height: 35px;
+  border-radius: 20px;
+  padding: 5px 10px 5px 20px;
+}
+
+.logsign-button {
+  width: 90%;
+  height: 45px;
+  margin: 15px auto;
+  border-radius: 20px;
+  background: #121212;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.logsign-button:hover {
+  background: #373737;
+}
+
+.login-rside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sign-in-checkbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.formsignin-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  width: 1200px;
+  height: 800px;
+  padding: 6px;
+  /* box-sizing: border-box; */
+  background: black;
+  border-radius: 30px;
+  /* padding: 30px 50px 30px 50px; */
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+}
+
+.logsign-google-button {
+  display: flex;
+  /* flex-direction: row; */
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  height: 45px;
+  margin: 15px 0px 20px 0px;
+  border-radius: 20px;
+  background: #121212;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.logsign-google-button:hover {
+  background: #373737;
+}
+.google-logo {
+  margin: auto 20px auto;
+  width: 30px;
+  height: 30;
+}

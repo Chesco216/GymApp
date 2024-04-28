@@ -43,4 +43,8 @@
 
 .landing-right-image {
   height: 700px;
+  mask-image: linear-gradient(
+    white 80%,
+    transparent
+    );
 }

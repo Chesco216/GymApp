@@ -3,7 +3,7 @@ import './SearchBar.css'
 import { searchFoodByName } from '../assets/searchFoodByName'
 import { fetchMacrosByCategory } from '../assets/fetchMacros'
 
-export const SearchBar = ({ onDataChanged, onNotFound, title }) => {
+export const SearchBar = ({ onDataChanged, onNotFound }) => {
   const searchByFood = async( event ) => {
     event.preventDefault()
     const fields = new FormData( event.target )
@@ -24,12 +24,12 @@ export const SearchBar = ({ onDataChanged, onNotFound, title }) => {
   return (
     <div className='search-container'>
       <form onSubmit={ searchByFood }>
-        <label className='search-label'>Search by { title }</label>
+        <label className='search-label'>Buscar por alimento</label>
         <input name='food-name' className='search-input' type='text'/>
         <button type='submit' className='search-food-button'>Buscar</button>
       </form>
 
-      <label className='search-label'> or search by cartegory</label>
+      <label className='search-label'> o busca por categorias</label>
       <form onSubmit={ filterByCategory }>
         <select name='food-category' className='select-macro-category'>
           <option value='carne'>carne</option>
@@ -39,7 +39,7 @@ export const SearchBar = ({ onDataChanged, onNotFound, title }) => {
           <option value='fruto seco'>fruto seco</option>
           <option value='todos'>todos</option>
         </select>
-        <button type='submit' className='search-food-button' style={{margin:20}}> Search</button>
+        <button type='submit' className='search-food-button' style={{margin:20}}> Buscar</button>
       </form>
     </div>
   )

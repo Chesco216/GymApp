@@ -8,7 +8,7 @@ export const Calculator = () => {
 
   const act = document.querySelector('.select-box-component')
   const inVals = document.querySelectorAll('.calc-input')
-  const check = document.querySelector('.gender-checkbox')
+  const check = document.querySelector('.checkbox')
 
   const selectProps = [
     {
@@ -42,8 +42,9 @@ export const Calculator = () => {
   const [cal, setCal] = useState(0)
 
   const getMacros = () => {
+    console.log(check.checked)
     let gen
-    check.checked ? gen = 5 : gen = -161
+    check.checked ? gen = -161 : gen = 5
     const { prote, cals } = getProtCal( inVals[0].value, inVals[2].value, inVals[1].value, act.value, gen )
     setCal(cals)
     setProt(prote)
@@ -53,33 +54,27 @@ export const Calculator = () => {
     <>
       <Header/>
       <div className='calc-form-div'>
-        <label className='input-label-calc'>Age</label>
+        <label className='input-label-calc'>Edad</label>
         <input className='calc-input' type='number'/>
 
-        <label className='input-label-calc'>Weight (kg)</label>
+        <label className='input-label-calc'>Peso (kg)</label>
         <input className='calc-input' type='number'/>
           
-        <label className='input-label-calc'>Height (cm)</label>
+        <label className='input-label-calc'>Altura (cm)</label>
         <input className='calc-input' type='number'/>
         
-        <SelectBox title={'Activity'} options={selectProps}/>
+        <SelectBox title={'Actividad'} options={selectProps}/>
         
-
-        <label className='input-label-calc'>Select Gender</label>
-        <label>
-          <input className='gender-checkbox' type='radio'name='gender' />
-          Male
-        </label>
-        <label>
-          <input className='gender-checkbox' type='radio' name='gender' />
-          Female
-        </label>
-
-        <label>{ `Protein: ${prot}   |   Calories: ${cal}` }</label>
-
-        <button className='get-macros-button' onClick={ getMacros }>Get</button>
-
+        <label className='input-label-calc'>Seleccione el sexo</label>
+        <div className="button r" id="button-1">
+          <input type="checkbox" className="checkbox" />
+          <div className="knobs"></div>
+          <div className="layer"></div>
+        </div>
+        <button className='get-macros-button' onClick={ getMacros }>OK</button>
       </div>
+      {/* TODO: make the screen better ahnd ,make something with the protein and calories value */}
+      <label>{ `Proteinas: ${prot}   |   Calorias: ${cal}` }</label>
     </>
   )
 }

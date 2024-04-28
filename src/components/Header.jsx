@@ -15,7 +15,7 @@ export const Header = () => {
       </NavLink>
 
       <NavLink to='/calculator' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <span id='calcu' className='header-links'>calculator</span>
+        <span id='calcu' className='header-links'>calculadora</span>
       </NavLink>
 
       <NavLink to='/macros' style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -23,7 +23,7 @@ export const Header = () => {
       </NavLink>
 
       <NavLink to='/prices' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <span id='price' className='header-links'>prices</span>
+        <span id='price' className='header-links'>precios</span>
       </NavLink>
 
       <NavLink to='/login' style={{ textDecoration: 'none', color: 'inherit' }}>

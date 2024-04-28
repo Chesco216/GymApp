@@ -13,14 +13,16 @@ export const Macros = () => {
   const [cardData, setCardData] = useState({})
   useEffect(() => {
     fetchMacros()
-      .then( res => setData(res) )
+      .then( res => setData(res))
+    searchFoodByName('pollo')
+      .then( res => setCardData(res.retVal[0]))
   }, [])
 
   const setHidden = () => {
     setDataEmpty({ display: 'none' })
   }
 
-  const showCardPreview = async() => {
+  const showCardPreview = async( event ) => {
     const value = event.target.innerText
     const { retVal } = await searchFoodByName(value)
     setCardData(retVal[0])
@@ -30,7 +32,7 @@ export const Macros = () => {
   return (
     <>
       <Header/>
-      <SearchBar onDataChanged={ setData } onNotFound={ setDataEmpty } title='food'/>
+      <SearchBar onDataChanged={ setData } onNotFound={ setDataEmpty } />
       <div className='no-data' style={ dataEmpty }> 
         <label>
           no se encontro el alimento
@@ -71,10 +73,14 @@ export const Macros = () => {
             </tbody>
           </table>
         </div>
-        <div className='food-card-container'>
-          <img src={cardData.img} className='food-card-img' />
-          <h3>{cardData.nombre}</h3>
-          <label>{cardData.descripcion}</label>
+        <div className='card-container'>
+          <div className='food-card-container'>
+            <img src={cardData.img} className='food-card-img' />
+            <span className='food-card-text'>
+              <h3>{cardData.nombre}</h3>
+              <label>{cardData.descripcion}</label>
+            </span>
+          </div>
         </div>
       </div>
     </>

@@ -2,7 +2,6 @@ import React from 'react'
 import { PriceBenefit } from './PriceBenefit'
 import "./PriceCard.css"
 /**
- * 
  * @param {String} time especify the time in month, months or year for the susbscription type
  * @param {String} classColor especify the color for the price card
  * @returns 
@@ -24,6 +23,8 @@ export const PriceCard = ({time, classColor}) => {
           <span>
             {
               "+"
+              //TODO: Add and SVG for a + Symbol
+
               //TODO: Add an + Symbol
             } 
           </span>

@@ -1,8 +1,7 @@
-:root{
-    --gantariFont: "Gantari", sans-serif;
-    --aksharFont:  "Akshar", sans-serif;
-    --normal: "arial", sans-serif;
-}
+
+.price-card-container{
+    width: 415px;
+    height: 635px;
 
 .price-card-container-blue{
     margin-top: 50px;
@@ -44,4 +43,3 @@
     font-family: var(--aksharFont);
     margin-top: 0;
 }
-

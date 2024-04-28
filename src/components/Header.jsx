@@ -3,21 +3,7 @@ import './Header.css'
 import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
-
-  const signIn = () => {
-    console.log('signin')
-    {/*
-      TODO: implement signIn screen
-    */}
-  }
-
-  const logIn = () => {
-    console.log('login')
-    {/*
-      TODO: implement logIn screen
-    */}
-  }
-  
+ 
   return (
     <div className='header-container'>
       
@@ -40,8 +26,13 @@ export const Header = () => {
         <span id='price' className='header-links'>prices</span>
       </NavLink>
 
-      <button className='log-in-button' onClick={ logIn }>Log in</button>
-      <button className='sign-in-button' onClick={ signIn }>Sign in</button>
+      <NavLink to='/login' style={{ textDecoration: 'none', color: 'inherit' }}>
+        <button className='log-in-button' >Log in</button>
+      </NavLink>
+      
+      <NavLink to='/signin' style={{ textDecoration: 'none', color: 'inherit' }}>
+        <button className='sign-in-button' >Sign in</button>
+      </NavLink>
     </div>
   )
 }

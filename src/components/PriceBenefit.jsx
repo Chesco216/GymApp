@@ -12,6 +12,7 @@ export const PriceBenefit = ({benefitInfo}) => {
                 <div className="checked">
                     checked
                     {
+                    //TODO: Add an svg checked symbol 
                     //TODO: Add an checked symbol 
                     }
                 </div>

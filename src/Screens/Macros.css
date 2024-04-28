@@ -4,7 +4,7 @@
 }
 
 tr:nth-child(even) {
-  background-color: #D5C5E7;
+  background-color: #A7A7A7;
 }
 
 td {
@@ -48,15 +48,30 @@ th {
   margin-left: 80px;
 }
 
+.card-container {
+  height: 100%;
+}
+
 .food-card-container {
-  /* TODO: position must be fixed on the top but relative to his father */
-  /* position: sticky; */
+  position: sticky;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 500px;
-  height: 600px;
-  /* height: auto; */
-  background: red;
+  height: fit-content;
+  margin-top: 50px;
+  background: black;
   border-radius: 30px;
+  color: white;
+  padding: 0;
+  overflow: hidden;
+}
+
+.food-card-image {
+  margin: 0px;
+}
+
+.food-card-text {
+  padding: 10px 50px 10px 50px;
+  margin-bottom: 30px;
 }

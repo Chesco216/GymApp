@@ -116,6 +116,9 @@ export const SignIn = () => {
             <button className='logsign-button' type='submit'>Sign In</button>
             <button className='logsign-button' onClick={ console.log('googlelogin') }>Sign In with google</button>
           </form>
+          <span style={{marginTop:50, fontSize:13}}>
+            Already have an account?, <NavLink to='/login'>login now</NavLink>
+          </span>
         </div>
         <div className='login-rside'>
           <h1 style={{color: 'white'}}>

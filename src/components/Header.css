@@ -24,9 +24,9 @@
   height: 35px;
   margin: 0px 10px 0px 10px;
   border-style: solid;
-  border-color: blueviolet;
+  border-color: black;
   border-radius: 5px;
-  background: blueviolet;
+  background: black;
   color: white;
   font-weight: bold;
   font-size: 15px;
@@ -35,24 +35,24 @@
 
 .log-in-button:hover {
   background: white;
-  color: blueviolet;
+  color: black;
 }
 
 .sign-in-button {
   width: 80px;
   height: 35px;
   border-style: solid;
-  border-color: blueviolet;
+  border-color: black;
   border-radius: 5px;
   background: white;
-  color: blueviolet;
+  color: black;
   font-weight: bold;
   font-size: 15px;
   transition-duration: 500ms;
 }
 
 .sign-in-button:hover {
-  background: blueviolet;
+  background: black;
   color: white;
 }
 

@@ -10,7 +10,7 @@ export const Header = () => {
       <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className='logo-label-div'>
           <img id='logo-img' src='../../logo.jpg' alt='logo'/>
-          <label>BEST ME</label>
+          <label>JAYANI POWER</label>
         </div>
       </NavLink>
 

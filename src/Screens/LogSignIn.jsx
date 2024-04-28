@@ -81,9 +81,9 @@ export const SignIn = () => {
               JAYANI POWER
             </h3>
           </span>
-          <h2 style={{margin:20}}>LOG IN</h2>
+          <h2 style={{margin:20}}>SIGN IN</h2>
           <label style={{margin:20, fontSize:13, color:'#818181'}}>
-            Log In with your email amd password or use your google account instead
+            Sign In with your email amd password or use your google account instead
           </label>
           <form onSubmit={ console.log('submit') }>
 

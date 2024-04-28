@@ -4,11 +4,13 @@ import { SearchBar } from '../components/SearchBar'
 import { MacrosRow }  from "../components/MacrosRow";
 import { fetchMacros } from '../assets/fetchMacros';
 import './Macros.css'
+import { searchFoodByName } from '../assets/searchFoodByName';
 
 export const Macros = () => {
 
   const [dataEmpty, setDataEmpty] = useState({ display: 'none' })
   const [data, setData] = useState([])
+  const [cardData, setCardData] = useState({})
   useEffect(() => {
     fetchMacros()
       .then( res => setData(res) )
@@ -17,6 +19,14 @@ export const Macros = () => {
   const setHidden = () => {
     setDataEmpty({ display: 'none' })
   }
+
+  const showCardPreview = async() => {
+    const value = event.target.innerText
+    const { retVal } = await searchFoodByName(value)
+    setCardData(retVal[0])
+    console.log(cardData)
+  }
+
   return (
     <>
       <Header/>
@@ -27,37 +37,45 @@ export const Macros = () => {
         </label>
         <button onClick={ setHidden } className='close-not-found'>x</button>
       </div>
-      <div className='macros-table'>
-        <table>
-          <thead>
-            <tr>
-              <th>Comida</th>
-              <th>Calorias</th>
-              <th>Proteinas</th>
-              <th>Grasas</th>
-              <th>Viataminas</th>
-              <th>Minerales</th>
-            </tr>
-          </thead>
-          <tbody>
-          {
-            // (dataFiltered.length == 0) ? true : false
-            data.map((item) => {
-                return(
-                  <MacrosRow 
-                    key={item.nombre}
-                    nombre={item.nombre} 
-                    calorias={item.macros.calorias}
-                    proteinas={item.macros.proteinas}
-                    grasa={item.macros.grasa}
-                    vitaminas={item.macros.vitaminas}
-                    minerales={item.macros.minerales}
-                  />
-                )
-            })
-          }
-          </tbody>
-        </table>
+      <div className='macros-table-card-container'>
+        <div className='macros-table'>
+          <table>
+            <thead>
+              <tr>
+                <th>Comida</th>
+                <th>Calorias</th>
+                <th>Proteinas</th>
+                <th>Grasas</th>
+                <th>Viataminas</th>
+                <th>Minerales</th>
+              </tr>
+            </thead>
+            <tbody>
+            {
+              // (dataFiltered.length == 0) ? true : false
+              data.map((item) => {
+                  return(
+                    <MacrosRow 
+                      key={item.nombre}
+                      nombre={item.nombre} 
+                      calorias={item.macros.calorias}
+                      proteinas={item.macros.proteinas}
+                      grasa={item.macros.grasa}
+                      vitaminas={item.macros.vitaminas}
+                      minerales={item.macros.minerales}
+                      showCardPreview={ showCardPreview }
+                    />
+                  )
+              })
+            }
+            </tbody>
+          </table>
+        </div>
+        <div className='food-card-container'>
+          <img src={cardData.img} className='food-card-img' />
+          <h3>{cardData.nombre}</h3>
+          <label>{cardData.descripcion}</label>
+        </div>
       </div>
     </>
   )

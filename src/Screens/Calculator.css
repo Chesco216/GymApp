@@ -15,12 +15,12 @@
   margin: 10px 0px 10px 0px;
   height: 30px;
   font-size: 20px;
-  border: 2px solid blueviolet;
+  border: 2px solid black;
   border-radius: 8px;
 }
 
 .calc-input:focus {
-  border: solid 3px blueviolet
+  border: solid 3px black;
 }
 
 .get-macros-button {
@@ -29,13 +29,13 @@
   margin: 10px 0px 10px 0px;
   box-sizing: border-box;
   background: white;
-  border: 3px solid blueviolet;
+  border: 3px solid black;
   border-radius: 10px;
   transition-duration: 800ms;
 }
 
 .get-macros-button:hover {
-  background: blueviolet;
+  background: black;
   transition-duration: 500ms;
 }
 

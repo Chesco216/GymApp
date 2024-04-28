@@ -24,6 +24,7 @@ export const PriceCard = ({time, classColor}) => {
             {
               "+"
               //TODO: Add and SVG for a + Symbol
+
               //TODO: Add an + Symbol
             } 
           </span>

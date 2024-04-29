@@ -1,7 +1,23 @@
+.calculator-screen-container {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
 .calc-form-div {
+  /* width: 100%; */
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
-  margin: 50px 0px 0px 200px;
+  padding: 50px 0px 0px 100px;
+  transition: 600ms ease-in;
+}
+
+.calc-form-div:hover {
+  background: #1A1A1A;
+  color: white;
+  transition: 600ms ease-in;
 }
 
 .input-label-calc {
@@ -116,4 +132,51 @@
 #button-1 .knobs:before,
 #button-1 .layer {
   transition: 0.3s ease all;
+}
+
+.prot-cal-div {
+  padding: 80px 100px 50px 100px;
+  font-size: 18px;
+  transition: 400ms ease-in;
+}
+
+.prot-cal-div:hover {
+  background: #1A1A1A;
+  color: white;
+  transition: 400ms ease-in;
+}
+
+.go-to-macros {
+  display: flex;
+  flex-direction: column;
+  padding: 250px 80px 80px 80px;
+  transition: 400ms ease-in;
+}
+
+.go-to-macros:hover {
+  background: #1A1A1A;
+  color: white;
+  transition: 400ms ease-in;
+}
+
+.which-meals-label {
+  font-size: 40px;
+}
+
+.go-to-macros-label {
+  display: flex;
+  width: 200px;
+  margin-top: 40px;
+  font-size: 20px;
+  padding: 20px 20px 20px 20px;
+  background: black;
+  color: white;
+  border-radius: 5px;
+  transition: 400ms ease-in;
+}
+
+.go-to-macros-label:hover{
+  background: white;
+  color: #1A1A1A;
+  transition: 400ms ease-in;
 }

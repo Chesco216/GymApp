@@ -3,7 +3,7 @@ import './SearchBar.css'
 import { searchFoodByName } from '../assets/searchFoodByName'
 import { fetchMacrosByCategory } from '../assets/fetchMacros'
 
-export const SearchBar = ({ onDataChanged, onNotFound }) => {
+export const SearchBar = ({ onDataChanged, onCardChanged, onNotFound }) => {
   const searchByFood = async( event ) => {
     event.preventDefault()
     const fields = new FormData( event.target )
@@ -11,6 +11,7 @@ export const SearchBar = ({ onDataChanged, onNotFound }) => {
     const { retVal, found } = await searchFoodByName(name)
     found ? onNotFound({ display: 'none' }) : onNotFound({ display: 'flex' })
     onDataChanged(retVal)
+    onCardChanged(retVal[0])
   }
 
   const filterByCategory = async ( event ) => {
@@ -19,6 +20,7 @@ export const SearchBar = ({ onDataChanged, onNotFound }) => {
     const category = fields.get('food-category')
     const data = await fetchMacrosByCategory( category )
     onDataChanged(data)
+    onCardChanged(data[0])
   }
   
   return (

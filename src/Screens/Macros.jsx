@@ -32,7 +32,7 @@ export const Macros = () => {
   return (
     <>
       <Header/>
-      <SearchBar onDataChanged={ setData } onNotFound={ setDataEmpty } />
+      <SearchBar onDataChanged={ setData } onCardChanged={ setCardData } onNotFound={ setDataEmpty } />
       <div className='no-data' style={ dataEmpty }> 
         <label>
           no se encontro el alimento

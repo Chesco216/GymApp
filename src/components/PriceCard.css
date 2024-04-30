@@ -1,45 +1,40 @@
-
-.price-card-container{
-    width: 415px;
-    height: 635px;
-
-.price-card-container-blue{
-    margin-top: 50px;
-    width: 315px;
-    height: 535px;
-    padding: 10px 32px;
-    border-radius: 15px;
-    background: hsl(220, 55%, 10%);
-    color: #5E8EED;
-
+.price-card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  width: 400px;
+  height: 630px;
+  padding: 20px 30px 0px 30px;
+  box-sizing: border-box;
+  border: 3px solid #1A1A1A;
+  border-radius: 20px;
 }
 
-.price-card-container-purple{
-    margin-top: 50px;
-    width: 315px;
-    height: 535px;
-    padding: 10px 32px;
-    border-radius: 15px;
-    background: hsl(270, 38%, 12%);    
-    color: #9F79C6;
+.plan-header {
+  margin-top: 40px;
 }
 
-.price-card-container-green{
-    margin-top: 50px;
-    width: 315px;
-    height: 535px;
-    padding: 10px 32px;
-    border-radius: 15px;
-    background: hsl(180, 15%, 10%);
-    color: #72C09C;
+.plan-price {
+  font-size: 40px;
 }
 
-.name-price h1{
-    font-family: var(--gantariFont);
-    margin: 0;
+.plan-utils {
+  margin: 10px 0px 10px 0px;
+  font-size: 18px;
 }
 
-.name-price p{
-    font-family: var(--aksharFont);
-    margin-top: 0;
+.utils-ul {
+  margin-top: 30px;
+}
+
+.prices-sus-button {
+  width: 200px;
+  height: 60px;
+  margin: 40px auto;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background: #1A1A1A;
+  border-radius: 10px;
 }

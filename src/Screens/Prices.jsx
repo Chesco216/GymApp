@@ -3,15 +3,33 @@ import { Header } from '../components/Header'
 import { PriceCard } from '../components/PriceCard'
 import "./Prices.css"
 
+const prices = [
+  {
+    plan: 'Basico',
+    price: 0,
+    utils: [
+      'Obtiene las macros para tu dia a dia',
+      'Dieta generica semanal',
+      'Enciclopedia de rutinas',
+      'ChatBot beta para tus dudas',
+      'Seguimiento de tu progreso',
+    ],
+  },
+]
+
 export const Prices = () => {
-  return (
+  return (  
     <>
       <Header/>
-      <div className="price-card">
-        <PriceCard time = "month" classColor= "price-card-container-blue"/>
-        <PriceCard time = "months" classColor= "price-card-container-purple"/>
-        <PriceCard time = "year" classColor= "price-card-container-green"/>
-      </div>
+        <div className='prices-cards-screen'>
+        {
+          prices.map((item) => {
+            return (
+              <PriceCard plan={item.plan} price={item.price} utils={item.utils} />
+            )
+          })
+        }
+        </div>
     </>
   )
 }

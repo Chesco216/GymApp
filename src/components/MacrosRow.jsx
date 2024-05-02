@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const MacrosRow = ({ nombre, calorias, proteinas, grasa, vitaminas, minerales }) => {
+export const MacrosRow = ({ nombre, calorias, proteinas, grasa, vitaminas, minerales, showCardPreview }) => {
   return (
     <tr>
-      <td>{nombre}</td>
+      <td onClick={ showCardPreview }>{nombre}</td>
       <td>{calorias}</td>
       <td>{proteinas}</td>
       <td>{grasa}</td>

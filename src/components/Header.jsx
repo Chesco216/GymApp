@@ -3,33 +3,19 @@ import './Header.css'
 import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
-
-  const signIn = () => {
-    console.log('signin')
-    {/*
-      TODO: implement signIn screen
-    */}
-  }
-
-  const logIn = () => {
-    console.log('login')
-    {/*
-      TODO: implement logIn screen
-    */}
-  }
-  
+ 
   return (
     <div className='header-container'>
       
       <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className='logo-label-div'>
           <img id='logo-img' src='../../logo.jpg' alt='logo'/>
-          <label>BEST ME</label>
+          <label>JAYANI POWER</label>
         </div>
       </NavLink>
 
       <NavLink to='/calculator' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <span id='calcu' className='header-links'>calculator</span>
+        <span id='calcu' className='header-links'>calculadora</span>
       </NavLink>
 
       <NavLink to='/macros' style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -37,11 +23,16 @@ export const Header = () => {
       </NavLink>
 
       <NavLink to='/prices' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <span id='price' className='header-links'>prices</span>
+        <span id='price' className='header-links'>precios</span>
       </NavLink>
 
-      <button className='log-in-button' onClick={ logIn }>Log in</button>
-      <button className='sign-in-button' onClick={ signIn }>Sign in</button>
+      <NavLink to='/login' style={{ textDecoration: 'none', color: 'inherit' }}>
+        <button className='log-in-button' >Log in</button>
+      </NavLink>
+      
+      <NavLink to='/signin' style={{ textDecoration: 'none', color: 'inherit' }}>
+        <button className='sign-in-button' >Sign in</button>
+      </NavLink>
     </div>
   )
 }

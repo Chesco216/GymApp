@@ -1,6 +1,10 @@
+.macros-table-card-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
 
 tr:nth-child(even) {
-  background-color: #D5C5E7;
+  background-color: #A7A7A7;
 }
 
 td {
@@ -9,7 +13,7 @@ td {
 }
 
 th {
-  background-color: blueviolet;
+  background-color: black;
   height: 35px;
   color: white;
   padding: 0px 20px 0px 20px ;
@@ -34,12 +38,40 @@ th {
 .close-not-found {
   background: none;
   border: none;
-  margin: 0px 0px 0px 180px;
+  margin: 0px 0px 0px 200px;
   padding: auto;
   color: red;
   font-size: 15px;
 }
 
 .macros-table {
-  margin-left: 30px;
+  margin-left: 80px;
+}
+
+.card-container {
+  height: 100%;
+}
+
+.food-card-container {
+  position: sticky;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 500px;
+  height: fit-content;
+  margin-top: 50px;
+  background: black;
+  border-radius: 30px;
+  color: white;
+  padding: 0;
+  overflow: hidden;
+}
+
+.food-card-image {
+  margin: 0px;
+}
+
+.food-card-text {
+  padding: 10px 50px 10px 50px;
+  margin-bottom: 30px;
 }

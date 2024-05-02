@@ -1,8 +1,9 @@
 .select-box-component {
-  width: 200px;
+  width: fit-content;
   height: 35px;
   margin: 10px 0px 10px 0px;
   border-style: none;
   border-radius: 8px;
-  padding: 0px 0px 0px 10px;
+  padding: 0px 10px 0px 10px;
+  font-size: 20px;
 }

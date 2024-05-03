@@ -5,7 +5,7 @@ export const SelectBox = ({ title, options }) => {
   return (
     <>
       <label className='input-label-calc'>{title}</label>
-      <select className='select-box-component'>
+      <select name='actBox' className='select-box-component'>
         {
           options.map( option => {
             return (

@@ -1,7 +1,7 @@
 import React, { useState ,useRef } from 'react'
 import './SearchBar.css'
-import { searchFoodByName } from '../assets/searchFoodByName'
-import { fetchMacrosByCategory } from '../assets/fetchMacros'
+import { searchFoodByName } from '../services/searchFoodByName'
+import { fetchMacrosByCategory } from '../services/fetchMacros'
 
 export const SearchBar = ({ onDataChanged, onCardChanged, onNotFound }) => {
   const searchByFood = async( event ) => {

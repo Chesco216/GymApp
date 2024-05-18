@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Header } from '../components/Header'
 import './Calculator.css'
 import { SelectBox } from '../components/SelectBox'
-import { getProtCal } from '../assets/getProtCal'
+import { getProtCal } from '../services/getProtCal'
 import { NavLink } from 'react-router-dom'
 
 export const Calculator = () => {

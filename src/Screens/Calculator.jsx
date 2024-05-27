@@ -2,14 +2,10 @@ import React, { useState } from 'react'
 import { Header } from '../components/Header'
 import './Calculator.css'
 import { SelectBox } from '../components/SelectBox'
-import { getProtCal } from '../assets/getProtCal'
+import { getProtCal } from '../services/getProtCal'
 import { NavLink } from 'react-router-dom'
 
 export const Calculator = () => {
-
-  const act = document.querySelector('.select-box-component')
-  const inVals = document.querySelectorAll('.calc-input')
-  const check = document.querySelector('.checkbox')
 
   const selectProps = [
     {
@@ -42,11 +38,17 @@ export const Calculator = () => {
   const [prot, setProt] = useState(0)
   const [cal, setCal] = useState(0)
 
-  const getMacros = () => {
-    // console.log(check.checked)
+  const getMacros = ( event ) => {
+    event.preventDefault()
+    const fields = new FormData(event.target)
+    const activity = fields.get('actBox')
+    const age = fields.get('agein')
+    const height = fields.get('heightin')
+    const weight = fields.get('weightin')
+    const gender = fields.get('gender')
     let gen
-    check.checked ? gen = -161 : gen = 5
-    const { prote, cals } = getProtCal( inVals[0].value, inVals[2].value, inVals[1].value, act.value )
+    gender ? gen = -161 : gen = 5
+    const { prote, cals } = getProtCal( age, height, weight, activity, gen )
     setCal(cals)
     setProt(prote)
   }
@@ -55,26 +57,26 @@ export const Calculator = () => {
     <>
       <Header/>
       <div className='calculator-screen-container'>
-        <div className='calc-form-div'>
+        <form className='calc-form-div' onSubmit={ getMacros }>
           <label className='input-label-calc'>Edad</label>
-          <input className='calc-input' type='number'/>
+          <input name='agein' className='calc-input' type='number'/>
 
           <label className='input-label-calc'>Peso (kg)</label>
-          <input className='calc-input' type='number'/>
+          <input name='weightin' className='calc-input' type='number'/>
             
           <label className='input-label-calc'>Altura (cm)</label>
-          <input className='calc-input' type='number'/>
+          <input name='heightin' className='calc-input' type='number'/>
           
           <SelectBox title={'Actividad'} options={selectProps}/>
           
           <label className='input-label-calc'>Seleccione el sexo</label>
           <div className="button r" id="button-1">
-            <input type="checkbox" className="checkbox" />
+            <input name='gender' type="checkbox" className="checkbox" />
             <div className="knobs"></div>
             <div className="layer"></div>
           </div>
-          <button className='get-macros-button' onClick={ getMacros }>OK</button>
-        </div>
+          <button className='get-macros-button' type='submit' >OK</button>
+        </form>
         <div className='prot-cal-div'>
           <label><h3>Tu ingesta diaria:</h3><br></br>{ `Proteinas: ${prot}   |   Calorias: ${cal}` }</label>
           <span>

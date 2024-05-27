@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Header } from '../components/Header'
 import { SearchBar } from '../components/SearchBar'
 import { MacrosRow }  from "../components/MacrosRow";
-import { fetchMacros } from '../assets/fetchMacros';
+import { fetchMacros } from '../services/fetchMacros';
 import './Macros.css'
-import { searchFoodByName } from '../assets/searchFoodByName';
+import { searchFoodByName } from '../services/searchFoodByName';
 
 export const Macros = () => {
 

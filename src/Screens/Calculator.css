@@ -71,10 +71,11 @@
 .button {
   position: relative;
   /* top: 50%; */
-  width: 160px;
+  width: 163px;
   height: 43px;
   margin: 10px 0 10px 0;
-  overflow: hidden;
+  padding-bottom: 5px;
+  /* overflow: hidden; */
 }
 
 .checkbox {
@@ -105,8 +106,8 @@
   position: absolute;
   top: 4px;
   left: 4px;
-  width: 85px;
-  height: 30px;
+  width: 88px;
+  height: 22px;
   color: #fff;
   font-size: 20px;
   font-weight: bold;

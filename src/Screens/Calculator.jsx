@@ -46,7 +46,7 @@ export const Calculator = () => {
     // console.log(check.checked)
     let gen
     check.checked ? gen = -161 : gen = 5
-    const { prote, cals } = getProtCal( inVals[0].value, inVals[2].value, inVals[1].value, act.value, gen )
+    const { prote, cals } = getProtCal( inVals[0].value, inVals[2].value, inVals[1].value, act.value )
     setCal(cals)
     setProt(prote)
   }

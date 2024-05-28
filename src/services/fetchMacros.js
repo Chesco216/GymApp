@@ -1,4 +1,4 @@
-const url = 'http://127.0.0.1:3000/macros'
+const url = 'http://localhost:3001/macros'
 
 export const fetchMacros = async() => {
   const res = await fetch( url )

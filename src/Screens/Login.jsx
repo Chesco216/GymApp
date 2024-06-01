@@ -1,17 +1,30 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './LogSignIn.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
+import { signInWithEmailAndPassword } from 'firebase/auth'
+import { auth, db } from '../services/firebase'
+import { userContext } from '../context/UserProvider'
+import { googleSignin } from '../services/googleAuth'
+import { setDoc, doc } from 'firebase/firestore'
 
 export const LogIn = () => {
 
-
+  const navigate = useNavigate()
+  const context = useContext(userContext)
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
 
-  const handleLogSubmit = ( e ) => {
+  const handleLogSubmit = async( e ) => {
     e.preventDefault()
-    console.log({email, password})
+    signInWithEmailAndPassword( auth, email, password )
+    const user = auth.currentUser
+    context.setUserinfo(user)
+    navigate('/profile')
+  }
 
+  const handleGoogleLogin = async() => {
+    console.log('conxtextG:', context.userinfo)
+    await googleSignin(context)
   }
 
   return (
@@ -55,7 +68,7 @@ export const LogIn = () => {
             </span>
 
             <button className='logsign-button' type='submit'>Log In</button>
-            <button className='logsign-google-button' onClick={ console.log('google-login') }>
+            <button className='logsign-google-button' onClick={ handleGoogleLogin }>
               <img src='https://cdn.icon-icons.com/icons2/2429/PNG/512/google_logo_icon_147282.png' className='google-logo'/>
               Log In with google
             </button>

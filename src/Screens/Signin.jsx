@@ -21,6 +21,7 @@ export const SignIn = () => {
     e.preventDefault()
     await createUserWithEmailAndPassword(auth, email, password)
     const currentUser = auth.currentUser
+    // console.log('currentUser',currentUser)
     user.setUserinfo(currentUser)
     navigate('/profile')
   }

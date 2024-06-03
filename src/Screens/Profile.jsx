@@ -1,27 +1,21 @@
-import React, { useContext, useState } from 'react'
+import { doc, getDoc } from 'firebase/firestore'
+import { db } from '../services/firebase'
+import { useContext, useState } from 'react'
 import { userContext } from '../context/UserProvider'
-import closeSession from '../services/closeSession'
 
-export const Profile = () => {
+export const Profile = async() => {
   
+
+  //FIX: i dont fucking know why but it is not working and it is calling the 
+  //mother fucker function 8 fucking times
   const context = useContext(userContext)
-  // console.log(context)
-  const [user, setUser] = useState(context)
-  // console.log('userinfo', user.userinfo)
+  const response = await getDoc(doc(db, 'users', context.userinfo.uid))
+  const data = await response.data().userObj
+  // const [user, setUser] = useState(response.data().userObj)
+  console.log('user',data)
 
   return (
-    <div>
-      <label>user: {user.userinfo.displayName}</label>
-      <br/>
-      <label>email: {user.userinfo.email}</label>
-      <br/>
-      <span>
-        <label>profile picture</label>
-        <img src={user.userinfo.photoURL} alt='profile'/>
-      </span>
-
-      <button onClick={closeSession}>log out</button>
-    </div>
+    <div>Profile</div>
   )
 }
 

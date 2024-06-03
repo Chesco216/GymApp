@@ -8,8 +8,6 @@ userData = {
     meta,
 }
 
-let ban;
-
 const strucureData = ({ edad, altura, peso, restricciones, limitaciones, meta }) => {
     return (
         `

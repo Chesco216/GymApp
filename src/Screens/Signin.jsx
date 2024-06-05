@@ -17,18 +17,25 @@ export const SignIn = () => {
   const [password, setPassword] = useState()
   const [username, setUsername] = useState()
   
-  const handleLogSubmit = async( e ) => {
+  const handleLogSubmit = ( e ) => {
     e.preventDefault()
-    await createUserWithEmailAndPassword(auth, email, password)
-    const currentUser = auth.currentUser
-    // console.log('currentUser',currentUser)
-    user.setUserinfo(currentUser)
-    navigate('/profile')
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(userCredential => {
+        const currUser = userCredential.user
+        user.setUserinfo({...currUser, displayName: username })
+        console.log('user', user)
+        navigate('/info-form')
+      })
+      .catch(error => {
+        console.log(error.code)
+        //TODO: update with custom alerts
+        alert('pipii')
+      })
   }
 
-  const handleGoogleSignin = () => {
-    googleSignin(user)
-    navigate('/profile')
+  const handleGoogleSignin = async() => {
+    const userDoc = await googleSignin( context )
+    !userDoc ? navigate('/info-form') : navigate('/profile')
   }
 
   const handleFacebookSignin = () => {
@@ -91,7 +98,7 @@ export const SignIn = () => {
             </label>
 
             <button className='logsign-button' type='submit'>Sign In</button>
-            <button className='logsign-button' onClick={ handleFacebookSignin }>Sign In with google</button>
+            <button className='logsign-button' onClick={ handleGoogleSignin }>Sign In with google</button>
           </form>
           <span style={{marginTop:50, fontSize:13}}>
             Already have an account?, <NavLink to='/login'>login now</NavLink>

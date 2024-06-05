@@ -27,7 +27,7 @@ export const LogIn = () => {
         // Signed in 
         const user = userCredential.user;
         context.setUserinfo(user)
-        navigate('/info-form')
+        navigate('/profile')
         // ...
       })
       .catch((error) => {

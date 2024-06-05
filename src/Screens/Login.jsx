@@ -19,9 +19,21 @@ export const LogIn = () => {
   const handleLogSubmit = async( e ) => {
     e.preventDefault()
     signInWithEmailAndPassword( auth, email, password )
-    const user = auth.currentUser
-    context.setUserinfo(user)
-    navigate('/profile')
+    .then()
+
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        context.setUserinfo(user)
+        navigate('/info-form')
+        // ...
+      })
+      .catch((error) => {
+        alert('credenciales invalidas')
+      })
+    // const user = auth.currentUser
   }
 
   const handleGoogleLogin = async() => {

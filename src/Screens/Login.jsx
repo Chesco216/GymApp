@@ -40,8 +40,6 @@ export const LogIn = () => {
     
     const userDoc = await googleSignin( context )
     !userDoc ? navigate('/info-form') : navigate('/profile')
-    
-    
   }
 
   return (

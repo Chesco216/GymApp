@@ -1,70 +1,136 @@
 .header-container {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr 120px 120px;
-  align-items: center;
-  width: 100%;
-  padding: 10px 0px 10px 0px;
-  box-sizing: border-box;
-  border-style: none;
-  box-shadow: 0px 0px 5px 0px black;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around;
+	width: 100%;
+	padding: 10px 0px;
+	box-sizing: border-box;
+	border-style: none;
+	box-shadow: 0px 0px 5px 0px black;
 }
 
 #logo-img {
-  width: 40px;
+	width: 40px;
 }
 
 .logo-label-div {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .log-in-button {
-  width: 80px;
-  height: 35px;
-  margin: 0px 10px 0px 10px;
-  border-style: solid;
-  border-color: black;
-  border-radius: 5px;
-  background: black;
-  color: white;
-  font-weight: bold;
-  font-size: 15px;
-  transition-duration: 500ms;
+	width: 80px;
+	height: 35px;
+	margin: 0px 10px;
+	border-style: solid;
+	border-color: black;
+	border-radius: 5px;
+	background: black;
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+	transition-duration: 500ms;
 }
 
 .log-in-button:hover {
-  background: white;
-  color: black;
+	background: white;
+	color: black;
 }
 
 .sign-in-button {
-  width: 80px;
-  height: 35px;
-  border-style: solid;
-  border-color: black;
-  border-radius: 5px;
-  background: white;
-  color: black;
-  font-weight: bold;
-  font-size: 15px;
-  transition-duration: 500ms;
+	width: 80px;
+	height: 35px;
+	border-style: solid;
+	border-color: black;
+	border-radius: 5px;
+	background: white;
+	color: black;
+	font-weight: bold;
+	font-size: 15px;
+	transition-duration: 500ms;
 }
 
 .sign-in-button:hover {
-  background: black;
-  color: white;
+	background: black;
+	color: white;
 }
 
 .header-links {
-  height: 40px;
-  margin: 0px 15px 0px 15px ;
-  border-style: none;
-  transition-duration: 100ms;
+	height: 40px;
+	margin: 0px 15px;
+	border-style: none;
+	transition-duration: 100ms;
 }
 
 .header-links:hover {
-  background: #F1FAFF;
-  border-bottom: solid black 5px;
-  transition-duration: 100ms;
+	background: #F1FAFF;
+	border-bottom: solid black 5px;
+	transition-duration: 100ms;
 }
 
+/* Media Query para pantallas más pequeñas */
+@media (max-width: 768px) {
+	.header-container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 10px;
+		width: 100%;
+	}
+
+	.header-container>.header-links,
+	.header-container>.log-in-button,
+	.header-container>.sign-in-button {
+		display: none;
+	}
+
+	.menu-icon {
+		display: block;
+		cursor: pointer;
+		font-size: 24px;
+		margin-left: 3vw;
+	}
+
+	.menu {
+		display: none;
+		flex-direction: column;
+		width: 100%;
+		margin-top: 20px;
+		/* Añade espacio entre el icono del menú y los elementos */
+	}
+
+	.menu.open {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+
+	.menu-item {
+		padding: 15px;
+		border-top: 1px solid #ccc;
+		background: #fff;
+		margin: 5px 0;
+		/* Añade espacio entre los elementos del menú */
+	}
+
+	.hmb {
+		display: flex;
+		flex-direction: row;
+	}
+
+	.log-in-button,
+	.sign-in-button {
+		width: 90px;
+		height: 35px;
+		margin: 0px 0px;
+	}
+}
+
+/* Media Query para pantallas grandes */
+@media (min-width: 769px) {
+	.menu-icon {
+		display: none;
+		/* Oculta el ícono del menú en pantallas grandes */
+	}
+}

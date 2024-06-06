@@ -5,7 +5,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth, db } from '../services/firebase'
 import { userContext } from '../context/UserProvider'
 import { googleSignin } from '../services/googleAuth'
-import { setDoc, doc } from 'firebase/firestore'
+import { setDoc, doc, getDoc } from 'firebase/firestore'
+import { InfoForm } from '../components/InfoForm'
 
 export const LogIn = () => {
 
@@ -13,18 +14,34 @@ export const LogIn = () => {
   const context = useContext(userContext)
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [isNew, setIsNew] = useState(true)
 
   const handleLogSubmit = async( e ) => {
     e.preventDefault()
     signInWithEmailAndPassword( auth, email, password )
-    const user = auth.currentUser
-    context.setUserinfo(user)
-    navigate('/profile')
+    .then()
+
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        context.setUserinfo(user)
+        navigate('/profile')
+        // ...
+      })
+      .catch((error) => {
+        alert('credenciales invalidas')
+      })
+    // const user = auth.currentUser
   }
 
   const handleGoogleLogin = async() => {
-    console.log('conxtextG:', context.userinfo)
-    await googleSignin(context)
+    
+    const userDoc = await googleSignin( context )
+    !userDoc ? navigate('/info-form') : navigate('/profile')
+    
+    
   }
 
   return (
@@ -68,11 +85,11 @@ export const LogIn = () => {
             </span>
 
             <button className='logsign-button' type='submit'>Log In</button>
+          </form>
             <button className='logsign-google-button' onClick={ handleGoogleLogin }>
               <img src='https://cdn.icon-icons.com/icons2/2429/PNG/512/google_logo_icon_147282.png' className='google-logo'/>
               Log In with google
             </button>
-          </form>
           <span style={{marginTop:50, fontSize:13}}>
             Don't have an account?, <NavLink to='/signin'>register now</NavLink>
           </span>

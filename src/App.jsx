@@ -8,6 +8,7 @@ import { SignIn } from "./Screens/Signin"
 import { UserProvider } from "./context/UserProvider"
 import { Profile } from "./Screens/Profile"
 import { InfoForm } from "./components/InfoForm"
+import { ProfileUpdate } from "./Screens/ProfileUpdate"
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
           <Route path='/info-form' element={<InfoForm/>}/>
           <Route path='/signin' element={<SignIn/>}/>
           <Route path='/profile' element={<Profile/>}/>
+          <Route path='/profile/update' element={<ProfileUpdate/>}/>
         </Routes>
       </BrowserRouter>
     </UserProvider>

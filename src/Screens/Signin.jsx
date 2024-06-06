@@ -34,7 +34,7 @@ export const SignIn = () => {
   }
 
   const handleGoogleSignin = async() => {
-    const userDoc = await googleSignin( context )
+    const userDoc = await googleSignin( user )
     !userDoc ? navigate('/info-form') : navigate('/profile')
   }
 
@@ -98,8 +98,11 @@ export const SignIn = () => {
             </label>
 
             <button className='logsign-button' type='submit'>Sign In</button>
-            <button className='logsign-button' onClick={ handleGoogleSignin }>Sign In with google</button>
           </form>
+          <button className='logsign-button' onClick={ handleGoogleSignin }>
+            <img src='https://cdn.icon-icons.com/icons2/2429/PNG/512/google_logo_icon_147282.png' className='google-logo'/>
+              Log In with google
+          </button>
           <span style={{marginTop:50, fontSize:13}}>
             Already have an account?, <NavLink to='/login'>login now</NavLink>
           </span>

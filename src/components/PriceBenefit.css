@@ -1,0 +1,14 @@
+.price-benefit-container{
+    display: flex;
+    margin: 15px;
+}
+
+.benefit-check{
+    margin-left: -12px;
+    padding-left: 0px;
+}
+
+.benefit-information{
+    margin-left: 10px;
+}
+

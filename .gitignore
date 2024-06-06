@@ -1,4 +1,7 @@
+#files
 .env
+test
+*.model.js
 # Logs
 logs
 *.log

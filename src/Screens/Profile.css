@@ -1,0 +1,40 @@
+.profile-container {
+  width: 100vw;
+  height: 100vh;
+  padding: 50px 50px 50px 50px;
+}
+
+.user-pic-name-email {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: fit-content;
+}
+
+.user-image {
+  width: 130px;
+  height: 130px;
+  margin-right: 50px;
+}
+
+.user-name-email {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stats-section {
+  display:grid;
+  grid-template-columns:  1fr 1fr 1fr;
+}
+
+.user-stats-span {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-diet-content {
+  margin: 50px auto;
+}

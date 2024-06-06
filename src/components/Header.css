@@ -2,11 +2,10 @@
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr 120px 120px;
   align-items: center;
-  width: 100vw;
-  height: 60px;
+  width: 100%;
   padding: 10px 0px 10px 0px;
-  border-style: none;
   box-sizing: border-box;
+  border-style: none;
   box-shadow: 0px 0px 5px 0px black;
 }
 
@@ -68,3 +67,4 @@
   border-bottom: solid black 5px;
   transition-duration: 100ms;
 }
+

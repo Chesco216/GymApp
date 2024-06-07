@@ -15,7 +15,7 @@
   height: fit-content;
   padding: 20px 30px 30px 30px;
   box-sizing: border-box;
-  border: 3px solid blueviolet;
+  border: 3px solid #FF004D;
   border-radius: 20px;
 }
 
@@ -29,13 +29,13 @@
 
 .table-headder {
   font-family: "Poppins", sans-serif;
-  background: blueviolet;
+  background: #FF004D;
   border-radius: 5px;
 }
 
 .table-content {
   font-family: "Poppins", sans-serif;
-  background: #EED9FF;
+  background: #CEB2C1;
   border-radius: 5px;
 }
 
@@ -52,7 +52,7 @@
 .close-modal-btn {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
-  background: blueviolet;
+  background: #FF004D;
   color: white;
   width: 100px;
   height: 50px;

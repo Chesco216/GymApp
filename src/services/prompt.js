@@ -47,8 +47,8 @@ const dataFormatDiet = () => {
                     ],
                     macros: { (Informacion de macronutrientes de la comida en general)
                     proteins: 10, (proteinas totales de la comida, ademas añade la unidad, es decir 10 gr por ejemplo)
-                    cals: 10, (calorias totales de la comida, ademas añade la unidad, es decir 10 cal por ejemplo)
-                    vitamine: ['A', 'B', 'C', 'D'], (Vitaminas que provee la comida)
+                    calories: 10, (calorias totales de la comida, ademas añade la unidad, es decir 10 cal por ejemplo)
+                    vitamins: ['A', 'B', 'C', 'D'], (Vitaminas que provee la comida)
                     minerals: ['M1', 'M2', 'M3', 'M4'] (Minerales que proporciona la comida)
                     }
                 },

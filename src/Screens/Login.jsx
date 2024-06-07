@@ -40,8 +40,6 @@ export const LogIn = () => {
     
     const userDoc = await googleSignin( context )
     !userDoc ? navigate('/info-form') : navigate('/profile')
-    
-    
   }
 
   return (
@@ -49,7 +47,7 @@ export const LogIn = () => {
       <div className='formlogin-container'>
         <div className='logsign-form'>
           <span style={{display:'flex'}} className='logo-name'>
-            <img src='../../public/logo.jpg' style={{width:60, height:60, borderRadius:15}}/>
+	  <img src='../../public/logo.jpg' style={{width:60, height:60, borderRadius:15, marginRight: 10}}/>
             <h3>
               JAYANI POWER
             </h3>

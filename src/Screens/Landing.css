@@ -1,51 +1,120 @@
 .landing-container {
-  width: 100vw;
-  height: 100vh;
-  box-sizing: border-box;
-  padding: 80px 100px 100px 100px;
-  display: grid;
-  /* grid-template-columns: 2fr 1fr; */
-  grid-template-columns: 1fr 1fr;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 40px 80px 80px 120px;
+	display: grid;
+	/* grid-template-columns: 2fr 1fr; */
+	grid-template-columns: 1fr 1fr;
 }
 
 .landing-left {
-  display: flex;
-  flex-direction: column;
-  padding-right: 150px;
+	display: flex;
+	flex-direction: column;
 }
 
 .landing-logo {
-  width: 150px;
-  height: 150px;
+	width: 150px;
+	height: 150px;
+	border-radius: 20%;
+	margin-right: 20px;
 }
 
 .landing-title {
-  font-size: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+	font-size: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	color: white;
+}
+
+.landing-desc-title {
+	margin-top: 20px;
+	font-size: 28px;
+	color: white;
 }
 
 .get-started-text {
-  margin: 20px 0px 30px 0px;
-  font-size: 20px;
-  line-height: 40px;
+	color: white;
+	margin: 20px 0px 30px 0px;
+	font-size: 20px;
+	line-height: 40px;
 }
 
 .get-started-button {
-  margin: 20px 0px 0px 0px;
-  width: 200px;
-  height: 70px;
-  font-size: 25px;
-  color: white;
-  background: black;
-  border-radius:30px;
+	margin: 20px 0px 0px 0px;
+	width: 200px;
+	height: 70px;
+	font-size: 25px;
+	color: white;
+	background: #FF004D;
+	border-radius: 30px;
+	border: none;
+	width: 150px;
+	height: 150px;
+}
+
+.landing-title {
+	font-size: 50px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.get-started-text {
+	margin: 20px 0px 30px 0px;
+	font-size: 20px;
+	line-height: 40px;
+}
+
+.get-started-button {
+	margin: 20px 0px 0px 0px;
+	width: 200px;
+	height: 70px;
+	font-size: 25px;
+	color: white;
+	background: black;
+	border-radius: 30px;
 }
 
 .landing-right-image {
-  height: 700px;
-  mask-image: linear-gradient(
-    white 80%,
-    transparent
-    );
+
+	margin-top: 1rem;
+	margin-left: 5rem;
+	height: 700px;
+	mask-image: linear-gradient(white 80%,
+			transparent);
+}
+
+@media (max-width: 768px) {
+
+	.landing-container {
+
+		margin-top: 0rem;
+		padding: 20px 30px;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.landing-right-image {
+		display: none;
+	}
+}
+
+@media (max-width: 425px) {
+	.landing-container {
+		padding: 20px 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.landing-title {
+		display: none;
+	}
+
+	.landing-right-image {
+		display: none;
+	}
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
+import './DietModal.css'
 
 const customStyles = {
   content: {
@@ -31,34 +32,50 @@ export const DietModal = ({ modalIsOpen, setIsOpen, time }) => {
         contentLabel="Example Modal"
       >
       {
+        //WARN: i must return components instead but well, i dont have time so it is what it is
         time.map((item) => {
           return ( 
             <>
-              <h1 key={item.meal}>{item.meal}</h1>
-              <h2 key={item.nombre}>{item.nombre}</h2>
-              <label key={item.descripcion}>{item.descripcion}</label>
-              <h2 key={'food'}>Ingredientes</h2>
-              {
-                item.alimentos.map((item) => {
-                  return (
-                    <>
-                      <span key={item.nombre}>
-                        {item.nombre} | cantidad: {item.cantidad}
-                      </span>
-                    </>
-                  )
-                })
-              }
-              <h2 key={'macros'}>Macros</h2>
-              <label key={item.macros.prote}>Proteinas: {item.macros.prote}</label>
-              <label key={item.macros.cals}>Calorias: {item.macros.cals}</label>
-              <label key={item.macros.vitaminas}>Vitaminas: {item.macros.vitaminas.join(' | ')}</label>
-              <label key={item.macros.minerales}>Minerales: {item.macros.minerales.join(' | ')}</label>
+              <h1 className='meal-title' key={item.meal}>{item.meal}</h1>
+              <div key={'container'} className='meal-name-description'>
+                <h2 className='meal-subtitle' key={item.nombre}>{item.nombre}</h2>
+                <label className='meal-description' key={item.descripcion}>{item.descripcion}</label>
+                <hr className='hr-line-separator'></hr>
+                <h2 className='meal-subtitle' key={'food'}>Ingredientes</h2>
+                <table className='foods-table' key={`table${item.meal}`}>
+                  <tr>
+                    <th key={'ingrediente'} className='table-headder'>Ingrediente</th>
+                    <th key={'cantidad'} className='table-headder'>Catidad</th>
+                  </tr>
+                  {
+                    item.alimentos.map((item) => {
+                      return (
+                        <tr>
+                          <td className='table-content' key={item.nombre}>
+                            {item.nombre}
+                          </td>
+                          <td className='table-content' key={item.cantidad}>
+                            {item.cantidad}
+                          </td>
+                        </tr>
+                      )
+                    })
+                  }
+                </table>
+                <hr className='hr-line-separator'></hr>
+                <h2 className='meal-subtitle' key={'macros'}>Macros</h2>
+                <div className='labels-container'>
+                  <label className='macros-modal-label' key={item.macros.prote}>Proteinas: {item.macros.prote}</label>
+                  <label className='macros-modal-label' key={item.macros.cals}>Calorias: {item.macros.cals}</label>
+                  <label className='macros-modal-label' key={item.macros.vitaminas}>Vitaminas: {item.macros.vitaminas.join(' , ')}</label>
+                  <label className='macros-modal-label' key={item.macros.minerales}>Minerales:{item.macros.minerales.join(' , ')}</label>
+                </div>
+              </div>
+              <hr className='hr-line-separator'></hr>
             </>)
         })
       }
-      <h1></h1>
-      <button onClick={closeModal}>close</button>
+      <button className='close-modal-btn' onClick={closeModal}>close</button>
     </Modal>
   )
 }

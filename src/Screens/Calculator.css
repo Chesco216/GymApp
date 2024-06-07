@@ -1,183 +1,201 @@
 .calculator-screen-container {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+	width: 100%;
+	height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
 }
 
 .calc-form-div {
-  /* width: 100%; */
-  /* height: 100%; */
-  display: flex;
-  flex-direction: column;
-  padding: 50px 0px 0px 100px;
-  transition: 600ms ease-in;
+	/* width: 100%; */
+	/* height: 100%; */
+	display: flex;
+	flex-direction: column;
+	padding: 50px 0px 0px 100px;
+	transition: 600ms ease-in;
 }
 
 .calc-form-div:hover {
-  background: #1A1A1A;
-  color: white;
-  transition: 600ms ease-in;
+	background: #1A1A1A;
+	color: white;
+	transition: 600ms ease-in;
 }
 
 .input-label-calc {
-  width: fit-content;
-  margin: 10px 0px 10px 0px;
-  font-size: 25px;
+	width: fit-content;
+	margin: 10px 0px 10px 0px;
+	font-size: 25px;
 }
 
 .calc-input {
-  width: 300px;
-  margin: 10px 0px 10px 0px;
-  height: 40px;
-  font-size: 20px;
-  border: 2px solid black;
-  border-radius: 8px;
-  padding: 0px 0px 0px 10px;
+	width: 300px;
+	margin: 10px 0px 10px 0px;
+	height: 40px;
+	font-size: 20px;
+	border: 2px solid black;
+	border-radius: 8px;
+	padding: 0px 0px 0px 10px;
 }
 
 .calc-input:focus {
-  border: solid 3px black;
+	border: solid 3px black;
 }
 
 .get-macros-button {
-  width: 150px;
-  height: 40px;
-  margin: 10px 0px 10px 0px;
-  box-sizing: border-box;
-  background: white;
-  font-size: 20px;
-  font-weight: 500;
-  border: 3px solid black;
-  border-radius: 10px;
-  transition-duration: 800ms;
+	width: 150px;
+	height: 40px;
+	margin: 10px 0px 10px 0px;
+	box-sizing: border-box;
+	background: white;
+	font-size: 20px;
+	font-weight: 500;
+	border: 3px solid black;
+	border-radius: 10px;
+	transition-duration: 800ms;
 }
 
 .get-macros-button:hover {
-  background: black;
-  transition-duration: 500ms;
-  color: white;
+	background: black;
+	transition-duration: 500ms;
+	color: white;
 }
 
 .knobs,
 .layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
 
 .button {
-  position: relative;
-  /* top: 50%; */
-  width: 163px;
-  height: 43px;
-  margin: 10px 0 10px 0;
-  padding-bottom: 5px;
-  /* overflow: hidden; */
+	position: relative;
+	/* top: 50%; */
+	width: 163px;
+	height: 43px;
+	margin: 10px 0 10px 0;
+	padding-bottom: 5px;
+	/* overflow: hidden; */
 }
 
 .checkbox {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0;
-  margin: 0;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 3;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	opacity: 0;
+	cursor: pointer;
+	z-index: 3;
 }
 
 .knobs {
-  z-index: 2;
+	z-index: 2;
 }
 
 .layer {
-  width: 100%;
-  background-color: #ebf7fc;
-  transition: 0.3s ease all;
-  z-index: 1;
+	width: 100%;
+	background-color: #ebf7fc;
+	transition: 0.3s ease all;
+	z-index: 1;
 }
 
 /* Button 1 */
 #button-1 .knobs:before {
-  content: "HOMBRE";
-  position: absolute;
-  top: 4px;
-  left: 4px;
-  width: 88px;
-  height: 22px;
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-  text-align: center;
-  line-height: 1;
-  padding: 9px 4px;
-  background-color: #03a9f4;
-  transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
+	content: "HOMBRE";
+	position: absolute;
+	top: 4px;
+	left: 4px;
+	width: 88px;
+	height: 22px;
+	color: #fff;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 1;
+	padding: 9px 4px;
+	background-color: #03a9f4;
+	transition: 0.3s cubic-bezier(0.18, 0.89, 0.35, 1.15) all;
 }
 
-#button-1 .checkbox:checked + .knobs:before {
-  content: "MUJER";
-  left: 62px;
-  /* background-color: #f44336; */
-  background-color: #DC8787;
+#button-1 .checkbox:checked+.knobs:before {
+	content: "MUJER";
+	left: 62px;
+	/* background-color: #f44336; */
+	background-color: #DC8787;
 }
 
-#button-1 .checkbox:checked ~ .layer {
-  background-color: #fcebeb;
+#button-1 .checkbox:checked~.layer {
+	background-color: #fcebeb;
 }
 
 #button-1 .knobs,
 #button-1 .knobs:before,
 #button-1 .layer {
-  transition: 0.3s ease all;
+	transition: 0.3s ease all;
 }
 
 .prot-cal-div {
-  padding: 80px 100px 50px 100px;
-  font-size: 18px;
-  transition: 400ms ease-in;
+	padding: 80px 100px 50px 100px;
+	font-size: 18px;
+	transition: 400ms ease-in;
 }
 
 .prot-cal-div:hover {
-  background: #1A1A1A;
-  color: white;
-  transition: 400ms ease-in;
+	background: #1A1A1A;
+	color: white;
+	transition: 400ms ease-in;
 }
 
 .go-to-macros {
-  display: flex;
-  flex-direction: column;
-  padding: 250px 80px 80px 80px;
-  transition: 400ms ease-in;
+	display: flex;
+	flex-direction: column;
+	padding: 250px 80px 80px 80px;
+	transition: 400ms ease-in;
 }
 
 .go-to-macros:hover {
-  background: #1A1A1A;
-  color: white;
-  transition: 400ms ease-in;
+	background: #1A1A1A;
+	color: white;
+	transition: 400ms ease-in;
 }
 
 .which-meals-label {
-  font-size: 40px;
+	font-size: 40px;
 }
 
 .go-to-macros-label {
-  display: flex;
-  width: 200px;
-  margin-top: 40px;
-  font-size: 20px;
-  padding: 20px 20px 20px 20px;
-  background: black;
-  color: white;
-  border-radius: 5px;
-  transition: 400ms ease-in;
+	display: flex;
+	width: 200px;
+	margin-top: 40px;
+	font-size: 20px;
+	padding: 20px 20px 20px 20px;
+	background: black;
+	color: white;
+	border-radius: 5px;
+	transition: 400ms ease-in;
 }
 
-.go-to-macros-label:hover{
-  background: white;
-  color: #1A1A1A;
-  transition: 400ms ease-in;
+.go-to-macros-label:hover {
+	background: white;
+	color: #1A1A1A;
+	transition: 400ms ease-in;
+}
+
+@media (max-width: 768px) {
+	.calculator-screen-container {
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.calc-form-div {
+		padding: 0px 0px 0px 0px;
+		align-items: center;
+		justify-content: center;
+		width: 100%;
+	}
 }

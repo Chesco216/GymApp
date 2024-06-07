@@ -6,8 +6,11 @@ import { Loading } from '../components/Loading'
 import closeSession from '../services/closeSession'
 import './Profile.css'
 import { DietGrid } from '../components/DietGrid'
+import { useNavigate } from 'react-router-dom'
 
 export const Profile = () => {
+
+  const navigate = useNavigate()
   
   const { userinfo } = useContext(userContext)
   const [user, setUser] = useState(null)
@@ -23,6 +26,9 @@ export const Profile = () => {
     getUserInfo()
   }, [])
 
+  const goToUpdate = () => {
+    navigate('/profile/update')
+  }
   return (
     <div>
       { (user) === null ? ( <Loading/> ) 
@@ -35,6 +41,7 @@ export const Profile = () => {
             <h1>{ user.username }</h1>
             <label>{ user.email }</label>
           </span>
+          <button onClick={ goToUpdate }>Update</button>
         </div>
         <div className='stats-section'>
           <span className='user-stats-span'>

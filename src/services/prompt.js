@@ -8,7 +8,7 @@ userData = {
     meta,
 }
 
-const strucureData = ({ edad, altura, peso, restricciones, limitaciones, meta }) => {
+const structureData = ({ edad, altura, peso, restricciones, limitaciones, meta }) => {
     return (
         `
         La edad del usuario es: ${edad},
@@ -97,7 +97,7 @@ export const promtCall = () => {
     return (`
         A continuacion te enviare informacion de un usuario el cual esta usando nuestra aplicacion de dietas y ejercicios, recuerda muy bien la informacion del usuario, las respuestas deben ser tal cual indican los formatos dados
 
-        informacion del usuario : ${strucureData()},
+        informacion del usuario : ${structureData()},
         
         con esta informacion necesito que realices lo siguiente: ${dataFormatDiet()} 
         y ademas de generar lo siguiente: ${dataFormatRutine()}

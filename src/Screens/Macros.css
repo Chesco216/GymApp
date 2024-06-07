@@ -3,8 +3,8 @@
   grid-template-columns: 2fr 1fr;
 }
 
-tr:nth-child(even) {
-  background-color: #A7A7A7;
+tr {
+  background-color: #CEB2C1;
 }
 
 td {
@@ -13,7 +13,7 @@ td {
 }
 
 th {
-  background-color: black;
+  background-color: #FF004D;
   height: 35px;
   color: white;
   padding: 0px 20px 0px 20px ;
@@ -60,7 +60,7 @@ th {
   width: 500px;
   height: fit-content;
   margin-top: 50px;
-  background: black;
+  background: #FF004D;
   border-radius: 30px;
   color: white;
   padding: 0;

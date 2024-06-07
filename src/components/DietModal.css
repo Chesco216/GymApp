@@ -1,13 +1,23 @@
 .meal-title {
   font-family: "Poppins", sans-serif;
+  color: white;
 }
 
 .meal-subtitle {
   font-family: "Poppins", sans-serif;
+  color: white;
 }
 
-.hr-line-separator {
+.hr-line-separator-1 {
   margin: 20px 0px 10px 0px;
+  border: 1px solid #424449;
+  border-radius: 50%;
+}
+
+.hr-line-separator-2 {
+  margin: 20px 0px 10px 0px;
+  border: 2px solid #FF004D;
+  border-radius: 50%;
 }
 
 .meal-name-description {
@@ -21,6 +31,7 @@
 
 .meal-description {
   font-family: "Poppins", sans-serif;
+  color: white;
 }
 
 /* .foods-table { */
@@ -40,6 +51,7 @@
 }
 
 .labels-container {
+  color: white;
   display: flex;
   flex-direction: column;
 }
@@ -47,6 +59,7 @@
 .macros-modal-label {
   font-family: "Poppins", sans-serif;
   font-size: 18px;
+  color: white;
 }
 
 .close-modal-btn {

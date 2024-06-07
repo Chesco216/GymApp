@@ -30,26 +30,26 @@ const dataFormatDiet = () => {
         [
             {
                 day: 'Lunes', (Dia de la semana)
-                time: [ (Tiempo o comida del dia)
+                meals: [ (Tiempo o comida del dia)
                 {
-                    meal: 'Desayuno', (comida del dia)
-                    nombre: 'Huevo con pan', (nombre de la comida)
-                    descripcion: 'un huevo frito con pansito y tesito', (descripcion de la comida con todos su ingredientes)
-                    alimentos: [ (debes indicar todos los ingredientes en particular de la comida generada con las siguientes caracteristicas presentes)
+                    meal_time: 'Desayuno', (comida del dia)
+                    name: 'Huevo con pan', (nombre de la comida)
+                    description: 'un huevo frito con pansito y tesito', (descripcion de la comida con todos su ingredientes)
+                    ingredients: [ (debes indicar todos los ingredientes en particular de la comida generada con las siguientes caracteristicas presentes)
                     {
-                        nombre: 'huevo',(nombre del ingrediente)
-                        cantidad: '2 huevos', (cantidad de los ingredientes en la comida)
+                        name: 'huevo',(nombre del ingrediente)
+                        quantity: '2 huevos', (cantidad de los ingredientes en la comida)
                     },
                     {
-                        nombre: 'pan',(nombre del ingrediente)
-                        cantidad: '2 panes',(cantidad de los ingredientes en la comida)
+                        name: 'pan',(nombre del ingrediente)
+                        quantity: '2 panes',(cantidad de los ingredientes en la comida)
                     }
                     ],
                     macros: { (Informacion de macronutrientes de la comida en general)
-                    prote: 10, (proteinas totales de la comida, ademas añade la unidad, es decir 10 gr por ejemplo)
+                    proteines: 10, (proteinas totales de la comida, ademas añade la unidad, es decir 10 gr por ejemplo)
                     cals: 10, (calorias totales de la comida, ademas añade la unidad, es decir 10 cal por ejemplo)
-                    vitaminas: ['A', 'B', 'C', 'D'], (Vitaminas que provee la comida)
-                    minerales: ['M1', 'M2', 'M3', 'M4'] (Minerales que proporciona la comida)
+                    vitamine: ['A', 'B', 'C', 'D'], (Vitaminas que provee la comida)
+                    minerals: ['M1', 'M2', 'M3', 'M4'] (Minerales que proporciona la comida)
                     }
                 },
             }

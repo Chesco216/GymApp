@@ -1,38 +1,50 @@
-import React from 'react'
-import './Header.css'
-import { NavLink } from 'react-router-dom'
+import React, { useState } from 'react';
+import './Header.css';
+import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
- 
-  return (
-    <div className='header-container'>
-      
-      <NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <div className='logo-label-div'>
-          <img id='logo-img' src='../../logo.jpg' alt='logo'/>
-          <label>JAYANI POWER</label>
-        </div>
-      </NavLink>
+	const [menuOpen, setMenuOpen] = useState(false);
 
-      <NavLink to='/calculator' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <span id='calcu' className='header-links'>calculadora</span>
-      </NavLink>
+	const toggleMenu = () => {
+		setMenuOpen(!menuOpen);
+	};
 
-      <NavLink to='/macros' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <span id='macro' className='header-links'>macros</span>
-      </NavLink>
+	return (
+		<div className='header-container'>
+			<div className="hmb">
+				<NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
+					<div className='logo-label-div'>
+						<img id='logo-img' src='../../logo.jpg' alt='logo' />
+						<label>JAYANI POWER</label>
+					</div>
+				</NavLink>
 
-      <NavLink to='/prices' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <span id='price' className='header-links'>precios</span>
-      </NavLink>
+				<div className='menu-icon' onClick={toggleMenu}>
+					&#9776; {/* Icono de menú hamburguesa */}
+				</div>
+			</div>
 
-      <NavLink to='/login' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <button className='log-in-button' >Log in</button>
-      </NavLink>
-      
-      <NavLink to='/signin' style={{ textDecoration: 'none', color: 'inherit' }}>
-        <button className='sign-in-button' >Sign in</button>
-      </NavLink>
-    </div>
-  )
-}
+			<div className={`menu ${menuOpen ? 'open' : ''}`}>
+				<NavLink to='/calculator' style={{ textDecoration: 'none', color: 'inherit' }} className='menu-item'>
+					<span className='header-links'>calculadora</span>
+				</NavLink>
+
+				<NavLink to='/macros' style={{ textDecoration: 'none', color: 'inherit' }} className='menu-item'>
+					<span className='header-links'>macros</span>
+				</NavLink>
+
+				<NavLink to='/prices' style={{ textDecoration: 'none', color: 'inherit' }} className='menu-item'>
+					<span className='header-links'>precios</span>
+				</NavLink>
+
+				<NavLink to='/login' style={{ textDecoration: 'none', color: 'inherit' }} className='menu-item'>
+					<button className='log-in-button'>Log in</button>
+				</NavLink>
+
+				<NavLink to='/signin' style={{ textDecoration: 'none', color: 'inherit' }} className='menu-item'>
+					<button className='sign-in-button'>Sign in</button>
+				</NavLink>
+			</div>
+		</div>
+	);
+};

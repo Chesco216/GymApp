@@ -72,11 +72,13 @@ const dataFormatRutine = () => {
                 exercises: [ (Ejercicios a realizar)
                 {
                     set: 'Press de banca con mancuernas', (Nombre del ejercicio)
+                    description: 'breve descripcion de como hacer el ejercicio', (Debes añadir una breve descripcion de como se realiza el ejercicio)
                     series: 3 , (Series a realizar por ejercicio, ademas añade la unidad, es decir 3 series como ejemplo)
                     reps: 10, (Repeticiones a realizar por cada serie, ademas añade la unidad, es decir 10 repeticiones)
                 },
                 {
                     set: 'Press de banca inclinado con barra', (Nombre del ejercicio)
+                    description: 'breve descripcion de como hacer el ejercicio', (Debes añadir una breve descripcion de como se realiza el ejercicio)
                     series: 3 , (Series a realizar por ejercicio, ademas añade la unidad, es decir 3 series como ejemplo)
                     reps: 10, (Repeticiones a realizar por cada serie, ademas añade la unidad, es decir 10 repeticiones)
                 },

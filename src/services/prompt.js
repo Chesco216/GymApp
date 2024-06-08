@@ -30,28 +30,32 @@ const dataFormatDiet = () => {
         [
             {
                 day: 'Lunes', (Dia de la semana)
-                meals: [ (Tiempo o comida del dia)
-                {
-                    meal_time: 'Desayuno', (comida del dia)
-                    name: 'Huevo con pan', (nombre de la comida)
-                    description: 'un huevo frito con pansito y tesito', (descripcion de la comida con todos su ingredientes)
-                    ingredients: [ (debes indicar todos los ingredientes en particular de la comida generada con las siguientes caracteristicas presentes)
+                meals: 
+                [ (Tiempo o comida del dia)
                     {
-                        name: 'huevo',(nombre del ingrediente)
-                        quantity: '2 huevos', (cantidad de los ingredientes en la comida)
+                        meal_time: 'Desayuno', (comida del dia)
+                        name: 'Huevo con pan', (nombre de la comida)
+                        description: 'un huevo frito con pansito y tesito', (descripcion de la comida con todos su ingredientes)
+                        ingredients: 
+                        [   (debes indicar todos los ingredientes en particular de la comida generada con las siguientes caracteristicas presentes)
+                            {
+                                name: 'huevo',(nombre del ingrediente)
+                                quantity: '2 huevos', (cantidad de los ingredientes en la comida)
+                            },
+                            {
+                                name: 'pan',(nombre del ingrediente)
+                                quantity: '2 panes',(cantidad de los ingredientes en la comida)
+                            }
+                        ],
+                        macros: 
+                        { (Informacion de macronutrientes de la comida en general)
+                            proteins: 10, (proteinas totales de la comida, ademas añade la unidad, es decir 10 gr por ejemplo)
+                            calories: 10, (calorias totales de la comida, ademas añade la unidad, es decir 10 cal por ejemplo)
+                            vitamins: ['A', 'B', 'C', 'D'], (Vitaminas que provee la comida)
+                            minerals: ['M1', 'M2', 'M3', 'M4'] (Minerales que proporciona la comida)
+                        }
                     },
-                    {
-                        name: 'pan',(nombre del ingrediente)
-                        quantity: '2 panes',(cantidad de los ingredientes en la comida)
-                    }
-                    ],
-                    macros: { (Informacion de macronutrientes de la comida en general)
-                    proteins: 10, (proteinas totales de la comida, ademas añade la unidad, es decir 10 gr por ejemplo)
-                    calories: 10, (calorias totales de la comida, ademas añade la unidad, es decir 10 cal por ejemplo)
-                    vitamins: ['A', 'B', 'C', 'D'], (Vitaminas que provee la comida)
-                    minerals: ['M1', 'M2', 'M3', 'M4'] (Minerales que proporciona la comida)
-                    }
-                },
+                ]
             }
         ]
         Genera solo el JSON en formato que te proporciono, nos añadas ni agregues cosas extra
@@ -69,21 +73,20 @@ const dataFormatRutine = () => {
             {
                 day: 'Lunes', (Dia de la semana)
                 group: 'Pecho y triceps', (Grupo muscular a trabajar)
-                exercises: [ (Ejercicios a realizar)
-                {
-                    set: 'Press de banca con mancuernas', (Nombre del ejercicio)
-                    description: 'breve descripcion de como hacer el ejercicio', (Debes añadir una breve descripcion de como se realiza el ejercicio)
-                    series: 3 , (Series a realizar por ejercicio, ademas añade la unidad, es decir 3 series como ejemplo)
-                    reps: 10, (Repeticiones a realizar por cada serie, ademas añade la unidad, es decir 10 repeticiones)
-                },
-                {
-                    set: 'Press de banca inclinado con barra', (Nombre del ejercicio)
-                    description: 'breve descripcion de como hacer el ejercicio', (Debes añadir una breve descripcion de como se realiza el ejercicio)
-                    series: 3 , (Series a realizar por ejercicio, ademas añade la unidad, es decir 3 series como ejemplo)
-                    reps: 10, (Repeticiones a realizar por cada serie, ademas añade la unidad, es decir 10 repeticiones)
-                },
-                {
-
+                exercises: 
+                [ (Ejercicios a realizar)
+                    {
+                        set: 'Press de banca con mancuernas', (Nombre del ejercicio)
+                        description: 'breve descripcion de como hacer el ejercicio', (Debes añadir una breve descripcion de como se realiza el ejercicio)
+                        series: 3 , (Series a realizar por ejercicio, ademas añade la unidad, es decir 3 series como ejemplo)
+                        reps: 10, (Repeticiones a realizar por cada serie, ademas añade la unidad, es decir 10 repeticiones)
+                    },
+                    {
+                        set: 'Press de banca inclinado con barra', (Nombre del ejercicio)
+                        description: 'breve descripcion de como hacer el ejercicio', (Debes añadir una breve descripcion de como se realiza el ejercicio)
+                        series: 3 , (Series a realizar por ejercicio, ademas añade la unidad, es decir 3 series como ejemplo)
+                        reps: 10, (Repeticiones a realizar por cada serie, ademas añade la unidad, es decir 10 repeticiones)
+                    },
                 ],
                 cals: 'aca ira un aproximado de las calorias quemadas', (Numero aproximado de calorias quemadas, ademas añade la unidad, es decir 15 cal por ejemplo)
                 duration: 'aca debera ir la duracion aproximada de la rutina' (Duracion aproximada de la rutina en general contando con cada ejercicio en minutos, es decir si sobrepasa una 1 hora que sea 60 minutos, 2 horas 120 minutos.)

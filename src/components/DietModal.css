@@ -10,7 +10,7 @@
 
 .hr-line-separator-1 {
   margin: 20px 0px 10px 0px;
-  border: 1px solid #424449;
+  border: 1px solid #FF004D;
   border-radius: 50%;
 }
 
@@ -72,3 +72,20 @@
   border: none;
   border-radius: 10px;
 }
+
+.ReactModal__Overlay {
+    /* opacity: 0; */
+    scale: 0;
+    transition: 400ms ease-out;
+}
+
+.ReactModal__Overlay--after-open{
+    /* opacity: 1; */
+  scale: 1;
+}
+
+/* .ReactModal__Overlay--before-close{ */
+/*     /* opacity: 0; */ */
+/*   scale: 0; */
+/*   transition: 400ms ease-out; */
+/* } */

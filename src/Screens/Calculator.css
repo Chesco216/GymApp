@@ -11,11 +11,12 @@
 	display: flex;
 	flex-direction: column;
 	padding: 50px 0px 0px 100px;
+  color: white;
 	transition: 600ms ease-in;
 }
 
 .calc-form-div:hover {
-	background: #1A1A1A;
+	background: #424449;
 	color: white;
 	transition: 600ms ease-in;
 }
@@ -137,12 +138,13 @@
 
 .prot-cal-div {
 	padding: 80px 100px 50px 100px;
+  color: white;
 	font-size: 18px;
 	transition: 400ms ease-in;
 }
 
 .prot-cal-div:hover {
-	background: #1A1A1A;
+	background: #424449;
 	color: white;
 	transition: 400ms ease-in;
 }
@@ -151,11 +153,12 @@
 	display: flex;
 	flex-direction: column;
 	padding: 250px 80px 80px 80px;
+  color: white;
 	transition: 400ms ease-in;
 }
 
 .go-to-macros:hover {
-	background: #1A1A1A;
+	background: #424449;
 	color: white;
 	transition: 400ms ease-in;
 }

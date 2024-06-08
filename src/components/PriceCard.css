@@ -7,8 +7,10 @@
   height: 630px;
   padding: 20px 30px 0px 30px;
   box-sizing: border-box;
-  border: 3px solid #1A1A1A;
+  border: 5px solid #FF004D;
   border-radius: 20px;
+  color: #242933;
+  background: white;
 }
 
 .plan-header {
@@ -35,6 +37,7 @@
   font-size: 20px;
   font-weight: bold;
   color: white;
-  background: #1A1A1A;
+  background: #FF004D;
   border-radius: 10px;
+  border: none;
 }

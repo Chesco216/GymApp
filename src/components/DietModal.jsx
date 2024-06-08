@@ -8,7 +8,6 @@ const customStyles = {
     overflow: 'scroll',
     border: '5px solid #FF004D',
     borderRadius: '20px',
-    // scrollbarColor: '#FF004D rgba(36, 41, 51, 0)',
     scrollbarWidth: 'none',
     width: '50%',
     top: '50%',

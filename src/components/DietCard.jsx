@@ -16,7 +16,7 @@ export const DietCard = ({day, time}) => {
       <label className='day-title'>{day}</label>
       <button className='day-button' onClick={ handleModal }>Ver</button>
     </div>
-    <DietModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} time={time}/>
+    <DietModal className='diet-modal-component' modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} time={time}/>
     </>
   )
 }

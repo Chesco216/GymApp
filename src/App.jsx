@@ -9,6 +9,7 @@ import { UserProvider } from "./context/UserProvider"
 import { Profile } from "./Screens/Profile"
 import { InfoForm } from "./components/InfoForm"
 import { ProfileUpdate } from "./Screens/ProfileUpdate"
+import PaymentMethod from "./components/PaymentMethod"
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Landing/>}/>
+          <Route path='/pay' element={<PaymentMethod/>}></Route>
           <Route path='/calculator' element={<Calculator/>}/>
           <Route path='/macros' element={<Macros/>}/>
           <Route path='/prices' element={<Prices/>}/>

@@ -7,6 +7,7 @@ import { userContext } from '../context/UserProvider'
 import { googleSignin } from '../services/googleAuth'
 import { setDoc, doc, getDoc } from 'firebase/firestore'
 import { InfoForm } from '../components/InfoForm'
+import { LogSignSVG } from '../components/SVGS'
 
 export const LogIn = () => {
 
@@ -44,6 +45,9 @@ export const LogIn = () => {
 
   return (
     <div className='logsign-container'>
+      <div onClick={() => { navigate('/') }} className='back-to-landing'>
+        <LogSignSVG/>
+      </div>
       <div className='formlogin-container'>
         <div className='logsign-form'>
           <span style={{display:'flex'}} className='logo-name'>
@@ -96,7 +100,7 @@ export const LogIn = () => {
           <h1 style={{color:'white'}}>
             Welcome back!
           </h1>
-          <img src='https://img.freepik.com/free-vector/home-gym-with-different-workout-elements_23-2148864727.jpg'/>
+          <img className='logsign-image' src='../../public/logsign.jpg'/>
         </div>
       </div>
     </div>

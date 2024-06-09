@@ -1,5 +1,6 @@
 .landing-container {
 	width: 100%;
+  height: 100vh;
 	box-sizing: border-box;
 	padding: 40px 80px 80px 120px;
 	display: grid;
@@ -40,19 +41,6 @@
 	line-height: 40px;
 }
 
-.get-started-button {
-	margin: 20px 0px 0px 0px;
-	width: 200px;
-	height: 70px;
-	font-size: 25px;
-	color: white;
-	background: #FF004D;
-	border-radius: 30px;
-	border: none;
-	width: 150px;
-	height: 150px;
-}
-
 .landing-title {
 	font-size: 50px;
 	display: flex;
@@ -71,8 +59,9 @@
 	width: 200px;
 	height: 70px;
 	font-size: 25px;
-	color: white;
-	background: black;
+  font-weight: 700;
+	color: #242933;
+	background: white;
 	border-radius: 30px;
 }
 

@@ -1,10 +1,24 @@
 .logsign-container {
 	width: 100vw;
 	height: 100vh;
-	/* background-image: '../../public/logo.jpg'; */
-	background: white;
-	background-repeat: repeat;
-	/* opacity: 0.2; */
+  color: #242933;
+}
+
+.back-to-landing {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-content: center;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 60px;
+  height: 60px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  background: #FF004D;
+  border-radius: 10px;
 }
 
 .formlogin-container {
@@ -16,22 +30,30 @@
 	margin: auto;
 	width: 1200px;
 	height: 750px;
-	padding: 6px;
+	padding: 0;
 	/* box-sizing: border-box; */
-	background: black;
-	border-radius: 30px;
+	/* background: #FF004D; */
+  background: #242933;
+  border: 5px solid #CEB2C1;
+	border-radius: 40px;
+  overflow: hidden;
 	/* padding: 30px 50px 30px 50px; */
 	display: grid;
 	grid-template-columns: 2fr 3fr;
 }
 
 .logsign-form {
-	background: #E0E0E0;
+	background: #CEB2C1;
 	/* width: 400px; */
 	height: 100%;
 	box-sizing: border-box;
-	padding: 30px 50px 30px 50px;
-	border-radius: 30px;
+	padding: 70px 50px 30px 50px;
+	/* border-radius: 30px; */
+}
+
+.logsign-image {
+  width: 90%;
+  border-radius: 20px;
 }
 
 .form-fields {
@@ -40,11 +62,16 @@
 	margin: 30px auto;
 }
 
+.form-label {
+  color: #242933;
+}
+
 .form-input {
 	width: 80%;
 	height: 35px;
 	border-radius: 20px;
 	padding: 5px 10px 5px 20px;
+  border: none;
 }
 
 .logsign-button {
@@ -52,7 +79,7 @@
 	height: 45px;
 	margin: 15px auto;
 	border-radius: 20px;
-	background: #121212;
+	background: #242933;
 	color: white;
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
@@ -83,12 +110,11 @@
 	bottom: 0;
 	margin: auto;
 	width: 1200px;
-	height: 800px;
-	padding: 6px;
-	/* box-sizing: border-box; */
-	background: black;
-	border-radius: 30px;
-	/* padding: 30px 50px 30px 50px; */
+  overflow: hidden;
+	height: fit-content;
+	background: #242933;
+  border: 5px solid #CEB2C1;
+	border-radius: 40px;
 	display: grid;
 	grid-template-columns: 2fr 3fr;
 }
@@ -102,7 +128,7 @@
 	height: 45px;
 	margin: 15px 0px 20px 0px;
 	border-radius: 20px;
-	background: #121212;
+	background: #242933;
 	color: white;
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
@@ -117,6 +143,10 @@
 	margin: auto 20px auto;
 	width: 30px;
 	height: 30;
+}
+
+.logsign-svg {
+  scale: 2;
 }
 
 @media (max-width: 1024px) {
@@ -154,5 +184,4 @@
 		background: white;
 
 	}
-
 }

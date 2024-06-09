@@ -6,6 +6,11 @@ import "./PriceCard.css"
  * @returns 
  */
 export const PriceCard = ({ plan, price, utils }) => {
+
+  const handlePayment = () => {
+    alert('patyment not implemented')
+  }
+
   return (
     <div className='price-card-container'>
       <h1 className='plan-header'>{plan}</h1>
@@ -19,7 +24,7 @@ export const PriceCard = ({ plan, price, utils }) => {
         })
       }
       </ul>
-      <button className='prices-sus-button'>Suscribirse</button>
+      <button className='prices-sus-button' onClick={handlePayment}>Suscribirse</button>
     </div>
   )
 }

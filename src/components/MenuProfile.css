@@ -1,0 +1,19 @@
+.menu-profile-container {
+  width: fit-content;
+  height: fit-content;
+  background: #FF004D;
+  padding: 20px 20px 20px 20px;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  border-radius: 20px;
+}
+
+.menu-profile-span {
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-profile-label {
+  margin-left: 20px;
+}

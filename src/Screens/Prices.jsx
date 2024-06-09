@@ -3,7 +3,7 @@ import { Header } from '../components/Header'
 import { PriceCard } from '../components/PriceCard'
 import "./Prices.css"
 
-const prices = [
+export const prices = [
   {
     plan: 'Standar',
     price: 0,

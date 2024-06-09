@@ -56,7 +56,7 @@ export const InfoForm = () => {
     }
 
     try {
-      await setDoc(doc(db, 'users', context.userinfo.uid),{ userObj })
+      await setDoc(doc(db, 'users', context.userinfo.uid),{ ...userObj })
       navigate('/profile')
     } catch (error) {
       navigate('/login')

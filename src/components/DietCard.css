@@ -12,8 +12,10 @@
   align-content: center;
   width: 300px;
   height: 100px;
-  background: black;
+  background: #FF004D;
   color: white;
+  font-size: 20px;
+  font-weight: 600;
   margin: 20px 20px 20px 20px;
   border-radius: 20px;
 }

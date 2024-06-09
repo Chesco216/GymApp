@@ -12,11 +12,11 @@ export const DietCard = ({day, time}) => {
 
   return (
     <>
-    <div className='diet-card'>
-      <label className='day-title'>{day}</label>
-      <button className='day-button' onClick={ handleModal }>Ver</button>
-    </div>
-    <DietModal className='diet-modal-component' modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} time={time}/>
+      <div className='diet-card'>
+        <label className='day-title'>{day}</label>
+        <button className='day-button' onClick={ handleModal }>Ver</button>
+      </div>
+      <DietModal className='diet-modal-component' modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} time={time}/>
     </>
   )
 }

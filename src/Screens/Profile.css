@@ -1,13 +1,15 @@
 .profile-container {
   width: 100vw;
   height: 100vh;
+  overflow: scroll;
   padding: 50px 50px 50px 50px;
   color: white;
 }
 
 .user-pic-name-email {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  place-content: center;
+  grid-template-columns: 5fr 1fr;
   align-items: center;
   width: 80%;
   height: fit-content;
@@ -84,4 +86,12 @@
 
 .profile-diet-content {
   margin: 50px auto;
+}
+
+.config-menu-motion {
+  position: absolute;
+  right: 20%;
+  top: 15%;
+  display: flex;
+  flex-direction: column;
 }

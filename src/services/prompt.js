@@ -20,7 +20,8 @@ const userPrompt = () => {
 
 const user = userPrompt()
   
-const strucureData = ({ edad, altura, peso, restricciones, limitaciones, meta }) => {
+const structureData = ({ edad, altura, peso, restricciones, limitaciones, meta }) => {
+
     return (
         `
         La edad del usuario es: ${edad},
@@ -42,28 +43,32 @@ const dataFormatDiet = () => {
         [
             {
                 day: 'Lunes', (Dia de la semana)
-                time: [ (Tiempo o comida del dia)
-                {
-                    meal: 'Desayuno', (comida del dia)
-                    nombre: 'Huevo con pan', (nombre de la comida)
-                    descripcion: 'un huevo frito con pansito y tesito', (descripcion de la comida con todos su ingredientes)
-                    alimentos: [ (debes indicar todos los ingredientes en particular de la comida generada con las siguientes caracteristicas presentes)
+                meals: 
+                [ (Tiempo o comida del dia)
                     {
-                        nombre: 'huevo',(nombre del ingrediente)
-                        cantidad: '2 huevos', (cantidad de los ingredientes en la comida)
+                        meal_time: 'Desayuno', (comida del dia)
+                        name: 'Huevo con pan', (nombre de la comida)
+                        description: 'un huevo frito con pansito y tesito', (descripcion de la comida con todos su ingredientes)
+                        ingredients: 
+                        [   (debes indicar todos los ingredientes en particular de la comida generada con las siguientes caracteristicas presentes)
+                            {
+                                name: 'huevo',(nombre del ingrediente)
+                                quantity: '2 huevos', (cantidad de los ingredientes en la comida)
+                            },
+                            {
+                                name: 'pan',(nombre del ingrediente)
+                                quantity: '2 panes',(cantidad de los ingredientes en la comida)
+                            }
+                        ],
+                        macros: 
+                        { (Informacion de macronutrientes de la comida en general)
+                            proteins: '20 gr', (proteinas totales de la comida, ademas añade la unidad, es decir 10 gr por ejemplo)
+                            calories: '10 cals', (calorias totales de la comida, ademas añade la unidad, es decir 10 cal por ejemplo)
+                            vitamins: ['A', 'B', 'C', 'D'], (Vitaminas que provee la comida)
+                            minerals: ['M1', 'M2', 'M3', 'M4'] (Minerales que proporciona la comida)
+                        }
                     },
-                    {
-                        nombre: 'pan',(nombre del ingrediente)
-                        cantidad: '2 panes',(cantidad de los ingredientes en la comida)
-                    }
-                    ],
-                    macros: { (Informacion de macronutrientes de la comida en general)
-                    prote: 10, (proteinas totales de la comida)
-                    cals: 10, (calorias totales de la comida)
-                    vitaminas: ['A', 'B', 'C', 'D'], (Vitaminas que provee la comida)
-                    minerales: ['M1', 'M2', 'M3', 'M4'] (Minerales que proporciona la comida)
-                    }
-                },
+                ]
             }
         ]
         Genera solo el JSON en formato que te proporciono, nos añadas ni agregues cosas extra
@@ -81,22 +86,23 @@ const dataFormatRutine = () => {
             {
                 day: 'Lunes', (Dia de la semana)
                 group: 'Pecho y triceps', (Grupo muscular a trabajar)
-                exercises: [ (Ejercicios a realizar)
-                {
-                    set: 'Press de banca con mancuernas', (Nombre del ejercicio)
-                    series: 3, (Series a realizar por ejercicio)
-                    reps: 10, (Repeticiones a realizar por cada serie)
-                },
-                {
-                    set: 'Press de banca inclinado con barra', (Nombre del ejercicio)
-                    series: 3, (Series a realizar por ejercicio)
-                    reps: 10, (Repeticiones a realizar por cada serie)
-                },
-                {
-
+                exercises: 
+                [ (Ejercicios a realizar)
+                    {
+                        set: 'Press de banca con mancuernas', (Nombre del ejercicio)
+                        description: 'breve descripcion de como hacer el ejercicio', (Debes añadir una breve descripcion de como se realiza el ejercicio)
+                        series: '3 series' , (Series a realizar por ejercicio, ademas añade la unidad, es decir 3 series como ejemplo)
+                        reps: '10 repeticiones', (Repeticiones a realizar por cada serie, ademas añade la unidad, es decir 10 repeticiones)
+                    },
+                    {
+                        set: 'Press de banca inclinado con barra', (Nombre del ejercicio)
+                        description: 'breve descripcion de como hacer el ejercicio', (Debes añadir una breve descripcion de como se realiza el ejercicio)
+                        series: '3 series' , (Series a realizar por ejercicio, ademas añade la unidad, es decir 3 series como ejemplo)
+                        reps: '10 repeticiones', (Repeticiones a realizar por cada serie, ademas añade la unidad, es decir 10 repeticiones)
+                    },
                 ],
-                cals: 'aca ira un aproximado de las calorias quemadas', (Numero aproximado de calorias quemadas)
-                duration: 'aca debera ir la duracion aproximada de la rutina' (Duracion aproximada de la rutina en general contando con cada ejercicio)
+                cals: '10 cals', (Numero aproximado de calorias quemadas, ademas añade la unidad, es decir 15 cal por ejemplo)
+                duration: '120 minutos' (Duracion aproximada de la rutina en general contando con cada ejercicio en minutos, es decir si sobrepasa una 1 hora que sea 60 minutos, 2 horas 120 minutos.)
             },
         ]
         Genera solo el JSON en formato que te proporciono, nos añadas ni agruegues cosas extra
@@ -107,7 +113,7 @@ export const promtCall = () => {
     return (`
         A continuacion te enviare informacion de un usuario el cual esta usando nuestra aplicacion de dietas y ejercicios, recuerda muy bien la informacion del usuario, las respuestas deben ser tal cual indican los formatos dados
 
-        informacion del usuario : ${strucureData()},
+        informacion del usuario : ${structureData()},
         
         con esta informacion necesito que realices lo siguiente: ${dataFormatDiet()} 
         y ademas de generar lo siguiente: ${dataFormatRutine()}

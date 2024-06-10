@@ -2,6 +2,7 @@ import React from 'react'
 import { Header } from '../components/Header'
 import './Landing.css'
 import { NavLink } from 'react-router-dom'
+import { LogoSVG } from '../components/SVGS'
 
 export const Landing = () => {
   return (
@@ -9,9 +10,11 @@ export const Landing = () => {
       <Header/>
       <div className='landing-container'>
         <div className='landing-left'>
-            <span className='landing-title'>
-              <img src='../../public/logo.jpg' className='landing-logo' />
-              JAYANI POWER
+          <span className='landing-title'>
+            <div className='landing-logo'>
+              <LogoSVG/>
+            </div>
+            JAYANI POWER
           </span>
           <label className='landing-desc-title'>
             ¡Transforma tu Cuerpo y Tu Vida!

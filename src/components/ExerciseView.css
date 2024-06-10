@@ -1,0 +1,43 @@
+.sets-container {
+  width: fit-content;
+  height: fit-content;
+  border: 2px solid #FF004D;
+  border-radius: 10px;
+  margin-top: 40px;
+  padding: 25px 20px 25px 20px;
+}
+
+.set-label-title {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  width: 50%;
+  grid-gap: 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.set-description {
+  font-family: "Poppins", sans-serif;
+  font-size: 18px;
+  color: white;
+}
+
+.reps-series-label {
+  display: grid;
+  place-content: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  color: white;
+}
+
+.reps-series-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-content: center;
+  grid-gap: 10px;
+}
+
+.hr-sets {
+  margin-bottom: 20px;
+}

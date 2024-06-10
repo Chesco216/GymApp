@@ -1,14 +1,27 @@
-userData = {
-    edad,
-    altura,
-    peso,
-    restricciones,
-    limitaciones,
-    genero,
-    meta,
+import React from "react"
+import { userContext } from "../context/UserProvider"
+
+const userPrompt = () => {
+  
+  const { userinfo } = React.useContext(userContext)
+
+  const userData = {
+      edad : userinfo.age,
+      altura : userinfo.height,
+      peso : userinfo.weight,
+      restricciones : userinfo.restrictFood,
+      limitaciones : userinfo.bodyLimits,
+      genero : userinfo.gender,
+      meta : userinfo.goal
+  }
+
+  return userData
 }
 
+const user = userPrompt()
+  
 const structureData = ({ edad, altura, peso, restricciones, limitaciones, meta }) => {
+
     return (
         `
         La edad del usuario es: ${edad},

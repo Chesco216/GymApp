@@ -1,0 +1,132 @@
+/*  width: 100vw;
+    height: 100vh;
+    display: grid;
+    color: white;
+    place-content: center; */
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    color: white;
+    place-content: center;
+  }
+  
+  .payment-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 700px;
+    background-color: #2c2c2c; /* Fondo del formulario */
+  }
+  
+  .promo-code-section,
+  .gift-cards-rewards-section,
+  .payment-options-section,
+  .credit-card-details-section,
+  .debit-card-details-section,
+  .paypal-email-section {
+    margin-bottom: 15px;
+    padding-right: 15px;
+  }
+  
+.payment-titles{
+    display: flex;
+
+}   
+  .method-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .payment-options {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  img{
+    display: flex;
+    width: 70px;
+    height: 30px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    background-color: white;
+  }
+  
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .form-group label {
+    flex: 1;
+  }
+  
+  .form-group input {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: #FF004D;
+  }
+  
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+  }
+  
+  input[type="text"][maxLength="16"],
+  input[type="email"] {
+    width: 200px;
+  }
+  
+  input[type="text"][maxLength="5"] {
+    width: 60px; 
+  }
+  
+  input[type="text"][maxLength="3"] {
+    width: 40px; 
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #FF004D;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #ff3366;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

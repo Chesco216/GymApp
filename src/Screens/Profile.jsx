@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { motion } from "framer-motion"
 import { MenuProfile } from '../components/MenuProfile'
 import { CloseSVG, MenuSVG } from '../components/SVGS'
+import { RoutineGrid } from '../components/RoutineGrid'
 
 const variants = {
   open: { opacity: 1, x: 100 },
@@ -81,7 +82,7 @@ export const Profile = ({ setMenuOption }) => {
         </div>
         <div className='profile-routine-section'>
           <h1>Tu rutina semanal</h1>
-          <DietGrid/>
+          <RoutineGrid/>
         </div>
         <div className='profile-progress-section'>
           <h1>Tu Progreso</h1>

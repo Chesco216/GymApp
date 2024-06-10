@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import './InfoProfile.css'
 import { CloseSVG, LogSignSVG } from './SVGS'
 import { setDoc, doc } from 'firebase/firestore'
-import { db } from '../services/firebase'
+import { db, storage } from '../services/firebase'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 
 //TODO: UPDATE PROFILE PICTURE
 
@@ -13,6 +14,8 @@ export const InfoProfile = () => {
   const navigate = useNavigate()
   const {userinfo, setUserinfo} = useContext(userContext)
   const [hide, setHide] = useState(true)
+
+  console.log(userinfo)
 
   return (
     <>
@@ -56,11 +59,14 @@ const UpdateForm = ({hide, setHide}) => {
 
   const handleUpdate = async(e) => {
     e.preventDefault()
-    const currDate =new Date().toLocaleDateString("en-GB");
+    const currDate =new Date()
+    const picture = await handleUploadImage(e)
+    console.log(picture)
     setUserinfo({
       ...userinfo,
       ...user,
-      updateAt: currDate
+      updateAt: currDate,
+      profilePictureURL: picture
     })
     try {
       await setDoc(doc(db, 'users', userinfo.uid), { ...userinfo })
@@ -70,12 +76,25 @@ const UpdateForm = ({hide, setHide}) => {
     }
   }
 
-  console.log(user)
+  const handleUploadImage = async(e) => {
+    const image = e.target.image.files[0]
+    if(!image) return null
+    const profilePictureRef = ref(storage, `profile-images/${image.name}`)
+    await uploadBytes(profilePictureRef, image)
+    const getImageRef = ref(storage, `gs://jayani-power.appspot.com/profile-images/${image.name}`)
+    const downloadURL = getDownloadURL(getImageRef)
+    return downloadURL
+  }
+
   //WARN: validate options before update
   return (
     <form className={`update-info-form ${hide}`} onSubmit={handleUpdate}>
-      <div className='exit-form' onClick={() => {setHide(true)}}>
-        <CloseSVG/>
+      <div className='update-form-top'>
+        <img className='info-profile-image-1' src={(userinfo.profilePictureURL) ? userinfo.profilePictureURL : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'}/>
+        <input id='image-input' className='new-profile-picture' type='file' name='image' accept='.jpg, .png, .jpeg'/>
+        <div className='exit-form' onClick={() => {setHide(true)}}>
+          <CloseSVG/>
+        </div>
       </div>
       <span className='update-span-form'>
         <label className='update-label-form'>Nombre de usuario</label>
@@ -94,7 +113,7 @@ const UpdateForm = ({hide, setHide}) => {
         <input
           className='update-input-form'
           type='number'
-          name='name'
+          name='weight'
           value={user.weight}
           onChange={e => setUser({
             ...user,

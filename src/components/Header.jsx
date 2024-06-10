@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Header.css';
 import { NavLink } from 'react-router-dom';
+import { LogoSVG } from './SVGS';
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -14,7 +15,9 @@ export const Header = () => {
 			<div className="hmb">
 				<NavLink to='/' style={{ textDecoration: 'none', color: 'inherit' }}>
 					<div className='logo-label-div'>
-						<img id='logo-img' src='../../logo.jpg' alt='logo' />
+            <div className='logo-svg-headder'>
+              <LogoSVG/>
+            </div>
 						<label>JAYANI POWER</label>
 					</div>
 				</NavLink>

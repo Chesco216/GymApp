@@ -1,11 +1,12 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { userContext } from '../context/UserProvider'
 import { useNavigate } from 'react-router-dom'
 import './InfoProfile.css'
 import { CloseSVG, LogSignSVG } from './SVGS'
-import { setDoc, doc } from 'firebase/firestore'
+import { setDoc, doc, getDoc } from 'firebase/firestore'
 import { db, storage } from '../services/firebase'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
+import { Loading } from './Loading'
 
 //TODO: UPDATE PROFILE PICTURE
 
@@ -15,10 +16,27 @@ export const InfoProfile = () => {
   const {userinfo, setUserinfo} = useContext(userContext)
   const [hide, setHide] = useState(true)
 
-  console.log(userinfo)
+  const getUserInfo = async() => {
+    const userID = localStorage.getItem('user')
+    console.log('userID',userID)
+    const id = (userID) ? userID.replaceAll('"','' ) : userinfo.uid
+    const response = await getDoc(doc(db, 'users', id))
+    const data = response.data()
+    setUserinfo(data)
+  }
+
+  useEffect(() => {
+    getUserInfo()
+  }, [])
+
+  console.log('user from infoform: ', userinfo)
 
   return (
     <>
+      { (!userinfo) ? ( <Loading/> ) 
+      :
+      (
+          <>
       <div className='back-to-profile' onClick={() => {navigate('/profile')}}>
         <LogSignSVG/>
       </div>
@@ -49,6 +67,8 @@ export const InfoProfile = () => {
         <UpdateForm hide={(hide) ? 'hide' : ''} setHide={setHide}/>
       </div>
     </>
+      )}
+    </>
   )
 }
 
@@ -61,18 +81,19 @@ const UpdateForm = ({hide, setHide}) => {
     e.preventDefault()
     const currDate =new Date()
     const picture = await handleUploadImage(e)
-    console.log(picture)
     setUserinfo({
-      ...userinfo,
       ...user,
       updateAt: currDate,
-      profilePictureURL: picture
+      profilePictureURL: (picture != null) ? picture : userinfo.profilePictureURL
     })
+
     try {
+      console.log('userinfo to upload',userinfo)
       await setDoc(doc(db, 'users', userinfo.uid), { ...userinfo })
       setHide(true)
+      console.log('profile uploaded to firebase')
     } catch (error) {
-      alert('no se pudo cargar')
+      alert('no se pudo actualizar el perfil')
     }
   }
 
@@ -82,7 +103,7 @@ const UpdateForm = ({hide, setHide}) => {
     const profilePictureRef = ref(storage, `profile-images/${image.name}`)
     await uploadBytes(profilePictureRef, image)
     const getImageRef = ref(storage, `gs://jayani-power.appspot.com/profile-images/${image.name}`)
-    const downloadURL = getDownloadURL(getImageRef)
+    const downloadURL = await getDownloadURL(getImageRef)
     return downloadURL
   }
 

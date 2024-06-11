@@ -1,34 +1,30 @@
-import React from "react"
-import { userContext } from "../context/UserProvider"
 
-const userPrompt = () => {
+// const userPrompt = () => {
+//   
+//   const userData = {
+//       edad : userinfo.age,
+//       altura : userinfo.height,
+//       peso : userinfo.weight,
+//       restricciones : userinfo.restrictFood,
+//       limitaciones : userinfo.bodyLimits,
+//       genero : userinfo.gender,
+//       meta : userinfo.goal
+//   }
+//
+//   return userData
+// }
+//
+// const user = userPrompt()
   
-  const { userinfo } = React.useContext(userContext)
-
-  const userData = {
-      edad : userinfo.age,
-      altura : userinfo.height,
-      peso : userinfo.weight,
-      restricciones : userinfo.restrictFood,
-      limitaciones : userinfo.bodyLimits,
-      genero : userinfo.gender,
-      meta : userinfo.goal
-  }
-
-  return userData
-}
-
-const user = userPrompt()
-  
-const strucureData = ({ edad, altura, peso, restricciones, limitaciones, meta }) => {
+const strucureData = ({ age, height, weight, restrictFood, bodyLimits, goal }) => {
     return (
         `
-        La edad del usuario es: ${edad},
-        su altura es: ${altura},
-        su peso actual es: ${peso},
-        el usuario  cuenta con las siguientes restricciones: ${restricciones},
-        ademas cuenta con las siguientes limitaciones: ${limitaciones},
-        por ultimo el usuario tiene la siguiente meta objetivo: ${meta}
+        La edad del usuario es: ${age},
+        su altura es: ${height},
+        su peso actual es: ${weight},
+        el usuario  cuenta con las siguientes restricciones: ${restrictFood},
+        ademas cuenta con las siguientes limitaciones: ${bodyLimits},
+        por ultimo el usuario tiene la siguiente meta objetivo: ${goal}
     `)
 }
 
@@ -103,15 +99,22 @@ const dataFormatRutine = () => {
     `)
 }
 
-export const promtCall = () => {
+export const routinePrompt = (userinfo) => {
     return (`
         A continuacion te enviare informacion de un usuario el cual esta usando nuestra aplicacion de dietas y ejercicios, recuerda muy bien la informacion del usuario, las respuestas deben ser tal cual indican los formatos dados
 
-        informacion del usuario : ${strucureData()},
+        informacion del usuario : ${strucureData(userinfo)},
         
-        con esta informacion necesito que realices lo siguiente: ${dataFormatDiet()} 
-        y ademas de generar lo siguiente: ${dataFormatRutine()}
+        con esta informacion necesito que realices lo siguiente: ${dataFormatRutine} 
     `)
 }
 
-export default promtCall;
+export const dietPrompt = (userinfo) => {
+    return (`
+        A continuacion te enviare informacion de un usuario el cual esta usando nuestra aplicacion de dietas y ejercicios, recuerda muy bien la informacion del usuario, las respuestas deben ser tal cual indican los formatos dados
+
+        informacion del usuario : ${strucureData(userinfo)},
+        
+        con esta informacion necesito que realices lo siguiente: ${dataFormatDiet} 
+    `)
+}

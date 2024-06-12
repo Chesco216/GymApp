@@ -1,215 +1,128 @@
 import './PaymentMethod.css';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'
-import { LogSignSVG } from '../components/SVGS'
+import { useNavigate } from 'react-router-dom';
+import { LogSignSVG } from '../components/SVGS';
 
 export const PaymentMethod = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
+  const [paymentMethod, setPaymentMethod] = useState(false);
+  // *Lo guardo en un state para mandarlo constantemente a la funcion de validacion para mi campo de entrada P loco
+  const [cardDetails, setCardDetails] = useState({ 
+    creditCardNumber: '',
+    expirationDate: '',
+    cvn: '',
+  });
+  const [error, setError] = useState('');
+  // *Se ve mas facha con el pago realizado con exito y el time que le di para que redirija al profile para eso uso esto
+  const [successMessage, setSuccessMessage] = useState('');
 
-  //TODO: update memberType state to premium
 
-  // const [paymentMethod, setPaymentMethod] = useState('credit');
-  const [creditCardNumber, setCreditCardNumber] = useState('');
-  // const [debitCardNumber, setDebitCardNumber] = useState('');
-  const [expirationDate, setExpirationDate] = useState('');
-  const [cvn, setCvn] = useState('');
-  // const [paypalEmail, setPaypalEmail] = useState('');
+  // *Aqui valido que no se pueda ingresar letras y solo numeros en las entradas wazaaa
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    if (name === 'creditCardNumber' || name === 'cvn') {
+      if (!/^\d*$/.test(value)) return; 
+    } else if (name === 'expirationDate') {
+      if (!/^\d{0,2}\/?\d{0,2}$/.test(value)) return; 
+    }
 
-  // const handlePaymentMethodChange = (e) => {
-  //   setPaymentMethod(e.target.value);
-  // };
-
-  const handleCreditCardNumberChange = (e) => {
-    setCreditCardNumber(e.target.value);
+    setCardDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
   };
 
-  // const handleDebitCardNumberChange = (e) => {
-  //   setDebitCardNumber(e.target.value);
-  // };
+  const validateForm = () => {
+    const { creditCardNumber, expirationDate, cvn } = cardDetails;
+    const cardNumberRegex = /^\d{16}$/;
+    const expirationDateRegex = /^(0[1-9]|1[0-2])\/\d{2}$/;
+    const cvnRegex = /^\d{3}$/;
 
-  const handleExpirationDateChange = (e) => {
-    setExpirationDate(e.target.value);
+    if (!cardNumberRegex.test(creditCardNumber)) {
+      return 'Número de tarjeta inválido. Debe contener 16 dígitos.';
+    }
+
+    if (!expirationDateRegex.test(expirationDate)) {
+      return 'Fecha de expiración inválida. Debe estar en formato MM/YY.';
+    }
+
+    if (!cvnRegex.test(cvn)) {
+      return 'CVV inválido. Debe contener 3 dígitos.';
+    }
+
+    return '';
   };
 
-  const handleCvnChange = (e) => {
-    setCvn(e.target.value);
-  };
-
-  // const handlePaypalEmailChange = (e) => {
-  //   setPaypalEmail(e.target.value);
-  // };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    let paymentData;
+    const errorMessage = validateForm();
 
-    // switch (paymentMethod) {
-    //   case 'credit':
-    //     paymentData = {
-    //       method: 'credit',
-    //       creditCardNumber,
-    //       expirationDate,
-    //       cvn,
-    //     };
-    //     break;
-    //   case 'debit':
-    //     paymentData = {
-    //       method: 'debit',
-    //       debitCardNumber,
-    //       expirationDate,
-    //       cvn,
-    //     };
-    //     break;
-    //   case 'paypal':
-    //     paymentData = {
-    //       method: 'paypal',
-    //       paypalEmail,
-    //     };
-    //     break;
-    //   default:
-    //     paymentData = {};
-    // }
+    if (errorMessage) {
+      setError(errorMessage);
+    } else {
+      setError('');
+      setPaymentMethod(true); // !Aqui cambio a true el estado que querias para que se vuelva premium chesco
+      setSuccessMessage('¡Pago completado con éxito!');
+      console.log(paymentMethod);
 
-    console.log('Payment Data:', paymentData);
-    // Aquí puedes agregar la lógica para enviar los datos a Firebase
+      setTimeout(() => {
+        navigate('/profile');
+      }, 2000); 
+    }
   };
 
   return (
     <>
-      <div className='back-to-profile' onClick={() => {navigate('/profile')}}>
-        <LogSignSVG/>
+      <div className="back-to-profile" onClick={() => {navigate('/profile')}}>
+        <LogSignSVG />
       </div>
       <div className="container-payment-card">
         <form onSubmit={handleSubmit} className="payment-container">
-          {/*
-          <div className="payment-form-group">
-            <label>Código de promoción</label>
-            <input type="text" name="promoCode" className="payment-input-field" />
-          </div>
-          <div className="payment-form-group">
-            <label>Aplicar Código de regalo</label>
-            <input type="text" name="giftCardsRewards" className="payment-input-field" />
-          </div>
-            */}
           <div>
             <div className="payment-titles">
-              <label className="payment-method-title">Elegir Método de Pago</label>
+              <label className="payment-method-title">Introducir Método de Pago</label>
               <img src="https://lofrev.net/wp-content/photos/2016/07/visa_logo_7.jpg" alt="visa logo" className="payment-logo" />
-              <img src="https://www.oceanpayment.com/shopify_app/oceanpayment_logo/Paypal.png" alt="paypal logo" className="payment-logo" />
             </div>
-            {/*
-            <div className="payment-options">
-              <div className="payment-option">
-                <input
-                  type="radio"
-                  value="credit"
-                  checked={paymentMethod === 'credit'}
-                  onChange={handlePaymentMethodChange}
-                />
-                <label>Credit Card</label>
-              </div>
-              <div className="payment-option">
-                <input
-                  type="radio"
-                  value="debit"
-                  checked={paymentMethod === 'debit'}
-                  onChange={handlePaymentMethodChange}
-                />
-                <label>Debit Card</label>
-              </div>
-              <div className="payment-option">
-                <input
-                  type="radio"
-                  value="paypal"
-                  checked={paymentMethod === 'paypal'}
-                  onChange={handlePaymentMethodChange}
-                />
-                <label>PayPal</label>
-              </div>
-            </div>*/}
           </div>
-          {/*paymentMethod === 'credit' && (*/}
-            <div>
-              <div className="payment-form-group">
-                <label>Numero Tarjeta de Credito</label>
-                <input
-                  type="text"
-                  value={creditCardNumber}
-                  onChange={handleCreditCardNumberChange}
-                  maxLength="16"
-                  className="payment-input-field"
-                />
-              </div>
-              <div className="payment-form-group">
-                <label>Expiracion MM/YY</label>
-                <input
-                  type="text"
-                  value={expirationDate}
-                  onChange={handleExpirationDateChange}
-                  maxLength="5"
-                  className="payment-input-field"
-                />
-              </div>
-              <div className="payment-form-group">
-                <label>CVN</label>
-                <input
-                  type="text"
-                  value={cvn}
-                  onChange={handleCvnChange}
-                  maxLength="3"
-                  className="payment-input-field"
-                />
-              </div>
+          <div>
+            <div className="payment-form-group">
+              <label>Número Tarjeta</label>
+              <input
+                type="text"
+                name="creditCardNumber"
+                value={cardDetails.creditCardNumber}
+                onChange={handleInputChange}
+                maxLength="16"
+                className="payment-input-field"
+              />
             </div>
-          {/*)*/}
-          {/*paymentMethod === 'debit' && (
-            <div>
-              <div className="payment-form-group">
-                <label>Numero Tarjeta de Debito</label>
-                <input
-                  type="text"
-                  value={debitCardNumber}
-                  onChange={handleDebitCardNumberChange}
-                  maxLength="16"
-                  className="payment-input-field"
-                />
-              </div>
-              <div className="payment-form-group">
-                <label>Expiracion MM/YY</label>
-                <input
-                  type="text"
-                  value={expirationDate}
-                  onChange={handleExpirationDateChange}
-                  maxLength="5"
-                  className="payment-input-field"
-                />
-              </div>
-              <div className="payment-form-group">
-                <label>CVN</label>
-                <input
-                  type="text"
-                  value={cvn}
-                  onChange={handleCvnChange}
-                  maxLength="3"
-                  className="payment-input-field"
-                />
-              </div>
+            <div className="payment-form-group">
+              <label>Expiración MM/YY</label>
+              <input
+                type="text"
+                name="expirationDate"
+                value={cardDetails.expirationDate}
+                onChange={handleInputChange}
+                maxLength="5"
+                placeholder='MM/YY'
+                className="payment-input-field"
+              />
             </div>
-          )}
-          {paymentMethod === 'paypal' && (
-            <div>
-              <div className="payment-form-group">
-                <label>PayPal Email</label>
-                <input
-                  type="email"
-                  value={paypalEmail}
-                  onChange={handlePaypalEmailChange}
-                  className="payment-input-field"
-                />
-              </div>
+            <div className="payment-form-group">
+              <label>CVV</label>
+              <input
+                type="text"
+                name="cvn"
+                value={cardDetails.cvn}
+                onChange={handleInputChange}
+                maxLength="3"
+                className="payment-input-field"
+              />
             </div>
-          )*/}
+          </div>
+          {error && <p className="error-message">{error}</p>}
+          {successMessage && <p className="success-message">{successMessage}</p>}
           <button type="submit" className="payment-button">Realizar Pago</button>
         </form>
       </div>

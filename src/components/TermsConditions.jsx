@@ -1,5 +1,6 @@
 import './TermsConditions.css'
 import { CloseSVG } from './SVGS';
+import { color } from 'framer-motion';
 
 const TermsConditions = () => {
     return (
@@ -47,7 +48,7 @@ const TermsConditions = () => {
                         Estos términos y condiciones se regirán e interpretarán de acuerdo con las leyes del país en el que se encuentre nuestro domicilio principal, sin dar efecto a ningún principio de conflictos de leyes.<br /><br />
 
                         <strong>12. Contacto</strong><br />
-                        Si tiene alguna pregunta o inquietud acerca de estos términos y condiciones, por favor contacte a nuestro equipo de soporte en jayanipower@gmail.com.<br /><br />
+                        Si tiene alguna pregunta o inquietud acerca de estos términos y condiciones, por favor contacte a nuestro equipo de soporte en <a href="https://jayanipower@gmail.com" target='blank'>jayanipower@gmail.com</a>.<br /><br />
 
                         Al crear una cuenta en Jayani Power, usted reconoce que ha leído, comprendido y aceptado estos términos y condiciones en su totalidad.
                     </p>

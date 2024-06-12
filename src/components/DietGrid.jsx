@@ -1,6 +1,6 @@
 import React from 'react'
 import { DietCard } from './DietCard'
-// import { Diet } from '../assets/diet.model'
+import { Diet } from '../assets/diet.model'
 
 export const DietGrid = () => {
 

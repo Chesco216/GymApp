@@ -1,7 +1,7 @@
 import './PaymentMethod.css';
 import React, { useState } from 'react';
 
-const PaymentMethod = () => {
+export const PaymentMethod = () => {
   const [paymentMethod, setPaymentMethod] = useState('credit');
   const [creditCardNumber, setCreditCardNumber] = useState('');
   const [debitCardNumber, setDebitCardNumber] = useState('');

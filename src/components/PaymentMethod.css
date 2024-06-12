@@ -1,0 +1,96 @@
+.container-payment-card {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  color: white;
+  place-content: center;
+}
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  width: 700px;
+  background-color: #2c2c2c; 
+}
+
+.payment-titles {
+  display: flex;
+}
+
+.payment-method-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.payment-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.payment-logo {
+  display: flex;
+  width: 70px;
+  height: 30px;
+  border-radius: 5px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 15px;
+  background-color: white;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.payment-form-group {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.payment-form-group label {
+  flex: 1;
+}
+
+.payment-input-field {
+  flex: 2;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: border-color 0.3s;
+}
+
+.payment-input-field:focus {
+  border-color: #FF004D;
+}
+
+.payment-button {
+  padding: 10px 20px;
+  background-color: #FF004D;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.payment-button:hover {
+  background-color: #ff3366;
+}
+
+@keyframes payment-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

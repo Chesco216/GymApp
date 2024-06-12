@@ -79,7 +79,7 @@ const dataFormatRutine = () => {
 
         Como aclaracion inicial el texto entre paréntesis () solo contiene indicaciones y descripciones; no debe incluirse en la respuesta generada
 
-        Necesito que tomes el rol de un entrenador experto y genera un plan de rutinas de ejercicios para 5 dias, es decir de lunes a viernes. La rutina debes generarla con la cantidad de ejercicios que veas viable como entrenador experto y en base a las limitaciones y restricciones del usuario. La respuesta que debes retornar es el JSON de formato que te proporciono y nada mas, no un resumen, ni sugerencias.
+        Necesito que tomes el rol de un entrenador experto y genera un plan de rutinas de ejercicios para 5 dias, es decir de lunes a viernes. La rutina debes generar un minimo de 4 ejercicios por dia como entrenador experto y en base a las limitaciones y restricciones del usuario. La respuesta que debes retornar es el JSON de formato que te proporciono y nada mas, no un resumen, ni sugerencias.
         A continuacion, te paso un ejemplo del formato en que debes de responder:
         [
             {
@@ -112,9 +112,16 @@ export const routinePrompt = (userinfo) => {
     return (`
         A continuacion te enviare informacion de un usuario el cual esta usando nuestra aplicacion de dietas y ejercicios, recuerda muy bien la informacion del usuario, las respuestas deben ser tal cual indican los formatos dados
 
+<<<<<<< HEAD
+        informacion del usuario : ${structureData()},
+z        
+        con esta informacion necesito que realices lo siguiente: ${dataFormatDiet()} 
+        y ademas de generar lo siguiente: ${dataFormatRutine()}
+=======
         informacion del usuario : ${strucureData(userinfo)},
         
         con esta informacion necesito que realices lo siguiente: ${dataFormatRutine} 
+>>>>>>> main
     `)
 }
 

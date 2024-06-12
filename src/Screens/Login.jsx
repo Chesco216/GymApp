@@ -28,6 +28,8 @@ export const LogIn = () => {
         // Signed in 
         const user = userCredential.user;
         context.setUserinfo(user)
+        // console.log('context login', user)
+        localStorage.setItem("user", JSON.stringify(user.uid))
         navigate('/profile')
         // ...
       })

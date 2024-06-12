@@ -5,10 +5,12 @@ import { useState } from 'react';
 
 //TODO: make a double query including the is_available field
 
-export const getRoutines = async() => {
+export const getRoutines = async({userinfo}) => {
+
+  console.log('userinfo',userinfo)
   
   let data
-  const q = query(collection(db, "rutinas-personalizadas"), where("uid", "==", 'lj1COVhJQaVctj8ZSgklXCHBcdO2'), where("is_available", "==", true))
+  const q = query(collection(db, "rutinas-personalizadas"), where("uid", "==", userinfo.uid), where("is_available", "==", true))
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     data = doc.data()

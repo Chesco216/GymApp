@@ -3,6 +3,11 @@ import { DietCard } from './DietCard'
 // import { Diet } from '../assets/diet.model'
 
 export const DietGrid = () => {
+
+  const handleNewDiet = () => {
+
+  }
+
   return  (
     <div className='diet-card-container'>
       {
@@ -12,7 +17,7 @@ export const DietGrid = () => {
           )
         })
       }
-      <button className='diet-card'>Quieres cambiar tu dieta?</button>
+      <button className='diet-card' onClick={handleNewDiet}>Quieres cambiar tu dieta?</button>
     </div>
   )
 }

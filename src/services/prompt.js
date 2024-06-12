@@ -112,16 +112,9 @@ export const routinePrompt = (userinfo) => {
     return (`
         A continuacion te enviare informacion de un usuario el cual esta usando nuestra aplicacion de dietas y ejercicios, recuerda muy bien la informacion del usuario, las respuestas deben ser tal cual indican los formatos dados
 
-<<<<<<< HEAD
-        informacion del usuario : ${structureData()},
-z        
-        con esta informacion necesito que realices lo siguiente: ${dataFormatDiet()} 
-        y ademas de generar lo siguiente: ${dataFormatRutine()}
-=======
         informacion del usuario : ${strucureData(userinfo)},
         
         con esta informacion necesito que realices lo siguiente: ${dataFormatRutine} 
->>>>>>> main
     `)
 }
 

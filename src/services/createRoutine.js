@@ -1,4 +1,4 @@
-import OpenAI from 'openai'
+// import OpenAI from 'openai'
 import { routinePrompt } from './prompt'
 import { db } from './firebase'
 import { collection, doc, setDoc, addDoc } from 'firebase/firestore'

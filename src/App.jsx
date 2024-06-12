@@ -9,7 +9,7 @@ import { UserProvider } from "./context/UserProvider"
 import { Profile } from "./Screens/Profile"
 import { InfoForm } from "./components/InfoForm"
 import { ProfileUpdate } from "./Screens/ProfileUpdate"
-import PaymentMethod from "./components/PaymentMethod"
+import TermsConditions from "./components/TermsConditions"
 import { useState } from "react"
 
 function App() {
@@ -21,12 +21,11 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Landing/>}/>
-          <Route path='/pay' element={<PaymentMethod/>}></Route>
           <Route path='/calculator' element={<Calculator/>}/>
           <Route path='/macros' element={<Macros/>}/>
           <Route path='/prices' element={<Prices/>}/>
-          <Route path='/pay' element={<PaymentMethod/>}></Route>
           <Route path='/login' element={<LogIn/>}/>
+          <Route path="/terms" element={<TermsConditions/>}></Route>
           <Route path='/info-form' element={<InfoForm/>}/>
           <Route path='/signin' element={<SignIn/>}/>
           <Route path='/profile' element={<Profile setMenuOption={setMenuOption}/>}/>

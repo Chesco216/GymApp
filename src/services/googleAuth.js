@@ -11,6 +11,7 @@ export const googleSignin = async({ setUserinfo }) => {
     const credential = GoogleAuthProvider.credentialFromResult(result);
     const token = credential.accessToken;
     const user = result.user;
+    localStorage.setItem('user',JSON.stringify(user.uid))
     setUserinfo(user)
 
     const userDoc = await getDoc(doc(db, 'users', user.uid))

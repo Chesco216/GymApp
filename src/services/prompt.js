@@ -18,9 +18,6 @@
   
 const strucureData = ({ age, height, weight, restrictFood, bodyLimits, goal }) => {
 
-const user = userPrompt()
-  
-
     return (
         `
         La edad del usuario es: ${age},
@@ -114,7 +111,8 @@ export const routinePrompt = (userinfo) => {
 
         informacion del usuario : ${strucureData(userinfo)},
         
-        con esta informacion necesito que realices lo siguiente: ${dataFormatRutine} 
+        con esta informacion necesito que realices lo siguiente: ${dataFormatRutine}.
+        Recuerda que la respuesta debe ser en formato JSON
     `)
 }
 
@@ -125,5 +123,6 @@ export const dietPrompt = (userinfo) => {
         informacion del usuario : ${strucureData(userinfo)},
         
         con esta informacion necesito que realices lo siguiente: ${dataFormatDiet} 
+        Recuerda que la respuesta debe ser en formato JSON
     `)
 }

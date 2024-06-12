@@ -24,6 +24,7 @@ export const SignIn = () => {
         const currUser = userCredential.user
         user.setUserinfo({...currUser, displayName: username })
         console.log('user', user)
+        localStorage.setItem('user', JSON.stringify(user.uid))
         navigate('/info-form')
       })
       .catch(error => {

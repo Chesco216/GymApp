@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './DietCard.css'
 import { DietModal } from './DietModal'
 
-export const DietCard = ({day, time}) => {
+export const DietCard = ({day, meals}) => {
 
   const [modalIsOpen, setIsOpen] = useState(false)
   
@@ -16,7 +16,7 @@ export const DietCard = ({day, time}) => {
         <label className='day-title'>{day}</label>
         <button className='day-button' onClick={ handleModal }>Ver</button>
       </div>
-      <DietModal className='diet-modal-component' modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} time={time}/>
+      <DietModal className='diet-modal-component' modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} meals={meals}/>
     </>
   )
 }

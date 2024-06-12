@@ -3,6 +3,7 @@ import { userContext } from '../context/UserProvider'
 import { useNavigate } from 'react-router-dom'
 import { InfoProfile } from '../components/InfoProfile'
 import { ChangePlan } from '../components/ChangePlan'
+import { PaymentMethod} from '../components/PaymentMethod'
 
 export const ProfileUpdate = ({ option }) => {
 
@@ -26,7 +27,7 @@ export const ProfileUpdate = ({ option }) => {
       {
         (option === 'info') ? (<InfoProfile/>)
         : (option === 'plan') ? (<ChangePlan/>)
-        : (<div>payment</div>)
+        : (<PaymentMethod/>)
       }
     </div>
   )

@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 import './DietModal.css'
+import { LogoSVG } from './SVGS'
 
 const customStyles = {
   content: {
@@ -83,6 +84,8 @@ export const DietModal = ({ modalIsOpen, setIsOpen, meals }) => {
             </>)
         })
       }
+
+      <div className='powered-by'><label className='powered-by-label'>Powered by</label> <LogoSVG className='powered-by-logo,'/> <img src='../../public/gpt_logo.png' className='gpt-logo' alt='logo'/></div>
       <button className='close-modal-btn' onClick={closeModal}>close</button>
     </Modal>
   )

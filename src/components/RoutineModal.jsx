@@ -58,6 +58,7 @@ export const RoutineModal = ({ modalIsOpen, setIsOpen, exercises }) => {
       <div className='powered-by-container'>
       <div className='powered-by'><label className='powered-by-label'>Powered by</label> <LogoSVG className='powered-by-logo,'/> <img src='../../public/gpt_logo.png' className='gpt-logo' alt='logo'/></div>
       </div>
+      <button className='close-modal-btn' onClick={closeModal}>close</button>
       </Modal>
   )
 }

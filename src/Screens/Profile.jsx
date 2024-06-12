@@ -24,8 +24,12 @@ export const Profile = ({ setMenuOption }) => {
   const { userinfo, setUserinfo } = useContext(userContext)
   const [user, setUser] = useState(null)
 
+  // console.log('userprofileID: ', userinfo.uid)
   const getUserInfo = async() => {
-    const response = await getDoc(doc(db, 'users', userinfo.uid))
+    const userID = localStorage.getItem('user')
+    console.log('userID',userID)
+    const id = (userID) ? userID.replaceAll('"','' ) : userinfo.uid
+    const response = await getDoc(doc(db, 'users', id))
     const data = response.data()
     setUser(data)
     setUserinfo(data)
@@ -37,7 +41,7 @@ export const Profile = ({ setMenuOption }) => {
 
   return (
     <div>
-      { (user) === null ? ( <Loading/> ) 
+      { (!user) ? ( <Loading/> ) 
       :
       (
       <div className='profile-container'>
@@ -86,7 +90,7 @@ export const Profile = ({ setMenuOption }) => {
         </div>
         <div className='profile-progress-section'>
           <h1>Tu Progreso</h1>
-          {/*TODO: replace with routines content*/}
+          {/*TODO: replace with progres content*/}
         </div>
       </div>
       )}

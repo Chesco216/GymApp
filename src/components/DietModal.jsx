@@ -1,6 +1,7 @@
 import React from 'react'
 import Modal from 'react-modal'
 import './DietModal.css'
+import { LogoSVG } from './SVGS'
 
 const customStyles = {
   content: {
@@ -26,7 +27,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const DietModal = ({ modalIsOpen, setIsOpen, time }) => {
+export const DietModal = ({ modalIsOpen, setIsOpen, meals }) => {
 
   function closeModal() {
     setIsOpen(false);
@@ -41,29 +42,29 @@ export const DietModal = ({ modalIsOpen, setIsOpen, time }) => {
       >
       {
         //WARN: i must return components instead but well, i dont have time so it is what it is
-        time.map((item) => {
+        meals.map((item) => {
           return ( 
             <>
-              <h1 className='meal-title' key={item.meal}>{item.meal}</h1>
+              <h1 className='meal-title' key={item.meal_time}>{item.meal_time}</h1>
               <div key={'container'} className='meal-name-description'>
-                <h2 className='meal-subtitle' key={item.nombre}>{item.nombre}</h2>
-                <label className='meal-description' key={item.descripcion}>{item.descripcion}</label>
+                <h2 className='meal-subtitle' key={item.name}>{item.name}</h2>
+                <label className='meal-description' key={item.description}>{item.description}</label>
                 <hr className='hr-line-separator-1'></hr>
                 <h2 className='meal-subtitle' key={'food'}>Ingredientes</h2>
-                <table className='foods-table' key={`table${item.meal}`}>
+                <table className='foods-table' key={`table${item.name}`}>
                   <tr>
                     <th key={'ingrediente'} className='table-headder'>Ingrediente</th>
                     <th key={'cantidad'} className='table-headder'>Catidad</th>
                   </tr>
                   {
-                    item.alimentos.map((item) => {
+                    item.ingredients.map((item) => {
                       return (
                         <tr>
-                          <td className='table-content' key={item.nombre}>
-                            {item.nombre}
+                          <td className='table-content' key={item.name}>
+                            {item.name}
                           </td>
-                          <td className='table-content' key={item.cantidad}>
-                            {item.cantidad}
+                          <td className='table-content' key={item.quantity}>
+                            {item.quantity}
                           </td>
                         </tr>
                       )
@@ -73,17 +74,19 @@ export const DietModal = ({ modalIsOpen, setIsOpen, time }) => {
                 <hr className='hr-line-separator-1'></hr>
                 <h2 className='meal-subtitle' key={'macros'}>Macros</h2>
                 <div className='labels-container'>
-                  <label className='macros-modal-label' key={item.macros.prote}>Proteinas: {item.macros.prote}</label>
-                  <label className='macros-modal-label' key={item.macros.cals}>Calorias: {item.macros.cals}</label>
-                  <label className='macros-modal-label' key={item.macros.vitaminas}>Vitaminas: {item.macros.vitaminas.join(' , ')}</label>
-                  <label className='macros-modal-label' key={item.macros.minerales}>Minerales:{item.macros.minerales.join(' , ')}</label>
+                  <label className='macros-modal-label' key={item.macros.proteins}>Proteinas: {item.macros.proteins}</label>
+                  <label className='macros-modal-label' key={item.macros.calories}>Calorias: {item.macros.calories}</label>
+                  <label className='macros-modal-label' key={item.macros.vitaminas}>Vitaminas: {item.macros.vitamins.join(' , ')}</label>
+                  <label className='macros-modal-label' key={item.macros.minerales}>Minerales:{item.macros.minerals.join(' , ')}</label>
                 </div>
               </div>
               <hr className='hr-line-separator-2'></hr>
             </>)
         })
       }
-      <button onClick={closeModal}>close</button>
+
+      <div className='powered-by'><label className='powered-by-label'>Powered by</label> <LogoSVG className='powered-by-logo,'/> <img src='../../public/gpt_logo.png' className='gpt-logo' alt='logo'/></div>
+      <button className='close-modal-btn' onClick={closeModal}>close</button>
     </Modal>
   )
 }

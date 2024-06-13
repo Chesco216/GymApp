@@ -1,0 +1,19 @@
+.social-screen-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 10%;
+  place-content: center;
+  width: 100vw;
+  height: 100vh;
+  padding: 100px 100px 100px 100px;
+  box-sizing: border-box;
+}
+
+.post-grid-container {
+  display: grid;
+  grid-gap: 40px;
+  place-content: center;
+  border: 3px solid #FF004D;
+  border-radius: 20px;
+  padding: 40px 40px 40px 40px;
+}

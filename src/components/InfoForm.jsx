@@ -10,7 +10,7 @@ export const InfoForm = () => {
 
   const navigate = useNavigate()
   const context = useContext(userContext)
-  console.log(context)
+  // console.log(context)
   const [age, setAge] = useState()
   const [weight, setWeight] = useState()
   const [height, setHeight] = useState()
@@ -36,7 +36,7 @@ export const InfoForm = () => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    const currDate = new Date().toLocaleDateString("en-GB");
+    const currDate = new Date()
     const userObj = {
       age: age,
       createdAt: currDate,
@@ -56,10 +56,15 @@ export const InfoForm = () => {
     }
 
     try {
-      await setDoc(doc(db, 'users', context.userinfo.uid),{ ...userObj })
+      console.log('context: ', context)
+      console.log('userinfo:', context.userinfo)
+      console.log('userObj: ', userObj)
+      await setDoc(doc(db, 'users', userObj.uid),{ ...userObj })
       navigate('/profile')
     } catch (error) {
-      navigate('/login')
+      console.log(error)
+      alert('error al cargar los datos')
+      // navigate('/login')
     }
   }
 

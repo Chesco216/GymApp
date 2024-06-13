@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { InfoProfile } from '../components/InfoProfile'
 import { ChangePlan } from '../components/ChangePlan'
 import { PaymentMethod} from '../components/PaymentMethod'
+import { Social } from './Social'
+import { Loading } from '../components/Loading'
 
 export const ProfileUpdate = ({ option }) => {
 
@@ -13,6 +15,9 @@ export const ProfileUpdate = ({ option }) => {
   const goToProfile = () => {
     navigate('/profile')
   }
+
+  //FIX: option get value 'info' on reload
+  console.log(option)
 
   return (
     <div style={{
@@ -27,7 +32,9 @@ export const ProfileUpdate = ({ option }) => {
       {
         (option === 'info') ? (<InfoProfile/>)
         : (option === 'plan') ? (<ChangePlan/>)
-        : (<PaymentMethod/>)
+        : (option === 'payment') ? (<PaymentMethod/>)
+        : (option === 'social') ? (<Social/>)
+        : <Loading/>
       }
     </div>
   )

@@ -25,7 +25,7 @@ function App() {
           <Route path='/macros' element={<Macros/>}/>
           <Route path='/prices' element={<Prices/>}/>
           <Route path='/login' element={<LogIn/>}/>
-          <Route path="/terms" element={<TermsConditions/>}></Route>
+          <Route path="/terms" element={<TermsConditions/>}/>
           <Route path='/info-form' element={<InfoForm/>}/>
           <Route path='/signin' element={<SignIn/>}/>
           <Route path='/profile' element={<Profile setMenuOption={setMenuOption}/>}/>

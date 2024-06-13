@@ -1,0 +1,30 @@
+.post-card-container {
+  width: 600px;
+  height: fit-content;
+  padding: 40xp 100px 40px 100px;
+  background: #424449;
+}
+
+.card-container {
+  border-radius: 20px;
+  padding: 40px 40px 40px 40px;
+  background: #424449;
+}
+
+.post-user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.post-user-name {
+  font-size: 15px;
+  color: white;
+}
+
+.post-span {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  place-content: center;
+  align-items: center;
+}

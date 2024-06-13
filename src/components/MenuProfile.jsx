@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './MenuProfile.css'
-import { LogoutSVG, PaymentSVG, PlanSVG, ProfileSVG } from './SVGS'
+import { LogoutSVG, PaymentSVG, PlanSVG, ProfileSVG, SocialSVG } from './SVGS'
 import closeSession from '../services/closeSession'
 
 export const MenuProfile = ({ setMenuOption }) => {
@@ -32,6 +32,14 @@ export const MenuProfile = ({ setMenuOption }) => {
       }} className='menu-profile-span'>
         <PaymentSVG/>
         <label className='menu-profile-label'>Pagos</label>
+      </span>
+      <hr/>
+      <span onClick={() => {
+        setMenuOption('social')
+        navigate('/profile/social')
+      }} className='menu-profile-span'>
+        <SocialSVG/>
+        <label className='menu-profile-label'>Social</label>
       </span>
       <hr/>
       <span onClick={ closeSession } className='menu-profile-span'>

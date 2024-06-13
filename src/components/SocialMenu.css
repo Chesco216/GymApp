@@ -1,0 +1,67 @@
+.social-menu-container {
+  /* position: fixed; */
+  width: 400px;
+  padding: 40px 40px 40px 40px;
+  height: fit-content;
+  border: 3px solid #ff004d;
+  border-radius: 20px;
+  /* background: #424449; */
+}
+
+.menu-info-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profile-pic-menu {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.menu-name-email-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.name-email-menu-label {
+  font-size: 20px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.create-post-btn {
+  padding: 10px 10px 10px 10px;
+  width: fit-content;
+  height: fit-content;
+  margin-left: 20%;
+  font-size: 18px;
+  color: white;
+  background: #FF004D;
+  border: none;
+  border-radius: 10px;
+}
+
+.upload-post-form {
+  margin: 20px 10px 10px 10px;
+}
+
+.upload-post-span {
+  display: grid;
+  grid-gap: 10px;
+  margin-bottom: 20px;
+}
+
+.upload-post-label {
+  font-size: 16px;
+  color: white;
+}
+
+.upload-post-input {
+  font-size: 16px;
+  padding: 10px 10px 10px 10px;
+  border: 2px solid black;
+  border-radius: 10px;
+}

@@ -1,20 +1,4 @@
 
-// const userPrompt = () => {
-//   
-//   const userData = {
-//       edad : userinfo.age,
-//       altura : userinfo.height,
-//       peso : userinfo.weight,
-//       restricciones : userinfo.restrictFood,
-//       limitaciones : userinfo.bodyLimits,
-//       genero : userinfo.gender,
-//       meta : userinfo.goal
-//   }
-//
-//   return userData
-// }
-//
-// const user = userPrompt()
   
 const strucureData = ({ age, height, weight, restrictFood, bodyLimits, goal }) => {
 

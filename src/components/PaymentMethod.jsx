@@ -7,18 +7,15 @@ export const PaymentMethod = () => {
   const navigate = useNavigate();
 
   const [paymentMethod, setPaymentMethod] = useState(false);
-  // *Lo guardo en un state para mandarlo constantemente a la funcion de validacion para mi campo de entrada P loco
   const [cardDetails, setCardDetails] = useState({ 
     creditCardNumber: '',
     expirationDate: '',
     cvn: '',
   });
   const [error, setError] = useState('');
-  // *Se ve mas facha con el pago realizado con exito y el time que le di para que redirija al profile para eso uso esto
   const [successMessage, setSuccessMessage] = useState('');
 
 
-  // *Aqui valido que no se pueda ingresar letras y solo numeros en las entradas wazaaa
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (name === 'creditCardNumber' || name === 'cvn') {

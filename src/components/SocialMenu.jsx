@@ -15,7 +15,7 @@ export const SocialMenu = ({user}) => {
     createdAt: '',
     likes: 7,
     post_image: '',
-    profilePictureURL: profilePictureURL,
+    profilePictureUrl: profilePictureURL,
     title: '',
     user_name: username
   })

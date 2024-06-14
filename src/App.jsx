@@ -29,7 +29,7 @@ function App() {
           <Route path='/info-form' element={<InfoForm/>}/>
           <Route path='/signin' element={<SignIn/>}/>
           <Route path='/profile' element={<Profile setMenuOption={setMenuOption}/>}/>
-          <Route path='/profile/:option' element={<ProfileUpdate option={menuOption}/>}/>
+          <Route path='/profile/:option' element={<ProfileUpdate option={menuOption} setMenuOption={setMenuOption}/>}/>
         </Routes>
       </BrowserRouter>
     </UserProvider>

@@ -28,3 +28,7 @@
   place-content: center;
   align-items: center;
 }
+
+.post-image {
+  width: 90%;
+}

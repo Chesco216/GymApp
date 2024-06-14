@@ -5,15 +5,33 @@
   place-content: center;
   width: 100vw;
   height: 100vh;
-  padding: 100px 100px 100px 100px;
+  padding: 50px 100px 100px 100px;
+  /* overflow-x: hidden; */
   box-sizing: border-box;
 }
 
 .post-grid-container {
   display: grid;
   grid-gap: 40px;
-  place-content: center;
+  width: fit-content;
   border: 3px solid #FF004D;
   border-radius: 20px;
   padding: 40px 40px 40px 40px;
+  overflow-y: scroll;
+}
+
+.post-grid-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.post-grid-container::-webkit-scrollbar-track {
+    margin: 10px 10px 10px 10px;
+    background: #333; 
+    border-radius: 15px;
+}
+
+.post-grid-container::-webkit-scrollbar-thumb {
+    background-color: #FF004D; 
+    border-radius: 5px;
+    border: 2px solid #333; 
 }

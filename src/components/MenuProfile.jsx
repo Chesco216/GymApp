@@ -12,6 +12,7 @@ export const MenuProfile = ({ setMenuOption }) => {
     <div className='menu-profile-container'>
       <span onClick={() => {
         setMenuOption('info')
+        localStorage.setItem('option', 'info')
         navigate('/profile/info')
       }} className='menu-profile-span'>
         <ProfileSVG/>
@@ -20,6 +21,7 @@ export const MenuProfile = ({ setMenuOption }) => {
       <hr/>
       <span onClick={() => {
         setMenuOption('plan')
+        localStorage.setItem('option', 'plan')
         navigate('/profile/plan')
       }} className='menu-profile-span'>
         <PlanSVG/>
@@ -28,6 +30,7 @@ export const MenuProfile = ({ setMenuOption }) => {
       <hr/>
       <span onClick={() => {
         setMenuOption('payment')
+        localStorage.setItem('option', 'payment')
         navigate('/profile/payment')
       }} className='menu-profile-span'>
         <PaymentSVG/>
@@ -36,6 +39,7 @@ export const MenuProfile = ({ setMenuOption }) => {
       <hr/>
       <span onClick={() => {
         setMenuOption('social')
+        localStorage.setItem('option', 'social')
         navigate('/profile/social')
       }} className='menu-profile-span'>
         <SocialSVG/>

@@ -1,18 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './Social.css'
 import { SocialMenu } from '../components/SocialMenu'
 import { SocialPubGrid } from '../components/SocialPubGrid'
 import { userContext } from '../context/UserProvider'
-import { collection, getDoc, getDocs, setDoc } from 'firebase/firestore'
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { db } from '../services/firebase'
 import { Loading } from '../components/Loading'
+import { LogSignSVG } from '../components/SVGS'
 
 export const Social = () => {
   
   const { userinfo, setUserinfo } = useContext(userContext)
+  const navigate = useNavigate()
 
-  // const [post, setPost] = useState([])
-  const post = []
+  const [post, setPost] = useState([])
+  const postArr = []
   
   const getUserinfo = async({id}) => {
     const res = await getDoc(doc(db, 'users', id))
@@ -21,11 +24,18 @@ export const Social = () => {
   }
 
   const getPosts = async() => {
-    const querySnapshot = await getDocs(collection(db, 'publicaciones'));
-    querySnapshot.forEach((doc) => {
-      const data = doc.data()
-      post.push(data)
-    })
+    try {
+      const querySnapshot = await getDocs(collection(db, 'publicaciones'));
+      querySnapshot.forEach((doc) => {
+        const data = doc.data()
+        postArr.push(data)
+        setPost(postArr)
+        // ( post.length > 0 ) ? setPost([post, data])
+        // : setPost(data)
+      })
+    } catch (error) {
+      console.log('firebase get pubs error: ', error)
+    }
   }
   
   if(!userinfo) {
@@ -36,8 +46,14 @@ export const Social = () => {
     .catch(err => console.log(err))
   }
 
+  // useEffect(() => {
+  //   getPosts()
+  //     .then(console.log('post useEffect', post))
+  //     .catch(err => console.log('error:', err))
+  // }, [])
+
   if(post.length === 0) {
-    getPosts().then(console.log('post request'))
+    getPosts().then(console.log('get Post fn'))
   }
 
   return (
@@ -46,10 +62,18 @@ export const Social = () => {
         (!userinfo) ? (<Loading/>)
         :
         (
-          <div className='social-screen-container'>
-            <SocialMenu user={userinfo}/>
-            <SocialPubGrid post={post}/>
-          </div>
+          <>
+            <div onClick={() => { navigate('/profile') }} className='back-to-landing'>
+              <LogSignSVG/>
+            </div>
+            <div className='social-screen-container'>
+              <SocialMenu user={userinfo}/>
+                {
+                  (post.length > 0) ? <SocialPubGrid post={post}/>
+                  : <></>
+                }
+            </div>
+          </>
         )
       }
     </>

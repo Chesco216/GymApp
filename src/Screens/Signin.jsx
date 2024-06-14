@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import { googleSignin } from '../services/googleAuth'
 import { facebookSignin } from '../services/facebookSignin'
 import { doc, setDoc } from 'firebase/firestore'
+import { PolicyModal } from '../components/PolicyModal'
 
 export const SignIn = () => {
 
@@ -17,6 +18,8 @@ export const SignIn = () => {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const [username, setUsername] = useState()
+
+  const [modalIsOpen, setIsOpen] = useState(false)
   
   const handleLogSubmit = async( e ) => {
     e.preventDefault()
@@ -98,12 +101,12 @@ export const SignIn = () => {
 
             <div>
               <label className='sign-in-checkbox'>
-                <input name='terms' className='form-checkbox-input' type='checkbox' />
+                <input name='terms' className='form-checkbox-input' type='checkbox' required/>
                 Aceptar terminos y condiciones
               </label>
-              <strong onClick={() => {navigate('/terms')}}>ver</strong>
+              <strong onClick={() => {setIsOpen(true)}}>ver</strong>
             </div>
-
+            <PolicyModal modalIsOpen={modalIsOpen} setIsOpen={setIsOpen}/>
             <button className='logsign-button' type='submit'>Sign In</button>
           </form>
           <button className='logsign-button' onClick={ handleGoogleSignin }>

@@ -5,13 +5,8 @@ import { color } from 'framer-motion';
 
 const TermsConditions = () => {
 
-  const navigate = useNavigate()
-
     return (
     <>
-      <div onClick={() => { navigate('/') }} className='back-to-landing'>
-        <LogSignSVG/>
-      </div>
         <div className="terms-conditions-container">
             <div className="terms-conditions-component">
                 <div className="terms-conditions-header">

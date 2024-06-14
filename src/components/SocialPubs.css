@@ -2,6 +2,7 @@
   width: 600px;
   height: fit-content;
   padding: 40xp 100px 40px 100px;
+  border-radius: 5px;
   background: #424449;
 }
 
@@ -18,7 +19,8 @@
 }
 
 .post-user-name {
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 700;
   color: white;
 }
 
@@ -29,6 +31,26 @@
   align-items: center;
 }
 
+.post_content {
+  width: 100%;
+  height: fit-content;
+}
+
 .post-image {
-  width: 90%;
+  width: 100%;
+}
+
+.post-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+}
+
+.like-comnts {
+  display: flex;
+  align-items: center;
+}
+
+.like-comnts-content {
+  margin-left: 20px;
 }

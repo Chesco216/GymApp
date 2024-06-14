@@ -16,7 +16,10 @@ export const RoutineGrid = () => {
   return (
     <div className='routines-grid'>
       <RoutineCard/>
-      <button className='routine-card-container' onClick={handleNewRoutine}>Quieres una nueva rutina?</button>
+      {
+        (userinfo.memberType == 'premium') &&
+        <button className='routine-card-container' onClick={handleNewRoutine}>Quieres una nueva rutina?</button>
+      }
     </div>
   )
 }

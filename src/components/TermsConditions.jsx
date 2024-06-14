@@ -1,14 +1,16 @@
+import { useNavigate } from 'react-router-dom'
 import './TermsConditions.css'
-import { CloseSVG } from './SVGS';
+import { CloseSVG, LogSignSVG } from './SVGS';
 import { color } from 'framer-motion';
 
 const TermsConditions = () => {
+
     return (
+    <>
         <div className="terms-conditions-container">
             <div className="terms-conditions-component">
                 <div className="terms-conditions-header">
                     <h1>Terminos y Condiciones</h1>
-                    <button className="terms-btn-exit"><CloseSVG/></button>
                 </div>
                 <div className="terms-conditions-body">
                     <p>
@@ -55,10 +57,10 @@ const TermsConditions = () => {
 
                 </div>
                 <div className="terms-conditions-footer">
-                    <button className="terms-btn-agree">Aceptar y Continuar</button>
                 </div>
             </div>
         </div>
+    </>
     )
 }
 

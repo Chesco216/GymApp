@@ -1,0 +1,56 @@
+.post-card-container {
+  width: 600px;
+  height: fit-content;
+  padding: 40xp 100px 40px 100px;
+  border-radius: 5px;
+  background: #424449;
+}
+
+.card-container {
+  border-radius: 20px;
+  padding: 40px 40px 40px 40px;
+  background: #424449;
+}
+
+.post-user-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.post-user-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+}
+
+.post-span {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  place-content: center;
+  align-items: center;
+}
+
+.post_content {
+  width: 100%;
+  height: fit-content;
+}
+
+.post-image {
+  width: 100%;
+}
+
+.post-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+}
+
+.like-comnts {
+  display: flex;
+  align-items: center;
+}
+
+.like-comnts-content {
+  margin-left: 20px;
+}

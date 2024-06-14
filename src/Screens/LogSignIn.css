@@ -21,6 +21,23 @@
   border-radius: 10px;
 }
 
+
+.terms-close-modal-btn {
+  position: relative;
+  left: 0;
+  top: 0;
+  display: grid;
+  place-content: center;
+  margin: 20px 20px 20px 20px;
+  width: 60px;
+  height: 60px;
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  background: #FF004D;
+  border-radius: 10px;
+}
+
 .formlogin-container {
 	position: absolute;
 	left: 0;

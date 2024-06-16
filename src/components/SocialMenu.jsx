@@ -22,26 +22,18 @@ export const SocialMenu = ({user}) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    const picture = await handleUploadImage(e)
-    const date = new Date()
-    setPost({
-      ...post,
-      post_image: picture,
-      createdAt: date
-    })
-
+    // console.log('post to upload', post)
     try {
       await addDoc(collection(db, 'publicaciones'), { ...post })
+      setPostform(false)
       console.log('post uploaded correctly')
     } catch (error) {
       console.log(error.code)
     }
-
-    console.log(post)
   }
   
   const handleUploadImage = async(e) => {
-    const image = e.target.picture.files[0]
+    const image = e.target.files[0]
     if(!image) return null
     const profilePictureRef = ref(storage, `post-pictures/${image.name}`)
     await uploadBytes(profilePictureRef, image)
@@ -71,7 +63,8 @@ export const SocialMenu = ({user}) => {
                 value={post.title}
                 onChange={(e) => {setPost({
                   ...post,
-                  title: e.target.value
+                  title: e.target.value,
+                  createdAt: new Date()
                 })}}
               />
             </span>
@@ -92,6 +85,16 @@ export const SocialMenu = ({user}) => {
               <input className='upload-post-input new-profile-picture'
                 type='file'
                 name='picture'
+                onChange={ async(e) => {
+                  if(e.target.files[0]) {
+                    const pic = await handleUploadImage(e)
+                    setPost({
+                      ...post,
+                      post_image: pic
+                    })
+                  }
+                  
+                }}
               />
             </span>
             <button className='create-post-btn' type='submit'>Publicar</button>

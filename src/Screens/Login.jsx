@@ -11,101 +11,101 @@ import { LogSignSVG } from '../components/SVGS'
 
 export const LogIn = () => {
 
-  const navigate = useNavigate()
-  const context = useContext(userContext)
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
-  const [isNew, setIsNew] = useState(true)
+	const navigate = useNavigate()
+	const context = useContext(userContext)
+	const [email, setEmail] = useState()
+	const [password, setPassword] = useState()
+	const [isNew, setIsNew] = useState(true)
 
-  const handleLogSubmit = async( e ) => {
-    e.preventDefault()
-    signInWithEmailAndPassword( auth, email, password )
-    .then()
+	const handleLogSubmit = async (e) => {
+		e.preventDefault()
+		signInWithEmailAndPassword(auth, email, password)
+			.then()
 
 
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in 
-        const user = userCredential.user;
-        context.setUserinfo(user)
-        // console.log('context login', user)
-        localStorage.setItem("user", JSON.stringify(user.uid))
-        navigate('/profile')
-        // ...
-      })
-      .catch((error) => {
-        alert('credenciales invalidas')
-      })
-    // const user = auth.currentUser
-  }
+		signInWithEmailAndPassword(auth, email, password)
+			.then((userCredential) => {
+				// Signed in 
+				const user = userCredential.user;
+				context.setUserinfo(user)
+				// console.log('context login', user)
+				localStorage.setItem("user", JSON.stringify(user.uid))
+				navigate('/profile')
+				// ...
+			})
+			.catch((error) => {
+				alert('credenciales invalidas')
+			})
+		// const user = auth.currentUser
+	}
 
-  const handleGoogleLogin = async() => {
-    
-    const userDoc = await googleSignin( context )
-    !userDoc ? navigate('/info-form') : navigate('/profile')
-  }
+	const handleGoogleLogin = async () => {
 
-  return (
-    <div className='logsign-container'>
-      <div onClick={() => { navigate('/') }} className='back-to-landing'>
-        <LogSignSVG/>
-      </div>
-      <div className='formlogin-container'>
-        <div className='logsign-form'>
-          <span style={{display:'flex'}} className='logo-name'>
-	  <img src='../../public/logo.jpg' style={{width:60, height:60, borderRadius:15, marginRight: 10}}/>
-            <h3>
-              JAYANI POWER
-            </h3>
-          </span>
-          <h2 style={{margin:20}}>LOG IN</h2>
-          <label style={{margin:20, fontSize:13, color:'#818181'}}>
-            Log In with your email amd password or use your google account instead
-          </label>
-          <form onSubmit={ handleLogSubmit }>
+		const userDoc = await googleSignin(context)
+		!userDoc ? navigate('/info-form') : navigate('/profile')
+	}
 
-            <span className='form-fields'>
-              <label className='form-label'>Correo electrionico</label>
-              <input 
-                className='form-input' 
-                name='email'
-                type='email'
-                value={email}
-                onChange={ e => setEmail(e.target.value) }
-              />
-            </span>
+	return (
+		<div className='logsign-container'>
+			<div onClick={() => { navigate('/') }} className='back-to-landing'>
+				<LogSignSVG />
+			</div>
+			<div className='formlogin-container'>
+				<div className='logsign-form'>
+					<span style={{ display: 'flex' }} className='logo-name'>
+						<img src='../../public/logo.jpg' style={{ width: 60, height: 60, borderRadius: 15, marginRight: 10 }} />
+						<h3>
+							JAYANI POWER
+						</h3>
+					</span>
+					<h2 style={{ margin: 20 }}>LOG IN</h2>
+					<label style={{ margin: 20, fontSize: 13, color: '#818181' }}>
+						Log In with your email amd password or use your google account instead
+					</label>
+					<form onSubmit={handleLogSubmit}>
 
-            <span className='form-fields'>
-              <label className='form-label'>
-                Contraseña
-              </label>
-              <input 
-                className='form-input'
-                name='pswd'
-                type='password'
-                value={password}
-                onChange={ e => setPassword(e.target.value) }
-              />
-            </span>
+						<span className='form-fields'>
+							<label className='form-label'>Correo electrionico</label>
+							<input
+								className='form-input'
+								name='email'
+								type='email'
+								value={email}
+								onChange={e => setEmail(e.target.value)}
+							/>
+						</span>
 
-            <button className='logsign-button' type='submit'>Log In</button>
-          </form>
-            <button className='logsign-google-button' onClick={ handleGoogleLogin }>
-              <img src='https://cdn.icon-icons.com/icons2/2429/PNG/512/google_logo_icon_147282.png' className='google-logo'/>
-              Log In with google
-            </button>
-          <span style={{marginTop:50, fontSize:13}}>
-            Don't have an account?, <NavLink to='/signin'>register now</NavLink>
-          </span>
-        </div>
-        <div className='login-rside'>
-          <h1 style={{color:'white'}}>
-            Welcome back!
-          </h1>
-          <img className='logsign-image' src='../../public/logsign.jpg'/>
-        </div>
-      </div>
-    </div>
-  )
+						<span className='form-fields'>
+							<label className='form-label'>
+								Contraseña
+							</label>
+							<input
+								className='form-input'
+								name='pswd'
+								type='password'
+								value={password}
+								onChange={e => setPassword(e.target.value)}
+							/>
+						</span>
+
+						<button className='logsign-button' type='submit'>Log In</button>
+					</form>
+					<button className='logsign-google-button' onClick={handleGoogleLogin}>
+						<img src='https://cdn.icon-icons.com/icons2/2429/PNG/512/google_logo_icon_147282.png' className='google-logo' />
+						Log In with google
+					</button>
+					<span style={{ marginTop: 50, fontSize: 13 }}>
+						Don't have an account?, <NavLink to='/signin'>register now</NavLink>
+					</span>
+				</div>
+				<div className='login-rside'>
+					<h1 style={{ color: 'white' }}>
+						Welcome back!
+					</h1>
+					<img className='logsign-image' src='../../public/logsign.jpg' />
+				</div>
+			</div>
+		</div>
+	)
 }
 

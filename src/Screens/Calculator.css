@@ -1,6 +1,5 @@
 .calculator-screen-container {
 	width: 100%;
-	height: 100vh;
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr;
 }
@@ -11,7 +10,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 50px 0px 0px 100px;
-  color: white;
+	color: white;
 	transition: 600ms ease-in;
 }
 
@@ -138,7 +137,7 @@
 
 .prot-cal-div {
 	padding: 80px 100px 50px 100px;
-  color: white;
+	color: white;
 	font-size: 18px;
 	transition: 400ms ease-in;
 }
@@ -153,7 +152,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 250px 80px 80px 80px;
-  color: white;
+	color: white;
 	transition: 400ms ease-in;
 }
 
@@ -188,7 +187,6 @@
 @media (max-width: 768px) {
 	.calculator-screen-container {
 		width: 100%;
-		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -200,5 +198,14 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
+		height: 100%;
 	}
+}
+
+
+@media (min-width: 769px) {
+	.calculator-screen-container {
+		height: 100vh;
+	}
+
 }

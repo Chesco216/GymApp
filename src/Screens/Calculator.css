@@ -201,6 +201,15 @@
 		align-items: center;
 		justify-content: center;
 		width: 100%;
+
+
+	}
+
+	.prot-cal-div {
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		width: 80%;
 	}
 }
 

@@ -26,7 +26,7 @@ export const prices = [
 
 export const Prices = () => {
 	return (
-		<>
+		<div className='prices-container'>
 			<Header />
 			<div className='prices-cards-screen'>
 				{
@@ -37,6 +37,6 @@ export const Prices = () => {
 					})
 				}
 			</div>
-		</>
+		</div>
 	)
 }

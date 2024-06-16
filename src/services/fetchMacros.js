@@ -1,16 +1,16 @@
-const url = 'http://localhost:3000/macros'
+const url = 'http://192.168.0.20:3000/macros'
 
-export const fetchMacros = async() => {
-  const res = await fetch( url )
-  const data = await res.json()
+export const fetchMacros = async () => {
+	const res = await fetch(url)
+	const data = await res.json()
 
-  return data
+	return data
 }
 
-export const fetchMacrosByCategory = async ( category ) => {
-  const urlFilter = ( category == 'todos') ? url : `${ url }/${ category }`
-  const res = await fetch( urlFilter )
-  const data = await res.json()
+export const fetchMacrosByCategory = async (category) => {
+	const urlFilter = (category == 'todos') ? url : `${url}/${category}`
+	const res = await fetch(urlFilter)
+	const data = await res.json()
 
-  return data
+	return data
 } 

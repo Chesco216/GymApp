@@ -1,9 +1,27 @@
-.prices-cards-screen{
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-evenly;
-  
+.prices-cards-screen {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-evenly;
+
+}
+
+@media (max-width: 768px) {
+	.prices-cards-screen {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		padding: auto;
+	}
+}
+
+@media (max-width: 425px) {
+
+	.prices-cards-screen {
+		height: 100%;
+
+	}
 }

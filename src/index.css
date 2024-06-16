@@ -8,3 +8,9 @@
   top: 0;
   overflow: scroll;
 }
+
+@media (max-width: 768px) {
+	#root {
+		overflow: scroll;
+	}
+}

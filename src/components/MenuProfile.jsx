@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import './MenuProfile.css'
-import { LogoutSVG, PaymentSVG, PlanSVG, ProfileSVG } from './SVGS'
+import { LogoutSVG, PaymentSVG, PlanSVG, ProfileSVG, SocialSVG } from './SVGS'
 import closeSession from '../services/closeSession'
 
 export const MenuProfile = ({ setMenuOption }) => {
@@ -12,6 +12,7 @@ export const MenuProfile = ({ setMenuOption }) => {
     <div className='menu-profile-container'>
       <span onClick={() => {
         setMenuOption('info')
+        localStorage.setItem('option', 'info')
         navigate('/profile/info')
       }} className='menu-profile-span'>
         <ProfileSVG/>
@@ -20,6 +21,7 @@ export const MenuProfile = ({ setMenuOption }) => {
       <hr/>
       <span onClick={() => {
         setMenuOption('plan')
+        localStorage.setItem('option', 'plan')
         navigate('/profile/plan')
       }} className='menu-profile-span'>
         <PlanSVG/>
@@ -28,10 +30,20 @@ export const MenuProfile = ({ setMenuOption }) => {
       <hr/>
       <span onClick={() => {
         setMenuOption('payment')
+        localStorage.setItem('option', 'payment')
         navigate('/profile/payment')
       }} className='menu-profile-span'>
         <PaymentSVG/>
         <label className='menu-profile-label'>Pagos</label>
+      </span>
+      <hr/>
+      <span onClick={() => {
+        setMenuOption('social')
+        localStorage.setItem('option', 'social')
+        navigate('/profile/social')
+      }} className='menu-profile-span'>
+        <SocialSVG/>
+        <label className='menu-profile-label'>Social</label>
       </span>
       <hr/>
       <span onClick={ closeSession } className='menu-profile-span'>

@@ -1,9 +1,14 @@
 import './PaymentMethod.css';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { LogSignSVG } from '../components/SVGS';
+import { userContext } from '../context/UserProvider'
+import { doc, setDoc } from 'firebase/firestore'
+import { db } from '../services/firebase';
 
 export const PaymentMethod = () => {
+
+  const { userinfo, setUserinfo } = useContext(userContext)
   const navigate = useNavigate();
 
   const [paymentMethod, setPaymentMethod] = useState(false);
@@ -54,21 +59,39 @@ export const PaymentMethod = () => {
     return '';
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+
     const errorMessage = validateForm();
 
     if (errorMessage) {
       setError(errorMessage);
     } else {
-      setError('');
+      setError(null);
       setPaymentMethod(true); // !Aqui cambio a true el estado que querias para que se vuelva premium chesco
       setSuccessMessage('¡Pago completado con éxito!');
       console.log(paymentMethod);
 
-      setTimeout(() => {
-        navigate('/profile');
-      }, 2000); 
+      console.log('card added')
+      setUserinfo({
+        ...userinfo,
+        memberType: 'premium'
+      })
+
+      console.log('updated user: ', userinfo)
+
+      try {
+        await setDoc(doc(db, 'users', userinfo.uid), { ...userinfo, memberType: 'premium' })
+        console.log('user memership update')
+        navigate('/profile')
+      } catch (error) {
+        console.log(error.code)
+      }
+
+      // setTimeout(() => {
+      //   navigate('/profile');
+      // }, 2000); 
+
     }
   };
 

@@ -27,12 +27,13 @@ export const Profile = ({ setMenuOption }) => {
   // console.log('userprofileID: ', userinfo.uid)
   const getUserInfo = async() => {
     const userID = localStorage.getItem('user')
-    console.log('userID',userID)
+    // console.log('userID',userID)
     const id = (userID) ? userID.replaceAll('"','' ) : userinfo.uid
     const response = await getDoc(doc(db, 'users', id))
     const data = response.data()
     setUser(data)
     setUserinfo(data)
+    // console.log(data)
   }
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export const Profile = ({ setMenuOption }) => {
   }, [])
 
   return (
-    <div>
+    <div style={{width: '100vw', height: '100vh'}}>
       { (!user) ? ( <Loading/> ) 
       :
       (

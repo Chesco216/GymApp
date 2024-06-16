@@ -10,7 +10,7 @@
 	/* height: 100%; */
 	display: flex;
 	flex-direction: column;
-	padding: 50px 0px 0px 100px;
+	padding: 50px 50px 0px 100px;
 	color: white;
 	transition: 600ms ease-in;
 }
@@ -185,6 +185,7 @@
 	transition: 400ms ease-in;
 }
 
+
 @media (max-width: 768px) {
 	.calculator-screen-container {
 		width: 100%;
@@ -210,6 +211,14 @@
 		justify-content: center;
 		align-items: center;
 		width: 80%;
+	}
+
+	.get-macros-button {
+		color: black;
+	}
+
+	.go-to-macros {
+		padding: 80px 80px;
 	}
 }
 

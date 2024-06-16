@@ -1,6 +1,7 @@
 .calculator-screen-container {
-	width: 100%;
 	display: grid;
+	width: 100%;
+	box-sizing: border-box;
 	grid-template-columns: 1fr 2fr 1fr;
 }
 
@@ -190,21 +191,23 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		overflow-x: hidden;
 		justify-content: center;
 	}
 
 	.calc-form-div {
+		flex-direction: column;
 		padding: 0px 0px 0px 0px;
 		align-items: center;
 		justify-content: center;
 		width: 100%;
-		height: 100%;
 	}
 }
 
 
 @media (min-width: 769px) {
 	.calculator-screen-container {
+		width: 100%;
 		height: 100vh;
 	}
 

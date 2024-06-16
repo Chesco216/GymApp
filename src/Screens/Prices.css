@@ -11,8 +11,17 @@
 @media (max-width: 768px) {
 	.prices-cards-screen {
 		height: 100%;
+		width: 100%;
 		display: flex;
 		flex-direction: column;
-		padding-top: 20px 20px;
+		padding: auto;
+	}
+}
+
+@media (max-width: 425px) {
+
+	.prices-cards-screen {
+		height: 100%;
+
 	}
 }

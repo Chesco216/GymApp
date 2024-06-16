@@ -1,43 +1,104 @@
 .price-card-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
-  width: 400px;
-  height: 630px;
-  padding: 20px 30px 0px 30px;
-  box-sizing: border-box;
-  border: 5px solid #FF004D;
-  border-radius: 20px;
-  color: #242933;
-  background: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* justify-content: center; */
+	width: 400px;
+	height: 630px;
+	padding: 20px 30px 0px 30px;
+	box-sizing: border-box;
+	border: 5px solid #FF004D;
+	border-radius: 20px;
+	color: #242933;
+	background: white;
 }
 
 .plan-header {
-  margin-top: 40px;
+	margin-top: 40px;
 }
 
 .plan-price {
-  font-size: 40px;
+	font-size: 40px;
 }
 
 .plan-utils {
-  margin: 10px 0px 10px 0px;
-  font-size: 18px;
+	margin: 10px 0px 10px 0px;
+	font-size: 18px;
 }
 
 .utils-ul {
-  margin-top: 30px;
+	margin-top: 30px;
 }
 
 .prices-sus-button {
-  width: 200px;
-  height: 60px;
-  margin: 40px auto;
-  font-size: 20px;
-  font-weight: bold;
-  color: white;
-  background: #FF004D;
-  border-radius: 10px;
-  border: none;
+	width: 200px;
+	height: 60px;
+	margin: 40px auto;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	background: #FF004D;
+	border-radius: 10px;
+	border: none;
+}
+
+@media (max-width: 768px) {
+	.price-card-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 330px;
+		height: 590px;
+		padding: 0px 0px;
+		margin-top: 30px;
+	}
+
+	.plan-price {
+		font-size: 40px;
+	}
+
+	.plan-utils {
+		margin: 30px 0px;
+		font-size: 18px;
+	}
+
+	.utils-ul {
+		margin-top: 30px;
+	}
+
+	.prices-sus-button {
+		width: 200px;
+		height: 60px;
+	}
+}
+
+@media (max-width: 320px) {
+	.price-card-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 290px;
+		height: 500px;
+		padding: 0px 0px;
+	}
+
+
+	.plan-price {
+		font-size: 30px;
+	}
+
+	.plan-utils {
+		margin: 10px 0px;
+		font-size: 16px;
+	}
+
+	.utils-ul {
+		margin-top: 25px;
+	}
+
+	.prices-sus-button {
+		width: 200px;
+		height: 60px;
+	}
+
 }

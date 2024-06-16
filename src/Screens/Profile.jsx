@@ -48,7 +48,7 @@ export const Profile = ({ setMenuOption }) => {
       <div className='profile-container'>
         <div className='user-pic-name-email'>
           <div style={{ display: 'flex'}}>
-          <img className='user-image' src={ (user.profilePictureURL) ? user.profilePictureURL : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg' } alt='profile-picture'/>
+          <img className='user-image' src={ (user.profilePictureUrl) ? user.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg' } alt='profile-picture'/>
           <span className='user-name-email'>
             <h1>{ user.username }</h1>
             <label>{ user.email }</label>

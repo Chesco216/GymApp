@@ -18,7 +18,7 @@ export const SocialPubs = (post) => {
           <img className='post-user-image' src={profilePictureUrl}/>
           <span style={{display:'flex', flexDirection: 'column'}}>
             <label className='post-user-name'>{user_name}</label>
-            <label className='post-date,'>{date.toDateString()}</label>
+            <label className='post-date'>{date.toDateString()}</label>
           </span>
         </span>
         <h3 className='post-title'>{title}</h3>

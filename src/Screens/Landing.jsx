@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+// import { useNavigate } from 'react-router-dom'
 import { Header } from '../components/Header'
 import './Landing.css'
 import { NavLink } from 'react-router-dom'
 import { LogoSVG } from '../components/SVGS'
 
 export const Landing = () => {
+
   return (
-    <>
+    <div className='landing-header-container'>
       <Header/>
       <div className='landing-container'>
         <div className='landing-left'>
@@ -30,6 +32,6 @@ export const Landing = () => {
           <img className='landing-right-image' src='../../public/openart-image_sVzkasfZ_1714275645837_raw.jpg'/>
         </div>
       </div>
-    </>
+    </div>
   )
 }

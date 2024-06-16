@@ -43,7 +43,7 @@ export const InfoForm = () => {
       email: context.userinfo.email,
       height: height,
       memberType: 'estandar',
-      profilePictureURL: context.userinfo.photoURL,
+      profilePictureUrl: context.userinfo.photoURL,
       publicProfile: true,
       uid: context.userinfo.uid,
       updateAt: currDate,

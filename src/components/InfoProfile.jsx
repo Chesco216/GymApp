@@ -41,7 +41,7 @@ export const InfoProfile = () => {
         <LogSignSVG/>
       </div>
       <div className='info-profile-container'>
-        <img className='info-profile-image' src={(userinfo.profilePictureURL) ? userinfo.profilePictureURL : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'}/>
+        <img className='info-profile-image' src={(userinfo.profilePictureUrl) ? userinfo.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'}/>
         <div className='info-fields-container'>
           {/*NOTE: must implement a mapper*/}
           <label className='info-field'>Nombre de usuario:</label>

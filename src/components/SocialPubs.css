@@ -24,6 +24,11 @@
   color: white;
 }
 
+.post-date {
+  color: white;
+  font-weight: 200;
+}
+
 .post-span {
   display: grid;
   grid-template-columns: 1fr 4fr;
@@ -38,6 +43,10 @@
 
 .post-image {
   width: 100%;
+}
+
+.post-title {
+  color: white;
 }
 
 .post-footer {

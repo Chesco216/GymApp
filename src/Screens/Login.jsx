@@ -65,7 +65,7 @@ export const LogIn = () => {
 					<form onSubmit={handleLogSubmit}>
 
 						<span className='form-fields'>
-							<label className='form-label'>Correo electrionico</label>
+							<label className='form-label'>Correo electronico</label>
 							<input
 								className='form-input'
 								name='email'

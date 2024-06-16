@@ -1,94 +1,35 @@
 .logsign-container {
-	width: 100vw;
-	height: 100vh;
-  color: #242933;
-}
-
-.back-to-landing {
-  position: absolute;
-  left: 0;
-  top: 0;
-  display: grid;
-  place-content: center;
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 60px;
-  height: 60px;
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  background: #FF004D;
-  border-radius: 10px;
-}
-
-
-.terms-close-modal-btn {
-  position: relative;
-  left: 0;
-  top: 0;
-  display: grid;
-  place-content: center;
-  margin: 20px 20px 20px 20px;
-  width: 60px;
-  height: 60px;
-  color: white;
-  font-size: 20px;
-  font-weight: 700;
-  background: #FF004D;
-  border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	padding: 20px 20px;
+	background-color: #CEB2C1;
 }
 
 .formlogin-container {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	width: 1200px;
-	height: 750px;
-	padding: 0;
-	/* box-sizing: border-box; */
-	/* background: #FF004D; */
-  background: #242933;
-  border: 5px solid #CEB2C1;
-	border-radius: 40px;
-  overflow: hidden;
-	/* padding: 30px 50px 30px 50px; */
-	display: grid;
-	grid-template-columns: 2fr 3fr;
-}
-
-.logsign-form {
-	background: #CEB2C1;
-	/* width: 400px; */
-	height: 100%;
-	box-sizing: border-box;
-	padding: 70px 50px 30px 50px;
-	/* border-radius: 30px; */
-}
-
-.logsign-image {
-  width: 90%;
-  border-radius: 20px;
-}
-
-.form-fields {
 	display: flex;
 	flex-direction: column;
-	margin: 30px auto;
+	align-items: center;
+	justify-content: center;
 }
 
-.form-label {
-  color: #242933;
+.logsign-form {}
+
+
+
+.login-rside {
+	display: none;
 }
+
 
 .form-input {
-	width: 80%;
+	width: 90%;
 	height: 35px;
 	border-radius: 20px;
 	padding: 5px 10px 5px 20px;
-  border: none;
+	border: none;
 }
 
 .logsign-button {
@@ -101,39 +42,7 @@
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
 	font-size: 18px;
-}
-
-.logsign-button:hover {
-	background: #373737;
-}
-
-.login-rside {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-}
-
-.sign-in-checkbox {
-	display: flex;
-	flex-direction: row;
-}
-
-.formsignin-container {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	width: 1200px;
-  overflow: hidden;
-	height: fit-content;
-	background: #242933;
-  border: 5px solid #CEB2C1;
-	border-radius: 40px;
-	display: grid;
-	grid-template-columns: 2fr 3fr;
+	border-color: black;
 }
 
 .logsign-google-button {
@@ -143,13 +52,14 @@
 	justify-content: center;
 	width: 90%;
 	height: 45px;
-	margin: 15px 0px 20px 0px;
+	margin: 10px 0px;
 	border-radius: 20px;
 	background: #242933;
 	color: white;
 	font-family: "Poppins", sans-serif;
 	font-weight: 500;
 	font-size: 18px;
+	border-color: black;
 }
 
 .logsign-google-button:hover {
@@ -163,42 +73,214 @@
 }
 
 .logsign-svg {
-  scale: 2;
+	scale: 2;
 }
 
-@media (max-width: 1024px) {
-	.login-rside {
-		display: none;
-		width: 0px;
-	}
+.logo-name h3 {
+	color: #242933;
+}
 
+.google-logo {
+	margin: auto 20px auto;
+	width: 30px;
+	height: 30;
+}
+
+.logsign-form span {
+	color: black;
+}
+
+.logsign-form button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.back-to-landing {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 60px;
+	height: 60px;
+	color: white;
+	font-size: 20px;
+	font-weight: 700;
+	background: #FF004D;
+	border-radius: 10px;
+	margin-bottom: 10px;
+}
+
+
+@media (min-width: 1270px) {
 	.logsign-container {
-		display: flex;
-		flex-direction: column;
 		width: 100vw;
 		height: 100vh;
+		background-color: #242933;
+	}
+
+	.back-to-landing {
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: grid;
+		place-content: center;
+		margin-top: 20px;
+		margin-left: 20px;
+		width: 60px;
+		height: 60px;
+		color: white;
+		font-size: 20px;
+		font-weight: 700;
+		background: #FF004D;
+		border-radius: 10px;
+	}
+
+
+	.terms-close-modal-btn {
+		position: relative;
+		left: 0;
+		top: 0;
+		display: grid;
+		place-content: center;
+		margin: 20px 20px 20px 20px;
+		width: 60px;
+		height: 60px;
+		color: white;
+		font-size: 20px;
+		font-weight: 700;
+		background: #FF004D;
+		border-radius: 10px;
 	}
 
 	.formlogin-container {
-		padding: auto;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		width: 1200px;
+		height: 750px;
+		padding: 0;
+		/* box-sizing: border-box; */
+		/* background: #FF004D; */
+		background: #242933;
+		border: 5px solid #CEB2C1;
+		border-radius: 40px;
+		overflow: hidden;
+		display: grid;
+		grid-template-columns: 2fr 3fr;
+	}
+
+	.logsign-form {
+		background: #CEB2C1;
+		/* width: 400px; */
+		height: 100%;
+		box-sizing: border-box;
+		padding: 70px 50px 30px 50px;
+		/* border-radius: 30px; */
+	}
+
+	.logsign-image {
+		width: 90%;
+		border-radius: 20px;
+	}
+
+	.form-fields {
+		display: flex;
+		flex-direction: column;
+		margin: 30px auto;
+	}
+
+	.form-label {
+		color: #242933;
+	}
+
+	.form-input {
+		width: 90%;
+		height: 35px;
+		border-radius: 20px;
+		padding: 5px 10px 5px 20px;
+		border: none;
+	}
+
+	.logsign-button {
+		width: 90%;
+		height: 45px;
+		margin: 15px auto;
+		border-radius: 20px;
+		background: #242933;
+		color: white;
+		font-family: "Poppins", sans-serif;
+		font-weight: 500;
+		font-size: 18px;
+	}
+
+	.logsign-button:hover {
+		background: #373737;
+	}
+
+	.login-rside {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		width: 100%;
-		height: 750px;
-		background: white;
+	}
+
+	.sign-in-checkbox {
+		display: flex;
+		flex-direction: row;
 	}
 
 	.formsignin-container {
-		padding: auto;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		width: 1200px;
+		overflow: hidden;
+		height: fit-content;
+		background: #242933;
+		border: 5px solid #CEB2C1;
+		border-radius: 40px;
+		display: grid;
+		grid-template-columns: 2fr 3fr;
+	}
+
+	.logsign-google-button {
 		display: flex;
-		flex-direction: column;
+		/* flex-direction: row; */
 		align-items: center;
 		justify-content: center;
-		width: 100%;
-		height: 750px;
-		background: white;
+		width: 90%;
+		height: 45px;
+		margin: 15px 0px 20px 0px;
+		border-radius: 20px;
+		background: #242933;
+		color: white;
+		font-family: "Poppins", sans-serif;
+		font-weight: 500;
+		font-size: 18px;
+	}
 
+	.logsign-google-button:hover {
+		background: #373737;
+	}
+
+	.google-logo {
+		margin: auto 20px auto;
+		width: 30px;
+		height: 30;
+	}
+
+	.logsign-svg {
+		scale: 2;
+	}
+
+	.logo-name h3 {
+		color: #242933;
 	}
 }

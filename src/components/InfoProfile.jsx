@@ -55,9 +55,9 @@ export const InfoProfile = () => {
           <label className='info-field'>Altura:</label>
           <label className='info-field-value'>{userinfo.height}</label>
           <label className='info-field'>Alergias o restricciones:</label>
-          <label className='info-field-value'>{userinfo.restrictFood}</label>
+          <label className='info-field-value'>{userinfo.foodRestrictions}</label>
           <label className='info-field'>Limitaciones fisicas:</label>
-          <label className='info-field-value'>{userinfo.bodyLimits}</label>
+          <label className='info-field-value'>{userinfo.physicalLimitations}</label>
           <label className='info-field'>Genero:</label>
           <label className='info-field-value'>{userinfo.gender}</label>
           <label className='info-field'>Meta:</label>
@@ -84,7 +84,7 @@ const UpdateForm = ({hide, setHide}) => {
     setUserinfo({
       ...user,
       updateAt: currDate,
-      profilePictureURL: (picture != null) ? picture : userinfo.profilePictureURL
+      profilePictureUrl: (picture != null) ? picture : userinfo.profilePictureUrl
     })
 
     try {
@@ -111,7 +111,7 @@ const UpdateForm = ({hide, setHide}) => {
   return (
     <form className={`update-info-form ${hide}`} onSubmit={handleUpdate}>
       <div className='update-form-top'>
-        <img className='info-profile-image-1' src={(userinfo.profilePictureURL) ? userinfo.profilePictureURL : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'}/>
+        <img className='info-profile-image-1' src={(userinfo.profilePictureUrl) ? userinfo.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'}/>
         <input id='image-input' className='new-profile-picture' type='file' name='image' accept='.jpg, .png, .jpeg'/>
         <div className='exit-form' onClick={() => {setHide(true)}}>
           <CloseSVG/>
@@ -138,7 +138,7 @@ const UpdateForm = ({hide, setHide}) => {
           value={user.weight}
           onChange={e => setUser({
             ...user,
-            weight: e.target.value})}
+            weight: parseFloat(e.target.value)})}
         />
       </span>
       <span className='update-span-form'>
@@ -147,10 +147,10 @@ const UpdateForm = ({hide, setHide}) => {
           className='update-input-form'
           type='text'
           name='food'
-          value={user.restrictFood}
+          value={user.foodRestrictions}
           onChange={e => setUser({
             ...user,
-            restrictFood: e.target.value})}
+            foodRestrictions: e.target.value})}
         />
       </span>
       <span className='update-span-form'>
@@ -159,10 +159,10 @@ const UpdateForm = ({hide, setHide}) => {
           className='update-input-form'
           type='text'
           name='body'
-          value={user.bodyLimits}
+          value={user.physicalLimitations}
           onChange={e => setUser({
             ...user,
-            bodyLimits: e.target.value})}
+            physicalLimitations: e.target.value})}
         />
       </span>
       <span className='update-span-form'>

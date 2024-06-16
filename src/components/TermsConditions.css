@@ -4,7 +4,9 @@
     display: grid;
     color: white;
     place-content: center;
-  align-items: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+  background: none;
 }
 
 .terms-conditions-component {
@@ -13,7 +15,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    background-color: #2c2c2c; 
+    /* background-color: #2c2c2c;  */
 }
 
 .terms-conditions-header {
@@ -41,7 +43,7 @@
     padding: 16px;
     max-height: 300px;
     overflow-y: auto;
-    background-color: #1e1e1e; 
+    /* background-color: #1e1e1e;  */
     color: #ddd; 
 }
 

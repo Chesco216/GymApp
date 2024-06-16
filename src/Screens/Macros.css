@@ -3,6 +3,7 @@
   height: 100vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  padding-bottom: 40px;
 }
 
 tr {
@@ -52,6 +53,7 @@ th {
 
 .card-container {
   height: 100%;
+  /* background: #242933; */
 }
 
 .food-card-container {

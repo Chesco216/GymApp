@@ -16,15 +16,15 @@
 //
 // const user = userPrompt()
   
-const strucureData = ({ age, height, weight, restrictFood, bodyLimits, goal }) => {
+const strucureData = ({ age, height, weight, foodRestrictions, physicalLimitations, goal }) => {
 
     return (
         `
         La edad del usuario es: ${age},
         su altura es: ${height},
         su peso actual es: ${weight},
-        el usuario  cuenta con las siguientes restricciones: ${restrictFood},
-        ademas cuenta con las siguientes limitaciones: ${bodyLimits},
+        el usuario  cuenta con las siguientes restricciones: ${foodRestrictions},
+        ademas cuenta con las siguientes limitaciones: ${physicalLimitations},
         por ultimo el usuario tiene la siguiente meta objetivo: ${goal}
     `)
 }

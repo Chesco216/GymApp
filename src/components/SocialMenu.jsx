@@ -6,7 +6,7 @@ import { addDoc, collection } from 'firebase/firestore'
 
 export const SocialMenu = ({user}) => {
 
-  const { profilePictureURL, username, email, publicProfile } = user
+  const { profilePictureUrl, username, email } = user 
 
   const [postform, setPostform] = useState(false)
   const [post, setPost] = useState({
@@ -15,7 +15,7 @@ export const SocialMenu = ({user}) => {
     createdAt: '',
     likes: 7,
     post_image: '',
-    profilePictureUrl: profilePictureURL,
+    profilePictureUrl: profilePictureUrl,
     title: '',
     user_name: username
   })
@@ -46,7 +46,7 @@ export const SocialMenu = ({user}) => {
     <div className='social-menu-container'>
       <div className='menu-info-header'>
         <span className='menu-name-email-container'>
-          <img className='profile-pic-menu' src={profilePictureURL} alt='pipipi'/>
+          <img className='profile-pic-menu' src={profilePictureUrl} alt='pipipi'/>
           <label className='name-email-menu-label'>{username}</label>
           <label className='name-email-menu-label'>{email}</label>
         </span>

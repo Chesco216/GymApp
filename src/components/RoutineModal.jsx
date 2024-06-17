@@ -44,21 +44,24 @@ export const RoutineModal = ({ modalIsOpen, setIsOpen, exercises }) => {
       >
         <h1 className='group-routine'>{exercises.group}</h1>
         <hr/>
-      <div className='info-modal-container'>
-        <FireSVG/>
-        <label className='info-modal-label'>{exercises.cals}</label>
-        <ClockSVG/>
-        <label className='info-modal-label'>{exercises.duration}</label>
-      </div>
-      {
-        exercises.exercises.map((item) => {
-          return <ExerciseView key={item.set} sets={item}/>
-        })
-      }
-      <div className='powered-by-container'>
-      <div className='powered-by'><label className='powered-by-label'>Powered by</label> <LogoSVG className='powered-by-logo,'/> <img src='../../public/gpt_logo.png' className='gpt-logo' alt='logo'/></div>
-      </div>
-      <button className='close-modal-btn' onClick={closeModal}>close</button>
+        <div className='info-modal-container'>
+          <FireSVG/>
+          <label className='info-modal-label'>{exercises.cals}</label>
+          <ClockSVG/>
+          <label className='info-modal-label'>{exercises.duration}</label>
+        </div>
+        {
+          exercises.exercises.map((item) => {
+            return <ExerciseView key={item.set} sets={item}/>
+          })
+        }
+        <div className='powered-by-container'>
+        <div className='powered-by'>
+          <label className='powered-by-label'>Powered by</label>
+          <LogoSVG className='powered-by-logo,'/>
+          <img src='../../public/gpt_logo.png' className='gpt-logo' alt='logo'/></div>
+        </div>
+        <button className='close-modal-btn' onClick={closeModal}>close</button>
       </Modal>
   )
 }

@@ -1,33 +1,12 @@
 // import OpenAI from 'openai'
 import { routinePrompt } from './prompt'
 import { db } from './firebase'
-import { collection, doc, setDoc, addDoc } from 'firebase/firestore'
-import { getRoutines } from './getRoutines'
+import { collection, addDoc } from 'firebase/firestore'
 
-
-// const API_KEY = import.meta.env.VITE_GPT_KEY
-
-export const createRoutine = async(userinfo) => {
+export const createRoutine = async(id) => {
 
   const prompt = routinePrompt(userinfo)
-  // const url = 'https://api.openai.com/v1/chat/completions'
 
-  // const openai = new OpenAI({
-  //   apiKey: API_KEY,
-  //   dangerouslyAllowBrowser: true,
-  // });
-  //
-  // try {
-  //   const completion = await openai.chat.completions.create({
-  //     messages: [{ role: "system", content: prompt }],
-  //     model: "gpt-3.5-turbo",
-  //     response_format: { type: "json_object" },
-  //   });
-  //
-  //   //FIX: format data
-  //   const data = completion.choices[0].message.content;
-  //   console.log(data)
-  //
     try {
       const res = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
@@ -126,7 +105,7 @@ export const createRoutine = async(userinfo) => {
       const docRef = collection(db, "rutinas-personalizadas");
       await addDoc(docRef, {
         ...formatedData,
-        uid: userinfo.uid,
+        uid: id,
         is_available: true,
       });
 

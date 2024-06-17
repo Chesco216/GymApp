@@ -67,6 +67,7 @@ export const LogIn = () => {
 						<span className='form-fields'>
 							<label className='form-label'>Correo electronico</label>
 							<input
+                required
 								className='form-input'
 								name='email'
 								type='email'
@@ -80,6 +81,7 @@ export const LogIn = () => {
 								Contraseña
 							</label>
 							<input
+                required
 								className='form-input'
 								name='pswd'
 								type='password'

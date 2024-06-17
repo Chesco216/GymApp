@@ -73,7 +73,6 @@ export const Macros = () => {
             </tbody>
           </table>
         </div>
-        <div className='card-container'>
           <div className='food-card-container'>
             <img src={cardData.img} className='food-card-img' />
             <span className='food-card-text'>
@@ -81,7 +80,6 @@ export const Macros = () => {
               <label>{cardData.descripcion}</label>
             </span>
           </div>
-        </div>
       </div>
     </>
   )

@@ -35,7 +35,7 @@ export const InfoForm = () => {
       weight: parseFloat(weight),
       gender:gender,
       foodRestrictions: food,
-      physiscalLimitations: body,
+      physicalLimitations: body,
       goal: goal
     }
 

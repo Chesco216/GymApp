@@ -19,39 +19,23 @@ export const InfoForm = () => {
   const [gender, setGender] = useState()
   const [goal, setGoal] = useState()
 
-    // await setDoc(doc(db, 'users', uid), {
-    //   age: 15,
-    //   //TODO: get the actual date
-    //   createdAt: '',
-    //   email: email,
-    //   height: 10,
-    //   memberType: 'estandar',
-    //   profilePictureURL: photoURL,
-    //   publicProfile: true,
-    //   uid: uid,
-    //   updateAt: '',
-    //   username: displayName,
-    //   weight: 10
-    // })
-
   const handleSubmit = async(e) => {
     e.preventDefault()
     const currDate = new Date()
     const userObj = {
-      age: age,
+      age: parseFloat(age),
       createdAt: currDate,
       email: context.userinfo.email,
-      height: height,
-      memberType: 'estandar',
+      height: parseFloat(height),
+      memberType: false,
       profilePictureUrl: context.userinfo.photoURL,
-      publicProfile: true,
       uid: context.userinfo.uid,
-      updateAt: currDate,
+      updatedAt: currDate,
       username: context.userinfo.displayName,
-      weight: weight,
+      weight: parseFloat(weight),
       gender:gender,
-      restrictFood: food,
-      bodyLimits: body,
+      foodRestrictions: food,
+      physiscalLimitations: body,
       goal: goal
     }
 

@@ -10,6 +10,10 @@ import { motion } from "framer-motion"
 import { MenuProfile } from '../components/MenuProfile'
 import { CloseSVG, MenuSVG } from '../components/SVGS'
 import { RoutineGrid } from '../components/RoutineGrid'
+import { getRoutines } from '../services/getRoutines'
+import { EmptyDiet } from '../components/EmptyDiet'
+import { EmptyRoutine } from '../components/EmptyRoutine'
+import { getDiets } from '../services/getDiets'
 
 const variants = {
 	open: { opacity: 1, x: 100 },
@@ -23,6 +27,8 @@ export const Profile = ({ setMenuOption }) => {
 
 	const { userinfo, setUserinfo } = useContext(userContext)
 	const [user, setUser] = useState(null)
+	const [routines, setRoutines] = useState()
+	const [diets, setDiets] = useState()
 
 	// console.log('userprofileID: ', userinfo.uid)
 	const getUserInfo = async () => {
@@ -38,6 +44,10 @@ export const Profile = ({ setMenuOption }) => {
 
 	useEffect(() => {
 		getUserInfo()
+		getRoutines()
+			.then(data => setRoutines(data))
+		getDiets()
+			.then(data => setDiets(data))
 	}, [])
 
 	return (
@@ -83,11 +93,19 @@ export const Profile = ({ setMenuOption }) => {
 						</div>
 						<div className='profile-diet-content'>
 							<h1>Tu dieta semanal </h1>
-							<DietGrid />
+							{
+								(diets) ? <DietGrid />
+									:
+									<EmptyDiet />
+							}
 						</div>
 						<div className='profile-routine-section'>
 							<h1>Tu rutina semanal</h1>
-							<RoutineGrid />
+							{
+								(routines) ? <RoutineGrid />
+									:
+									<EmptyRoutine />
+							}
 						</div>
 						<div className='profile-progress-section'>
 							<h1>Tu Progreso</h1>

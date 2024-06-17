@@ -81,7 +81,7 @@ export const PaymentMethod = () => {
       console.log('updated user: ', userinfo)
 
       try {
-        await setDoc(doc(db, 'users', userinfo.uid), { ...userinfo, memberType: 'premium' })
+        await setDoc(doc(db, 'users', userinfo.uid), { ...userinfo, memberType: true })
         console.log('user memership update')
         navigate('/profile')
       } catch (error) {

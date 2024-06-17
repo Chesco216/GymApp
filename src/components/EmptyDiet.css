@@ -1,0 +1,27 @@
+
+.empty-diet-container {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: fit-content;
+  padding: 50px 100px 50px 100px;
+  align-items: center;
+  background: #424449;
+  border-radius: 20px;
+}
+
+.empty-diet-label {
+  margin-left: 30px;
+}
+
+.empty-diet-btn {
+  margin-left: 30px;
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  background: white;
+  color: #424449;
+  border: none;
+  border-radius: 10px;
+}

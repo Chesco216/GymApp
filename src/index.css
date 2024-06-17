@@ -9,6 +9,11 @@
   overflow: scroll;
 }
 
+#root::-webkit-scrollbar {
+  display: none;
+    width: 0px;
+}
+
 @media (max-width: 768px) {
 	#root {
 		overflow: scroll;

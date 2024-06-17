@@ -79,17 +79,10 @@ const UpdateForm = ({hide, setHide}) => {
 
   const handleUpdate = async(e) => {
     e.preventDefault()
-    const currDate =new Date()
-    const picture = await handleUploadImage(e)
-    setUserinfo({
-      ...user,
-      updateAt: currDate,
-      profilePictureUrl: (picture != null) ? picture : userinfo.profilePictureUrl
-    })
 
     try {
       console.log('userinfo to upload',userinfo)
-      await setDoc(doc(db, 'users', userinfo.uid), { ...userinfo })
+      await setDoc(doc(db, 'users', userinfo.uid), { ...user })
       setHide(true)
       console.log('profile uploaded to firebase')
     } catch (error) {
@@ -98,7 +91,7 @@ const UpdateForm = ({hide, setHide}) => {
   }
 
   const handleUploadImage = async(e) => {
-    const image = e.target.image.files[0]
+    const image = e.target.files[0]
     if(!image) return null
     const profilePictureRef = ref(storage, `profile-images/${image.name}`)
     await uploadBytes(profilePictureRef, image)
@@ -112,7 +105,18 @@ const UpdateForm = ({hide, setHide}) => {
     <form className={`update-info-form ${hide}`} onSubmit={handleUpdate}>
       <div className='update-form-top'>
         <img className='info-profile-image-1' src={(userinfo.profilePictureUrl) ? userinfo.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'}/>
-        <input id='image-input' className='new-profile-picture' type='file' name='image' accept='.jpg, .png, .jpeg'/>
+        <input id='image-input' className='new-profile-picture' type='file' name='image' accept='.jpg, .png, .jpeg'
+          onChange={async(e) => {
+            if(e.target.files[0]) {
+              const pic = await handleUploadImage(e)
+              setUser({
+                ...user,
+                profilePictureUrl: pic,
+                updatedAt: new Date()
+              })
+            }
+          }}
+        />
         <div className='exit-form' onClick={() => {setHide(true)}}>
           <CloseSVG/>
         </div>

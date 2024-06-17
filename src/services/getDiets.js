@@ -1,11 +1,13 @@
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "./firebase"
 
-export const getDiets = async(userinfo) => {
+export const getDiets = async() => {
   console.log('get Diets')
+  const id = localStorage.getItem('user').replaceAll('"','' );
+  
 
   let data
-  const q = query(collection(db, "dietas-personalizadas"), where("uid", "==", userinfo.uid), where("is_available", "==", true))
+  const q = query(collection(db, "dietas-personalizadas"), where("uid", "==", id), where("is_available", "==", true))
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     data = doc.data()

@@ -69,6 +69,7 @@ export const SignIn = () => {
             <span className='form-fields'>
               <label className='form-label'>Nombre</label>
               <input
+                required
                 className='form-input'
                 name='username'
                 type='text'
@@ -80,6 +81,7 @@ export const SignIn = () => {
             <span className='form-fields'>
               <label className='form-label'>Correo electrionico</label>
               <input
+                required
                 className='form-input'
                 name='email'
                 type='email'
@@ -91,6 +93,7 @@ export const SignIn = () => {
             <span className='form-fields'>
               <label className='form-label'>Contraseña</label>
               <input
+                required
                 className='form-input'
                 name='password'
                 type='password'

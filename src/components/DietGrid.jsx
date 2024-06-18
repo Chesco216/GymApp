@@ -33,7 +33,7 @@ export const DietGrid = () => {
         ) : (<></>)
       }
       {
-        (userinfo.memberType == 'premium') &&
+        (userinfo.memberType) &&
         <button className='diet-card' onClick={handleNewDiet}>Quieres cambiar tu dieta?</button>
       }
     </div>

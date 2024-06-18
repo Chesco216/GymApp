@@ -71,7 +71,7 @@ export const InfoForm = () => {
           </span>
           <span className='info-span'>
             <label>
-              Cual es tu peso?
+              Cual es tu peso? (kg)
             </label>
             <input
               className='info-input'
@@ -83,7 +83,7 @@ export const InfoForm = () => {
           </span>
           <span className='info-span'>
             <label>
-              Cual es tu altura?
+              Cual es tu altura? (cm)
             </label>
             <input
               className='info-input'

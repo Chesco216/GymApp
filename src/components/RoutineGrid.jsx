@@ -17,7 +17,7 @@ export const RoutineGrid = () => {
     <div className='routines-grid'>
       <RoutineCard/>
       {
-        (userinfo.memberType == 'premium') &&
+        (userinfo.memberType) &&
         <button className='routine-card-container' onClick={handleNewRoutine}>Quieres una nueva rutina?</button>
       }
     </div>

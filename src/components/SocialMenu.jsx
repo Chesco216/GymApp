@@ -9,7 +9,7 @@ export const SocialMenu = ({user}) => {
 
   const { profilePictureUrl, username, email } = user 
 
-  const [postform, setPostform] = useState(false)
+  // const [postform, setPostform] = useState(false)
   const [post, setPost] = useState({
     content: '',
     comments: 0,
@@ -24,9 +24,26 @@ export const SocialMenu = ({user}) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
+    const pic = await handleUploadImage(e)
     try {
-      await addDoc(collection(db, 'publicaciones'), { ...post })
-      setPostform(false)
+      await addDoc(collection(db, 'publicaciones'), {
+        ...post,
+        post_image: pic,
+        createdAt: new Date()
+      })
+      setPost({
+        content: '',
+        comments: 0,
+        createdAt: '',
+        likes: 0,
+        likedBy: [],
+        post_image: '',
+        profilePictureUrl: profilePictureUrl,
+        title: '',
+        user_name: username
+      })
+      // setPostform(false)
+      alert('publicacion subido correctamente')
       console.log('post uploaded correctly')
     } catch (error) {
       console.log(error.code)
@@ -34,7 +51,7 @@ export const SocialMenu = ({user}) => {
   }
   
   const handleUploadImage = async(e) => {
-    const image = e.target.files[0]
+    const image = e.target.picture.files[0]
     if(!image) return null
     const profilePictureRef = ref(storage, `post-pictures/${image.name}`)
     await uploadBytes(profilePictureRef, image)
@@ -59,7 +76,6 @@ export const SocialMenu = ({user}) => {
             onChange={(e) => {setPost({
               ...post,
               title: e.target.value,
-              createdAt: new Date()
             })}}
           />
         </span>
@@ -84,16 +100,6 @@ export const SocialMenu = ({user}) => {
             id='post-pic-upload'
             type='file'
             name='picture'
-            onChange={ async(e) => {
-              if(e.target.files[0]) {
-                const pic = await handleUploadImage(e)
-                setPost({
-                  ...post,
-                  post_image: pic
-                })
-              }
-              
-            }}
           />
         </span>
         <button className='create-post-btn' type='submit'>Publicar</button>

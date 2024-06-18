@@ -3,7 +3,7 @@ import { routinePrompt } from './prompt'
 import { db } from './firebase'
 import { collection, addDoc } from 'firebase/firestore'
 
-export const createRoutine = async(id) => {
+export const createRoutine = async(userinfo) => {
 
   const prompt = routinePrompt(userinfo)
 
@@ -105,7 +105,7 @@ export const createRoutine = async(id) => {
       const docRef = collection(db, "rutinas-personalizadas");
       await addDoc(docRef, {
         ...formatedData,
-        uid: id,
+        uid: userinfo.uid,
         is_available: true,
       });
 

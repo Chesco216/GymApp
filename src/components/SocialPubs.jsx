@@ -1,16 +1,53 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './SocialPubs.css'
-import { CommentSVG, LikeSVG } from './SVGS'
+import { CommentSVG, LikeSVG, LikedSVG } from './SVGS'
+import { doc, setDoc } from 'firebase/firestore'
+import { db } from '../services/firebase'
 
-export const SocialPubs = (post) => {
+export const SocialPubs = ({post}) => {
 
   const ppost = post.post
-  console.log('fomr pubs: ',ppost)
+  const id = post.id
+  console.log('fomr pubs: ',post)
   const { user_name, profilePictureUrl, content, comments, createdAt, post_image, title, likes } = ppost
-  const date = new Date(createdAt.seconds)
+  const date = new Date(createdAt.seconds*1000)
+  const userId = localStorage.getItem('user').replaceAll('"','');
+  console.log('id from post', id)
 
-  console.log(date.toDateString())
+  const [liked, setLiked] = useState(false)
 
+  useEffect(() => {
+    if(ppost.likedBy) {
+      ppost.likedBy.map((item) => {
+        if( item == userId ) setLiked(true)
+      })
+    }
+  })
+
+  const setLike = async() => {
+
+    const likesId = ppost.likedBy
+    try {
+      console.log('pubid', id)
+      likesId.push(userId);
+      console.log(likesId)
+      await setDoc(doc(db, 'publicaciones', id), {
+        ...ppost,
+        likes: ppost.likes + 1,
+        likedBy: likesId
+      })
+      setLiked(true)
+      console.log('liked pipipi')
+    } catch (error) {
+      console.log(error)
+    }
+    console.log('liked', userId)
+  }
+
+  const createComment = () => {
+    
+  }
+  
   return (
     <div className='post-card-container'>
       <div className='card-container'>
@@ -25,10 +62,22 @@ export const SocialPubs = (post) => {
         <p className='post-content'>{content}</p>
         <img className='post-image' src={post_image}/>
         <div className='post-footer'>
-          <span className='like-comnts'>
-            <LikeSVG/>
-            <label className='like-comnts-content'>{likes}</label>
-          </span>
+          {
+            (liked) ?
+            <>
+              <span className='like-comnts'>
+                <LikedSVG/>
+                <label className='like-comnts-content'>{likes}</label>
+              </span>
+            </>
+            :
+            <>
+              <span onClick={setLike} className='like-comnts'>
+                <LikeSVG/>
+                <label className='like-comnts-content'>{likes}</label>
+              </span>
+            </>
+          }
           <span className='like-comnts'>
             <CommentSVG/>
             <label className='like-comnts-content'>{comments}</label>
@@ -39,3 +88,20 @@ export const SocialPubs = (post) => {
   )
 }
 
+const CommentBox = () => {
+
+  const getComents = async() {
+    try {
+      
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return (
+    <div className='comment-box'>
+      <textarea/>
+      <button>Comentar</button>
+    </div>
+  )
+}

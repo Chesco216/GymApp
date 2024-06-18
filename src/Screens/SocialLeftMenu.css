@@ -1,0 +1,19 @@
+.left-menu-container {
+  margin: 10% 0px 0px 30%;
+  background: #FF004D;
+  height: 70%;
+  width: fit-content;
+  padding: 80px 50px 80px 50px;
+  border-radius: 10px;
+}
+
+.menu-profile-span-1 {
+  display: flex;
+  margin: 25px 0px 25px 0px;
+}
+
+.menu-profile-label-1 {
+  margin-left: 20px;
+  font-size: 20px;
+  color: white;
+}

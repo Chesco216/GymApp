@@ -3,6 +3,7 @@ import './SocialMenu.css'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { db, storage } from '../services/firebase'
 import { addDoc, collection } from 'firebase/firestore'
+import { AddPictureSVG } from './SVGS'
 
 export const SocialMenu = ({user}) => {
 
@@ -11,9 +12,10 @@ export const SocialMenu = ({user}) => {
   const [postform, setPostform] = useState(false)
   const [post, setPost] = useState({
     content: '',
-    comments: 10,
+    comments: 0,
     createdAt: '',
-    likes: 7,
+    likes: 0,
+    likedBy: [],
     post_image: '',
     profilePictureUrl: profilePictureUrl,
     title: '',
@@ -22,7 +24,6 @@ export const SocialMenu = ({user}) => {
 
   const handleSubmit = async(e) => {
     e.preventDefault()
-    // console.log('post to upload', post)
     try {
       await addDoc(collection(db, 'publicaciones'), { ...post })
       setPostform(false)
@@ -43,65 +44,61 @@ export const SocialMenu = ({user}) => {
   }
 
   return (
-    <div className='social-menu-container'>
-      <div className='menu-info-header'>
-        <span className='menu-name-email-container'>
-          <img className='profile-pic-menu' src={profilePictureUrl} alt='pipipi'/>
-          <label className='name-email-menu-label'>{username}</label>
-          <label className='name-email-menu-label'>{email}</label>
+    <form className='upload-post-form' onSubmit={handleSubmit}>
+      <div className='social-menu-container'>
+        <div className='menu-info-header'>
+          <span className='menu-name-email-container'>
+            <img className='profile-pic-menu' src={profilePictureUrl} alt='pipipi'/>
+          </span>
+        <span className='upload-post-span-title'>
+          <label className='upload-post-label'>Agrega un titulo</label>
+          <input className='upload-post-input'
+            type='text'
+            name='title'
+            value={post.title}
+            onChange={(e) => {setPost({
+              ...post,
+              title: e.target.value,
+              createdAt: new Date()
+            })}}
+          />
         </span>
-        <button className='create-post-btn' onClick={() => {setPostform(!postform)}}>+ Crear publicacion</button>
+        </div>
+        <span className='upload-post-span'>
+          <textarea className='upload-post-input'
+            placeholder='Que estas pensando?'
+            style={{ height: '80px'}}
+            name='content'
+            value={post.content}
+            onChange={(e) => {setPost({
+              ...post,
+              content: e.target.value
+            })}}
+          />
+        </span>
+        <span className='upload-picture-post-span'>
+          <label for='post-pic-upload'>
+            <AddPictureSVG for='post-pic-upload'/>
+          </label>
+          <input className='upload-post-input-pic'
+            id='post-pic-upload'
+            type='file'
+            name='picture'
+            onChange={ async(e) => {
+              if(e.target.files[0]) {
+                const pic = await handleUploadImage(e)
+                setPost({
+                  ...post,
+                  post_image: pic
+                })
+              }
+              
+            }}
+          />
+        </span>
+        <button className='create-post-btn' type='submit'>Publicar</button>
       </div>
-      {
-        (postform) && (
-          <form className='upload-post-form' onSubmit={handleSubmit}>
-            <span className='upload-post-span'>
-              <label className='upload-post-label'>Titulo de la publicacion</label>
-              <input className='upload-post-input'
-                type='text'
-                name='title'
-                value={post.title}
-                onChange={(e) => {setPost({
-                  ...post,
-                  title: e.target.value,
-                  createdAt: new Date()
-                })}}
-              />
-            </span>
-            <span className='upload-post-span'>
-              <label className='upload-post-label'>Descripcion</label>
-              <textarea className='upload-post-input'
-                style={{ height: '80px'}}
-                name='content'
-                value={post.content}
-                onChange={(e) => {setPost({
-                  ...post,
-                  content: e.target.value
-                })}}
-              />
-            </span>
-            <span className='upload-post-span'>
-              <label className='upload-post-label'></label>
-              <input className='upload-post-input new-profile-picture'
-                type='file'
-                name='picture'
-                onChange={ async(e) => {
-                  if(e.target.files[0]) {
-                    const pic = await handleUploadImage(e)
-                    setPost({
-                      ...post,
-                      post_image: pic
-                    })
-                  }
-                  
-                }}
-              />
-            </span>
-            <button className='create-post-btn' type='submit'>Publicar</button>
-          </form>
-        )
-      }
-    </div>
+    </form>
   )
 }
 

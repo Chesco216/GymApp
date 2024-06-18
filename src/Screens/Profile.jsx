@@ -42,77 +42,65 @@ export const Profile = ({ setMenuOption }) => {
 		// console.log(data)
 	}
 
-	useEffect(() => {
-		getUserInfo()
-		getRoutines()
-			.then(data => setRoutines(data))
-		getDiets()
-			.then(data => setDiets(data))
-	}, [])
-
-	return (
-		<div style={{ width: '100vw', height: '100vh' }}>
-			{(!user) ? (<Loading />)
-				:
-				(
-					<div className='profile-container'>
-						<div className='user-pic-name-email'>
-							<div style={{ display: 'flex' }}>
-								<img className='user-image' src={(user.profilePictureUrl) ? user.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'} alt='profile-picture' />
-								<span className='user-name-email'>
-									<h1>{user.username}</h1>
-									<label>{user.email}</label>
-								</span>
-							</div>
-							<motion.nav
-								className='config-menu-motion'
-								animate={menuOpen ? "open" : "closed"}
-								variants={variants}>
-								<MenuProfile setMenuOption={setMenuOption} />
-							</motion.nav>
-							<button className='update-info-button' onClick={() => { setMenuOpen(menuOpen => !menuOpen) }}>
-								{
-									(menuOpen) == true ? (<CloseSVG />)
-										: (<MenuSVG />)
-								}
-							</button>
-						</div>
-						<div className='stats-section'>
-							<span className='user-stats-span'>
-								<h1 className='user-stats-value'>{user.weight}<label className='stats-value-metric'>kg</label></h1>
-								<label className='user-stats-label'>PESO</label>
-							</span>
-							<span className='user-stats-span'>
-								<h1 className='user-stats-value'>{user.height}<label className='stats-value-metric'>cm</label></h1>
-								<label className='user-stats-label'>ALTURA</label>
-							</span>
-							<span className='user-stats-span'>
-								<h1 className='user-stats-value'>{user.age}<label className='stats-value-metric'>años</label></h1>
-								<label className='user-stats-label'>EDAD</label>
-							</span>
-						</div>
-						<div className='profile-diet-content'>
-							<h1>Tu dieta semanal </h1>
-							{
-								(diets) ? <DietGrid />
-									:
-									<EmptyDiet />
-							}
-						</div>
-						<div className='profile-routine-section'>
-							<h1>Tu rutina semanal</h1>
-							{
-								(routines) ? <RoutineGrid />
-									:
-									<EmptyRoutine />
-							}
-						</div>
-						<div className='profile-progress-section'>
-							<h1>Tu Progreso</h1>
-							{/*TODO: replace with progres content*/}
-						</div>
-					</div>
-				)}
-		</div>
-	)
+  return (
+    <div style={{width: '100vw', height: '100vh'}}>
+      { (!user) ? ( <Loading/> ) 
+      :
+      (
+      <div className='profile-container'>
+        <div className='user-pic-name-email'>
+          <div style={{ display: 'flex'}}>
+          <img className='user-image' src={ (user.profilePictureUrl) ? user.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg' } alt='profile-picture'/>
+          <span className='user-name-email'>
+            <h1>{ user.username }</h1>
+            <label>{ user.email }</label>
+          </span>
+          </div>
+          <motion.nav
+            className='config-menu-motion'
+            animate={menuOpen ? "open" : "closed"}
+            variants={variants}>
+              <MenuProfile setMenuOption={setMenuOption}/>
+          </motion.nav>
+          <button className='update-info-button' onClick={() => { setMenuOpen(menuOpen => !menuOpen) }}>
+                {
+                  (menuOpen) == true ? ( <CloseSVG/> )
+                  : ( <MenuSVG/> )
+                }
+          </button>
+          </div>
+        <div className='stats-section'>
+          <span className='user-stats-span'>
+            <h1 className='user-stats-value'>{ user.weight }<label className='stats-value-metric'>kg</label></h1>
+            <label className='user-stats-label'>PESO</label>
+          </span>
+          <span className='user-stats-span'>
+            <h1 className='user-stats-value'>{ user.height }<label className='stats-value-metric'>cm</label></h1>
+            <label className='user-stats-label'>ALTURA</label>
+          </span>
+          <span className='user-stats-span'>
+            <h1 className='user-stats-value'>{ user.age }<label className='stats-value-metric'>años</label></h1>
+            <label className='user-stats-label'>EDAD</label>
+          </span>
+        </div>
+        <div className='profile-diet-content'>
+          <h1>Tu dieta semanal </h1>
+          {
+            (diets) ? <DietGrid/>
+            :
+              <EmptyDiet/>
+          }
+        </div>
+        <div className='profile-routine-section'>
+          <h1>Tu rutina semanal</h1>
+          {
+            (routines) ? <RoutineGrid/>
+            :
+              <EmptyRoutine/>
+          }
+        </div>
+      </div>
+      )}
+    </div>
+  )
 }

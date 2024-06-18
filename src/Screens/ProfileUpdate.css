@@ -1,0 +1,12 @@
+.profile-update-container {
+  width: 100vw;
+  /* height: 100vh; */
+  padding: 50px 0px 50px 0px;
+  display: grid;
+  place-content: center;
+  overflow: scroll;
+}
+
+.profile-update-container::-webkit-scrollbar {
+  display: none;
+}

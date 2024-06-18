@@ -1,4 +1,4 @@
-const url = 'http://localhost:3000/macros'
+const url = 'https://foodmacros.onrender.com/macros'
 
 export const fetchMacros = async () => {
 	const res = await fetch(url)

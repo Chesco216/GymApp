@@ -16,39 +16,31 @@ import { EmptyRoutine } from '../components/EmptyRoutine'
 import { getDiets } from '../services/getDiets'
 
 const variants = {
-  open: { opacity: 1, x: 100 },
-  closed: { opacity: 0, x: "+100%" },
+	open: { opacity: 1, x: 100 },
+	closed: { opacity: 0, x: "+100%" },
 }
 
 export const Profile = ({ setMenuOption }) => {
 
-  const navigate = useNavigate()
-  const [menuOpen, setMenuOpen] = useState(false)
-  
-  const { userinfo, setUserinfo } = useContext(userContext)
-  const [user, setUser] = useState(null)
-  const [routines, setRoutines] = useState()
-  const [diets, setDiets] = useState()
+	const navigate = useNavigate()
+	const [menuOpen, setMenuOpen] = useState(false)
 
-  // console.log('userprofileID: ', userinfo.uid)
-  const getUserInfo = async() => {
-    const userID = localStorage.getItem('user')
-    // console.log('userID',userID)
-    const id = (userID) ? userID.replaceAll('"','' ) : userinfo.uid
-    const response = await getDoc(doc(db, 'users', id))
-    const data = response.data()
-    setUser(data)
-    setUserinfo(data)
-    // console.log(data)
-  }
+	const { userinfo, setUserinfo } = useContext(userContext)
+	const [user, setUser] = useState(null)
+	const [routines, setRoutines] = useState()
+	const [diets, setDiets] = useState()
 
-  useEffect(() => {
-    getUserInfo()
-    getRoutines()
-    .then(data => setRoutines(data))
-    getDiets()
-    .then(data => setDiets(data))
-  }, [])
+	// console.log('userprofileID: ', userinfo.uid)
+	const getUserInfo = async () => {
+		const userID = localStorage.getItem('user')
+		// console.log('userID',userID)
+		const id = (userID) ? userID.replaceAll('"', '') : userinfo.uid
+		const response = await getDoc(doc(db, 'users', id))
+		const data = response.data()
+		setUser(data)
+		setUserinfo(data)
+		// console.log(data)
+	}
 
   return (
     <div style={{width: '100vw', height: '100vh'}}>

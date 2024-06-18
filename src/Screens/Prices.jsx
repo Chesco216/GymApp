@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Header } from '../components/Header'
 import { PriceCard } from '../components/PriceCard'
+import { userContext } from '../context/UserProvider'
 import "./Prices.css"
 
 export const prices = [
@@ -9,8 +10,7 @@ export const prices = [
 		price: 0,
 		utils: [
 			'Obtiene las macros para tu dia a dia',
-			'Rutinas',
-			'Seguimiento de tu progreso',
+			'Rutinas y dietas',
 		],
 	},
 	{
@@ -19,12 +19,16 @@ export const prices = [
 		utils: [
 			'Obtiene las macros para tu dia a dia',
 			'Rutinas y dietas personalizadas',
-			'Seguimiento de tu progreso',
+      'Crea una nueva rutina cuando quieras'
 		],
 	},
 ]
 
+
 export const Prices = () => {
+
+  const { userinfo } = useContext(userContext)
+
 	return (
 		<div className='prices-container'>
 			<Header />
@@ -32,7 +36,7 @@ export const Prices = () => {
 				{
 					prices.map((item) => {
 						return (
-							<PriceCard plan={item.plan} price={item.price} utils={item.utils} />
+							<PriceCard plan={item.plan} price={item.price} utils={item.utils} user={userinfo}/>
 						)
 					})
 				}

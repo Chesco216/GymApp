@@ -73,18 +73,8 @@
   color: white;
 }
 
-.comment-div {
-  width: 100%;
-  padding: 10px 20px 10px 20px;
-  box-sizing: border-box;
-  margin-bottom: 10px;
-  border: 1px solid #FF004D;
-  border-radius: 20px;
-}
-
 .comment-span {
   display: flex;
-  
 }
 
 .comment-profile-pic {
@@ -98,23 +88,6 @@
   font-size: 15px;
 }
 
-.comment-create-container {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin-top: 20px;
-  border: 2px solid #242933;
-  padding: 10px 20px 10px 20px;
-  box-sizing: border-box;
-  border-radius: 30px;
-}
+.comment-content {
 
-.comment-input {
-  width: 100%;
-  background: none;
-  border: none;
-}
-
-.comment-input::focus {
-  border: none;
 }

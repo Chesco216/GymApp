@@ -26,7 +26,6 @@ export const SocialPubGrid = ({post, user}) => {
             <>
               {
                 mapPost.map((item) => {
-                  console.log('item', item)
                   return (
                     <SocialPubs key={item.post.title} post={item}/>
                   )

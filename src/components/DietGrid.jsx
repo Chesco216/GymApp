@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { DietCard } from './DietCard'
-import { Diet } from '../assets/diet.model'
 import { createDiet } from '../services/createDiet'
 import { userContext } from '../context/UserProvider'
 import { getDiets } from '../services/getDiets'

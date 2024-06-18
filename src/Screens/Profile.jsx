@@ -107,10 +107,6 @@ export const Profile = ({ setMenuOption }) => {
               <EmptyRoutine/>
           }
         </div>
-        <div className='profile-progress-section'>
-          <h1>Tu Progreso</h1>
-          {/*TODO: replace with progres content*/}
-        </div>
       </div>
       )}
     </div>

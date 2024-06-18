@@ -8,6 +8,7 @@ import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 import { db } from '../services/firebase'
 import { Loading } from '../components/Loading'
 import { LogSignSVG } from '../components/SVGS'
+import { SocialLeftMenu } from './SocialLeftMenu'
 
 export const Social = () => {
   
@@ -28,11 +29,15 @@ export const Social = () => {
       const querySnapshot = await getDocs(collection(db, 'publicaciones'));
       querySnapshot.forEach((doc) => {
         const data = doc.data()
-        postArr.push(data)
+        postArr.push({
+          post: data,
+          id: doc.id
+        })
         setPost(postArr)
         // ( post.length > 0 ) ? setPost([post, data])
         // : setPost(data)
       })
+      console.log(post)
     } catch (error) {
       console.log('firebase get pubs error: ', error)
     }
@@ -63,14 +68,14 @@ export const Social = () => {
         :
         (
           <>
-            <div onClick={() => { navigate('/profile') }} className='back-to-landing'>
-              <LogSignSVG/>
-            </div>
             <div className='social-screen-container'>
-              <SocialMenu user={userinfo}/>
+              <div onClick={() => { navigate('/profile') }} className='back-to-profile'>
+                <LogSignSVG/>
+              </div>
+                <SocialLeftMenu/>
                 {
-                  (post.length > 0) ? <SocialPubGrid post={post}/>
-                  : <></>
+                  (post.length > 0) ? <SocialPubGrid user={userinfo} post={post}/>
+                  : <Loading/>
                 }
             </div>
           </>

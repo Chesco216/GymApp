@@ -6,6 +6,7 @@ import { ChangePlan } from '../components/ChangePlan'
 import { PaymentMethod} from '../components/PaymentMethod'
 import { Social } from './Social'
 import { Loading } from '../components/Loading'
+import './ProfileUpdate.css'
 
 export const ProfileUpdate = ({ option, setMenuOption }) => {
 
@@ -24,16 +25,7 @@ export const ProfileUpdate = ({ option, setMenuOption }) => {
   console.log(option)
 
   return (
-    <div style={{
-      width: '100vw',
-      height: '100vh',
-      overflowY: 'hidden',
-      background: '#242933',
-      display: 'grid',
-      placeContent: 'center',
-      paddingTop: '50px',
-      paddingBottom: '50px'
-    }}>
+    <div className='profile-update-container'>
       {
         (option === 'info') ? (<InfoProfile/>)
         : (option === 'plan') ? (<ChangePlan/>)

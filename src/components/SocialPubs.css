@@ -1,9 +1,10 @@
 .post-card-container {
-  width: 600px;
+  width: 80%;
   height: fit-content;
   padding: 40xp 100px 40px 100px;
   border-radius: 5px;
   background: #424449;
+  margin-bottom: 20px;
 }
 
 .card-container {
@@ -58,6 +59,7 @@
 .like-comnts {
   display: flex;
   align-items: center;
+  color: white
 }
 
 .like-comnts-content {

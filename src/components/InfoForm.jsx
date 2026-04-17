@@ -19,7 +19,7 @@ export const InfoForm = () => {
   const [gender, setGender] = useState()
   const [goal, setGoal] = useState()
 
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const currDate = new Date()
     const userObj = {
@@ -27,13 +27,13 @@ export const InfoForm = () => {
       createdAt: currDate,
       email: context.userinfo.email,
       height: parseFloat(height),
-      memberType: false,
+      memberType: true,
       profilePictureUrl: context.userinfo.photoURL,
       uid: context.userinfo.uid,
       updatedAt: currDate,
       username: context.userinfo.displayName,
       weight: parseFloat(weight),
-      gender:gender,
+      gender: gender,
       foodRestrictions: food,
       physicalLimitations: body,
       goal: goal
@@ -43,7 +43,7 @@ export const InfoForm = () => {
       console.log('context: ', context)
       console.log('userinfo:', context.userinfo)
       console.log('userObj: ', userObj)
-      await setDoc(doc(db, 'users', userObj.uid),{ ...userObj })
+      await setDoc(doc(db, 'users', userObj.uid), { ...userObj })
       navigate('/profile')
     } catch (error) {
       console.log(error)
@@ -107,7 +107,7 @@ export const InfoForm = () => {
           </span>
           <span className='info-span'>
             <label>
-              Restricciones alimentarias   
+              Restricciones alimentarias
             </label>
             <input
               className='info-input'

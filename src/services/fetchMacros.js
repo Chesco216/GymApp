@@ -1,16 +1,16 @@
 const url = 'https://foodmacros.onrender.com/macros'
 
 export const fetchMacros = async () => {
-	const res = await fetch(url)
-	const data = await res.json()
+  const res = await fetch(url)
+  const data = await res.json()
 
-	return data
+  return data
 }
 
 export const fetchMacrosByCategory = async (category) => {
-	const urlFilter = (category == 'todos') ? url : `${url}/${category}`
-	const res = await fetch(urlFilter)
-	const data = await res.json()
+  const urlFilter = (category == 'todos') ? url : `${url}/${category}`
+  const res = await fetch(urlFilter)
+  const data = await res.json()
 
-	return data
+  return data
 } 

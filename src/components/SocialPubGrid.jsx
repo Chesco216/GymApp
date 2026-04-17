@@ -5,37 +5,37 @@ import { Loading } from './Loading'
 import { LogSignSVG } from './SVGS'
 import { SocialMenu } from './SocialMenu'
 
-export const SocialPubGrid = ({post, user}) => {
+export const SocialPubGrid = ({ post, user }) => {
 
   console.log(post)
-  const [mapPost,setMappost] = useState([])
-  console.log('maped from grid',mapPost)
+  const [mapPost, setMappost] = useState([])
+  console.log('maped from grid', mapPost)
 
   useEffect(() => {
     setMappost(post)
-  }, [])
+  }, [post])
 
   return (
     <div className='post-grid-container'>
       <div className='social-menu-pubs-container'>
-        <SocialMenu user={user}/>
+        <SocialMenu user={user} />
       </div>
       <div className='social-grid-pubs-container'>
         {
-          (mapPost.length > 0) ? 
+          (mapPost.length > 0) ?
             <>
               {
                 mapPost.map((item) => {
                   return (
-                    <SocialPubs key={item.post.title} post={item}/>
+                    <SocialPubs key={item.post.title} post={item} />
                   )
                 })
               }
             </>
-          : <Loading/>
+            : <Loading />
 
         }
       </div>
-      </div>
+    </div>
   )
 }

@@ -1,10 +1,10 @@
 import { collection, getDocs, query, where } from "firebase/firestore"
 import { db } from "./firebase"
 
-export const getDiets = async() => {
+export const getDiets = async () => {
   console.log('get Diets')
-  const id = localStorage.getItem('user').replaceAll('"','' );
-  
+  const id = localStorage.getItem('user').replaceAll('"', '');
+
 
   let data
   const q = query(collection(db, "dietas-personalizadas"), where("uid", "==", id), where("is_available", "==", true))

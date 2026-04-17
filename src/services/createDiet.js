@@ -1,54 +1,56 @@
 import { addDoc, collection } from 'firebase/firestore'
 import { dietPrompt } from './prompt'
 import { db } from './firebase'
+import { GoogleGenerativeAI } from '@google/generative-ai'
+import { dietPlanSchema } from './dietSchema'
 
-export const createDiet = async(userinfo) => {
+export const createDiet = async (userinfo) => {
 
+  console.log('from create diet')
   const prompt = dietPrompt(userinfo)
+
+  const gemAi = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY)
+  const model = gemAi.getGenerativeModel({
+    model: "gemini-3-flash-preview",
+    config: {
+      responseMimeType: "application/json",
+      responseJsonSchema: dietPlanSchema,
+    },
+  });
 
   try {
 
-    const res = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${import.meta.env.VITE_GPT_KEY}`,
-      },
-      body: JSON.stringify({
-        messages: [{ role: "system", content: prompt }],
-        model: "gpt-3.5-turbo",
-      })
-    })
-    const message = await res.json()
-    const data = JSON.parse(message.choices[0].message.content)
+    const res = await model.generateContent(prompt)
 
+    const message = res.response
+    const diet = JSON.parse(message.text())
+    console.log(diet)
+    console.log({ m: "creatediet", message })
     const formatedData = {
       day_1: {
-        ...data[0]
+        ...diet[0]
       },
       day_2: {
-        ...data[1]
+        ...diet[1]
       },
       day_3: {
-        ...data[2]
+        ...diet[2]
       },
       day_4: {
-        ...data[3]
+        ...diet[3]
       },
       day_5: {
-        ...data[4]
+        ...diet[4]
       },
       is_available: true,
       uid: userinfo.uid
     }
-    console.log('Formated', formatedData)
-
+    //
     const docRef = collection(db, "dietas-personalizadas");
     await addDoc(docRef, {
       ...formatedData,
     });
 
-    console.log('diet uploaded')
 
   } catch (error) {
     console.log('ERROR: ', error)

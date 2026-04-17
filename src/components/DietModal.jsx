@@ -1,4 +1,3 @@
-import React from 'react'
 import Modal from 'react-modal'
 import './DietModal.css'
 import { LogoSVG } from './SVGS'
@@ -35,15 +34,15 @@ export const DietModal = ({ modalIsOpen, setIsOpen, meals }) => {
 
   return (
     <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-      >
+      isOpen={modalIsOpen}
+      onRequestClose={closeModal}
+      style={customStyles}
+      contentLabel="Example Modal"
+    >
       {
         //WARN: i must return components instead but well, i dont have time so it is what it is
         meals.map((item) => {
-          return ( 
+          return (
             <>
               <h1 className='meal-title' key={item.meal_time}>{item.meal_time}</h1>
               <div key={'container'} className='meal-name-description'>
@@ -85,7 +84,7 @@ export const DietModal = ({ modalIsOpen, setIsOpen, meals }) => {
         })
       }
 
-      <div className='powered-by'><label className='powered-by-label'>Powered by</label> <LogoSVG className='powered-by-logo,'/> <img src='../../public/gpt_logo.png' className='gpt-logo' alt='logo'/></div>
+      <div className='powered-by'><label className='powered-by-label'>Powered by</label> <LogoSVG className='powered-by-logo,' /> <img src='../../public/gpt_logo.png' className='gpt-logo' alt='logo' /></div>
       <button className='close-modal-btn' onClick={closeModal}>close</button>
     </Modal>
   )

@@ -11,20 +11,20 @@ import { LogSignSVG } from '../components/SVGS'
 import { SocialLeftMenu } from './SocialLeftMenu'
 
 export const Social = () => {
-  
+
   const { userinfo, setUserinfo } = useContext(userContext)
   const navigate = useNavigate()
 
-  const [post, setPost] = useState([])
+  const [post, setPost] = useState(null)
   const postArr = []
-  
-  const getUserinfo = async({id}) => {
+
+  const getUserinfo = async ({ id }) => {
     const res = await getDoc(doc(db, 'users', id))
     const data = res.data()
     return data
   }
 
-  const getPosts = async() => {
+  const getPosts = async () => {
     try {
       const querySnapshot = await getDocs(collection(db, 'publicaciones'));
       querySnapshot.forEach((doc) => {
@@ -42,44 +42,42 @@ export const Social = () => {
       console.log('firebase get pubs error: ', error)
     }
   }
-  
-  if(!userinfo) {
+
+  if (!userinfo) {
     const userID = localStorage.getItem('user')
     const id = userID.replaceAll('"', '')
-    getUserinfo({id})
-    .then(data => setUserinfo(data))
-    .catch(err => console.log(err))
+    getUserinfo({ id })
+      .then(data => setUserinfo(data))
+      .catch(err => console.log(err))
   }
 
-  // useEffect(() => {
-  //   getPosts()
-  //     .then(console.log('post useEffect', post))
-  //     .catch(err => console.log('error:', err))
-  // }, [])
-
-  if(post.length === 0) {
-    getPosts().then(console.log('get Post fn'))
-  }
+  useEffect(() => {
+    getPosts()
+      .then(console.log('post useEffect', post))
+      .catch(err => console.log('error:', err))
+  }, [post])
 
   return (
     <>
       {
-        (!userinfo) ? (<Loading/>)
-        :
-        (
-          <>
-            <div className='social-screen-container'>
-              <div onClick={() => { navigate('/profile') }} className='back-to-profile'>
-                <LogSignSVG/>
-              </div>
-                <SocialLeftMenu/>
+        (!userinfo) ? (<Loading />)
+          :
+          (
+            <>
+              <div className='social-screen-container'>
+                <div onClick={() => { navigate('/profile') }} className='back-to-profile'>
+                  <LogSignSVG />
+                </div>
+                <SocialLeftMenu />
                 {
-                  (post.length > 0) ? <SocialPubGrid user={userinfo} post={post}/>
-                  : <Loading/>
+                  (post) ?
+                    (post.length > 0) ? <SocialPubGrid user={userinfo} post={post} />
+                      : <Loading />
+                    : <div>No posts yet</div>
                 }
-            </div>
-          </>
-        )
+              </div>
+            </>
+          )
       }
     </>
   )

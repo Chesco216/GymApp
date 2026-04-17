@@ -11,9 +11,9 @@ export const DietGrid = () => {
   const [diets, setDiets] = useState()
 
   useEffect(() => {
-    getDiets(userinfo)
-    .then(diet => setDiets(diet))
-    console.log('dieta: ', diets)
+    getDiets()
+      .then(diet => setDiets(diet))
+    // console.log('dieta: ', diets)
   }, [])
 
   const handleNewDiet = () => {
@@ -21,13 +21,13 @@ export const DietGrid = () => {
     createDiet(userinfo)
   }
 
-  return  (
+  return (
     <div className='diet-card-container'>
       {
         (diets) ? (
           diets.map((item) => {
             return (
-              <DietCard key={item.day} day={item.day} meals={item.meals}/>
+              <DietCard key={item.day} day={item.day} meals={item.meals} />
             )
           })
         ) : (<></>)

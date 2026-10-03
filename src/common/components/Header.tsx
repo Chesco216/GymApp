@@ -36,10 +36,6 @@ export const Header = () => {
           <span className='header-links'>macros</span>
         </NavLink>
 
-        <NavLink to='/prices' style={{ textDecoration: 'none', color: 'inherit' }} className='menu-item'>
-          <span className='header-links'>precios</span>
-        </NavLink>
-
         <NavLink to='/login' style={{ textDecoration: 'none', color: 'inherit' }} className='menu-item'>
           <button className='log-in-button'>Log in</button>
         </NavLink>

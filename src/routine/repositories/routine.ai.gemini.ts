@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../common/firebase/client";
+import { getGeminiKey } from "../../common/firebase/env";
 import { trainingRoutineSchema } from "../dtos/routine.dto";
 import { routinePrompt } from "./routine.prompt";
 import type { User } from "../../auth/interfaces/user";
@@ -36,7 +37,7 @@ export const createRoutine = async (userinfo: User): Promise<void> => {
   const prompt = routinePrompt(userinfo);
 
   try {
-    const gemAi = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_KEY as string);
+    const gemAi = new GoogleGenerativeAI(getGeminiKey() as string);
     const model = gemAi.getGenerativeModel({
       model: "gemini-3-flash-preview",
       // @ts-expect-error legacy runtime shape preserved verbatim (SDK ignores unknown keys)

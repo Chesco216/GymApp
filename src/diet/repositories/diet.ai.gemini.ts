@@ -1,6 +1,7 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../common/firebase/client";
+import { getGeminiKey } from "../../common/firebase/env";
 import { dietPlanSchema } from "../dtos/diet.dto";
 import type { User } from "../../auth/interfaces/user";
 
@@ -72,7 +73,7 @@ export const dietPrompt = (userinfo: User): string => (`
 export const createDiet = async (userinfo: User): Promise<void> => {
   const prompt = dietPrompt(userinfo);
 
-  const gemAi = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_KEY as string);
+  const gemAi = new GoogleGenerativeAI(getGeminiKey() as string);
   const model = gemAi.getGenerativeModel({
     model: "gemini-3-flash-preview",
     // @ts-expect-error legacy runtime shape preserved verbatim (SDK ignores unknown keys)

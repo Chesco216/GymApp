@@ -3,10 +3,8 @@ import { useSessionContext } from "../../auth/hooks/session.context";
 import { useNavigate } from "react-router-dom";
 import "./InfoProfile.css";
 import { CloseSVG, LogSignSVG } from "../../common/components/SVGS";
-import { storage } from "../../common/firebase/client";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { Loading } from "../../common/components/Loading";
-import { getProfile, saveProfile } from "../repositories/profile.repository";
+import { getProfile, saveProfile, uploadProfilePicture } from "../repositories/profile.repository";
 import type { Profile } from "../interfaces/profile";
 
 export const InfoProfile = () => {
@@ -80,11 +78,7 @@ const UpdateForm = ({ hide, setHide }: { hide: string; setHide: (hide: boolean) 
   const handleUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const image = e.target.files?.[0];
     if (!image) return null;
-    const profilePictureRef = ref(storage, `profile-images/${image.name}`);
-    await uploadBytes(profilePictureRef, image);
-    const getImageRef = ref(storage, `gs://jayani-power.appspot.com/profile-images/${image.name}`);
-    const downloadURL = await getDownloadURL(getImageRef);
-    return downloadURL;
+    return uploadProfilePicture(image.name, image);
   };
 
   return (

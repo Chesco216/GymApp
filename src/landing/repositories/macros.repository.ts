@@ -1,4 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getGeminiKey } from "../../common/firebase/env";
 import type { Food, FoodSearchResult } from "../interfaces/food";
 
 const BASE_URL = "https://foodmacros.onrender.com/macros";
@@ -15,7 +16,7 @@ export const fetchMacrosByCategory = async (category: string): Promise<Food[]> =
 };
 
 const searchEngine = async (name: string): Promise<string> => {
-  const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_KEY as string);
+  const genAI = new GoogleGenerativeAI(getGeminiKey() as string);
   const data = await fetchMacros();
   const names = data.map((item) => item.nombre);
 

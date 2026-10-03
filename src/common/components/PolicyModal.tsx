@@ -9,7 +9,7 @@ const customStyles = {
     overflow: 'scroll',
     border: '5px solid #FF004D',
     borderRadius: '20px',
-    scrollbarWidth: 'none',
+    scrollbarWidth: 'none' as const,
     width: 'fit-content',
     top: '50%',
     left: '50%',
@@ -27,7 +27,7 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const PolicyModal = ({ modalIsOpen, setIsOpen }) => {
+export const PolicyModal = ({ modalIsOpen, setIsOpen }: { modalIsOpen: boolean; setIsOpen: (open: boolean) => void }) => {
 
   function closeModal() {
     setIsOpen(false);

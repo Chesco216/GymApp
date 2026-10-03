@@ -1,6 +1,7 @@
-import Modal from 'react-modal'
-import './DietModal.css'
-import { LogoSVG } from './SVGS'
+import Modal from "react-modal";
+import "./DietModal.css";
+import { LogoSVG } from "../../common/components/SVGS";
+import type { DietMeal } from "../interfaces/diet";
 
 const customStyles = {
   content: {
@@ -8,7 +9,7 @@ const customStyles = {
     overflow: 'scroll',
     border: '5px solid #FF004D',
     borderRadius: '20px',
-    scrollbarWidth: 'none',
+    scrollbarWidth: 'none' as const,
     width: '50%',
     top: '50%',
     left: '50%',
@@ -26,7 +27,14 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const DietModal = ({ modalIsOpen, setIsOpen, meals }) => {
+interface DietModalProps {
+  modalIsOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  meals: DietMeal[];
+  className?: string;
+}
+
+export const DietModal = ({ modalIsOpen, setIsOpen, meals }: DietModalProps) => {
 
   function closeModal() {
     setIsOpen(false);
@@ -40,7 +48,6 @@ export const DietModal = ({ modalIsOpen, setIsOpen, meals }) => {
       contentLabel="Example Modal"
     >
       {
-        //WARN: i must return components instead but well, i dont have time so it is what it is
         meals.map((item) => {
           return (
             <>
@@ -51,32 +58,34 @@ export const DietModal = ({ modalIsOpen, setIsOpen, meals }) => {
                 <hr className='hr-line-separator-1'></hr>
                 <h2 className='meal-subtitle' key={'food'}>Ingredientes</h2>
                 <table className='foods-table' key={`table${item.name}`}>
+                  <tbody>
                   <tr>
                     <th key={'ingrediente'} className='table-headder'>Ingrediente</th>
                     <th key={'cantidad'} className='table-headder'>Catidad</th>
                   </tr>
                   {
-                    item.ingredients.map((item) => {
+                    item.ingredients.map((ingredient) => {
                       return (
-                        <tr>
-                          <td className='table-content' key={item.name}>
-                            {item.name}
+                        <tr key={ingredient.name}>
+                          <td className='table-content' key={ingredient.name}>
+                            {ingredient.name}
                           </td>
-                          <td className='table-content' key={item.quantity}>
-                            {item.quantity}
+                          <td className='table-content' key={ingredient.quantity}>
+                            {ingredient.quantity}
                           </td>
                         </tr>
                       )
                     })
                   }
+                  </tbody>
                 </table>
                 <hr className='hr-line-separator-1'></hr>
                 <h2 className='meal-subtitle' key={'macros'}>Macros</h2>
                 <div className='labels-container'>
                   <label className='macros-modal-label' key={item.macros.proteins}>Proteinas: {item.macros.proteins}</label>
                   <label className='macros-modal-label' key={item.macros.calories}>Calorias: {item.macros.calories}</label>
-                  <label className='macros-modal-label' key={item.macros.vitaminas}>Vitaminas: {item.macros.vitamins.join(' , ')}</label>
-                  <label className='macros-modal-label' key={item.macros.minerales}>Minerales:{item.macros.minerals.join(' , ')}</label>
+                  <label className='macros-modal-label' key={item.macros.vitamins.join()}>Vitaminas: {item.macros.vitamins.join(' , ')}</label>
+                  <label className='macros-modal-label' key={item.macros.minerals.join()}>Minerales:{item.macros.minerals.join(' , ')}</label>
                 </div>
               </div>
               <hr className='hr-line-separator-2'></hr>

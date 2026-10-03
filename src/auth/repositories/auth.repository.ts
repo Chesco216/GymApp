@@ -8,7 +8,7 @@ import {
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../common/firebase/client";
-import { clearSession, saveSessionId } from "./session.storage";
+import { clearSession, saveSessionId } from "../../common/session/session.storage";
 import type { User } from "../interfaces/user";
 
 const googleProvider = new GoogleAuthProvider();

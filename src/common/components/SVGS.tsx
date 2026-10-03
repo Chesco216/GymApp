@@ -68,9 +68,9 @@ export const PaymentSVG = () => {
   )
 }
 
-export const LogoSVG = () => {
+export const LogoSVG = ({ className }: { className?: string } = {}) => {
   return (
-  <svg width="30" height="30" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg className={className} width="30" height="30" viewBox="0 0 90 110" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M0 0H90V31H31C13.8792 31 0 17.1208 0 0Z" fill="#FF004D"/>
 <path d="M54 39H90V74C90 93.8823 73.8822 110 54 110V39Z" fill="#FF004D"/>
 <rect x="14" y="83" width="40" height="27" fill="#FF004D"/>

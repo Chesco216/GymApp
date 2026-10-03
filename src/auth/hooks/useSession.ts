@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchUserProfile } from "../repositories/auth.repository";
-import { loadSessionId } from "../repositories/session.storage";
+import { loadSessionId } from "../../common/session/session.storage";
 import type { User } from "../interfaces/user";
 
 export const useSessionProvider = (): {

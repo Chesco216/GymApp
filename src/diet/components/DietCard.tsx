@@ -1,11 +1,17 @@
-import React, { useContext, useEffect, useState } from 'react'
-import './DietCard.css'
-import { DietModal } from './DietModal'
+import { useState } from "react";
+import "./DietCard.css";
+import { DietModal } from "./DietModal";
+import type { DietMeal } from "../interfaces/diet";
 
-export const DietCard = ({day, meals}) => {
+interface DietCardProps {
+  day: string;
+  meals: DietMeal[];
+}
+
+export const DietCard = ({ day, meals }: DietCardProps) => {
 
   const [modalIsOpen, setIsOpen] = useState(false)
-  
+
   const handleModal = () => {
     setIsOpen(true)
   }
@@ -20,4 +26,3 @@ export const DietCard = ({day, meals}) => {
     </>
   )
 }
-  

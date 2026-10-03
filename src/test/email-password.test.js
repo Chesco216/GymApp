@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
 import { expect, test, describe } from 'vitest'
-import { auth } from '../services/firebase'
+import { auth } from '../common/firebase/client'
 
 describe('Sign up test', () => {
   test('must return user email', async() => {

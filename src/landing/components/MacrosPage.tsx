@@ -1,34 +1,13 @@
-import { useState, useEffect } from 'react'
-import { Header } from '../components/Header'
-import { SearchBar } from '../components/SearchBar'
-import { MacrosRow } from "../components/MacrosRow";
-import { fetchMacros } from '../services/fetchMacros';
-import './Macros.css'
-import { searchFoodByName } from '../services/searchFoodByName';
-import { Loading } from '../components/Loading';
+import { Header } from "../../common/components/Header";
+import { SearchBar } from "./SearchBar";
+import { MacrosRow } from "./MacrosRow";
+import "./Macros.css";
+import { Loading } from "../../common/components/Loading";
+import { useMacrosTable } from "../hooks/useMacros";
 
-export const Macros = () => {
-
-  const [dataEmpty, setDataEmpty] = useState({ display: 'none' })
-  const [data, setData] = useState([])
-  const [cardData, setCardData] = useState({})
-  useEffect(() => {
-    fetchMacros()
-      .then(res => setData(res))
-    searchFoodByName('pollo')
-      .then(res => setCardData(res.retVal[0]))
-  }, [])
-
-  const setHidden = () => {
-    setDataEmpty({ display: 'none' })
-  }
-
-  const showCardPreview = async (event) => {
-    const value = event.target.innerText
-    const { retVal } = await searchFoodByName(value)
-    setCardData(retVal[0])
-    console.log(cardData)
-  }
+export const MacrosPage = () => {
+  const { data, setData, cardData, setCardData, dataEmpty, setDataEmpty, setHidden, showCardPreview } =
+    useMacrosTable();
 
   return (
     <>

@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
-import { Header } from '../components/Header'
-import './Landing.css'
-import { NavLink } from 'react-router-dom'
-import { LogoSVG } from '../components/SVGS'
+import { Header } from "../../common/components/Header";
+import "./Landing.css";
+import { NavLink } from "react-router-dom";
+import { LogoSVG } from "../../common/components/SVGS";
 
-export const Landing = () => {
+export const LandingPage = () => {
 
   return (
     <div className='landing-header-container'>

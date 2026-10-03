@@ -1,7 +1,17 @@
-import React from 'react'
-import './SelectBox.css'
+import "./SelectBox.css";
 
-export const SelectBox = ({ title, options }) => {
+export interface SelectOption {
+  key: number;
+  value: number;
+  text: string;
+}
+
+interface SelectBoxProps {
+  title: string;
+  options: SelectOption[];
+}
+
+export const SelectBox = ({ title, options }: SelectBoxProps) => {
   return (
     <>
       <label className='input-label-calc'>{title}</label>

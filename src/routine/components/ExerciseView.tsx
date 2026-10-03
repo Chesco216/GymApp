@@ -1,8 +1,8 @@
-import React from 'react'
-import './ExerciseView.css'
-import { DumbellSVG } from './SVGS'
+import "./ExerciseView.css";
+import { DumbellSVG } from "../../common/components/SVGS";
+import type { StoredExercise } from "../interfaces/routine";
 
-export const ExerciseView = ({ sets }) => {
+export const ExerciseView = ({ sets }: { sets: StoredExercise }) => {
   return (
     <div className='sets-container'>
       <label className='set-label-title'>

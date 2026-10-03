@@ -1,7 +1,8 @@
-import Modal from 'react-modal'
-import { ExerciseView } from './ExerciseView';
-import './RoutineModal.css'
-import { ClockSVG, FireSVG, LogoSVG } from './SVGS';
+import Modal from "react-modal";
+import { ExerciseView } from "./ExerciseView";
+import "../../common/components/RoutineModal.css";
+import { ClockSVG, FireSVG, LogoSVG } from "../../common/components/SVGS";
+import type { StoredWorkoutDay } from "../interfaces/routine";
 
 const customStyles = {
   content: {
@@ -9,7 +10,7 @@ const customStyles = {
     overflow: 'scroll',
     border: '5px solid #FF004D',
     borderRadius: '20px',
-    scrollbarWidth: 'none',
+    scrollbarWidth: 'none' as const,
     width: '30%',
     top: '50%',
     left: '50%',
@@ -27,13 +28,17 @@ const customStyles = {
 
 Modal.setAppElement('#root');
 
-export const RoutineModal = ({ modalIsOpen, setIsOpen, exercises }) => {
+interface RoutineModalProps {
+  modalIsOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+  exercises: StoredWorkoutDay;
+}
+
+export const RoutineModal = ({ modalIsOpen, setIsOpen, exercises }: RoutineModalProps) => {
 
   function closeModal() {
     setIsOpen(false);
   }
-
-  // const routine = exercises.exercises
 
   return (
     <Modal
@@ -52,7 +57,7 @@ export const RoutineModal = ({ modalIsOpen, setIsOpen, exercises }) => {
         </div>
         {
           exercises.exercises.map((item) => {
-            return <ExerciseView key={item.set} sets={item}/>
+            return <ExerciseView key={item.series} sets={item}/>
           })
         }
         <div className='powered-by-container'>

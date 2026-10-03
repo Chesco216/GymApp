@@ -114,9 +114,9 @@ export const ClockSVG = () => {
   )
 }
 
-export const DumbellSVG = () => {
+export const DumbellSVG = ({ className }: { className?: string } = {}) => {
   return (
-    <svg width="30px" height="30px" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" 
+    <svg className={className} width="30px" height="30px" version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" 
 	viewBox="0 0 32 32">
 <path className="st0" d="M7,24L7,24c-1.1,0-2-0.9-2-2V10c0-1.1,0.9-2,2-2h0c1.1,0,2,0.9,2,2v12C9,23.1,8.1,24,7,24z" fill="#FF004D"/>
 <path className="st0" d="M3,21L3,21c-1.1,0-2-0.9-2-2v-6c0-1.1,0.9-2,2-2h0c1.1,0,2,0.9,2,2v6C5,20.1,4.1,21,3,21z" fill="#FF004D"/>

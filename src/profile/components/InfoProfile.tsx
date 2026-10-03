@@ -1,39 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { userContext } from '../context/UserProvider'
-import { useNavigate } from 'react-router-dom'
-import './InfoProfile.css'
-import { CloseSVG, LogSignSVG } from './SVGS'
-import { setDoc, doc, getDoc } from 'firebase/firestore'
-import { db, storage } from '../services/firebase'
-import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
-import { Loading } from './Loading'
-
-//TODO: UPDATE PROFILE PICTURE
+import { useEffect, useState } from "react";
+import { useSessionContext } from "../../auth/hooks/session.context";
+import { useNavigate } from "react-router-dom";
+import "./InfoProfile.css";
+import { CloseSVG, LogSignSVG } from "../../common/components/SVGS";
+import { storage } from "../../common/firebase/client";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { Loading } from "../../common/components/Loading";
+import { getProfile, saveProfile } from "../repositories/profile.repository";
+import type { Profile } from "../interfaces/profile";
 
 export const InfoProfile = () => {
-  
-  const navigate = useNavigate()
-  const {userinfo, setUserinfo} = useContext(userContext)
-  const [hide, setHide] = useState(true)
-
-  const getUserInfo = async() => {
-    const userID = localStorage.getItem('user')
-    console.log('userID',userID)
-    const id = (userID) ? userID.replaceAll('"','' ) : userinfo.uid
-    const response = await getDoc(doc(db, 'users', id))
-    const data = response.data()
-    setUserinfo(data)
-  }
+  const navigate = useNavigate();
+  const { userinfo, setUserinfo } = useSessionContext();
+  const [hide, setHide] = useState(true);
 
   useEffect(() => {
-    getUserInfo()
-  }, [])
-
-  console.log('user from infoform: ', userinfo)
+    getProfile(userinfo?.uid).then((data) => {
+      if (data) setUserinfo(data);
+    });
+  }, []);
 
   return (
     <>
-      { (!userinfo) ? ( <Loading/> ) 
+      { (!userinfo) ? ( <Loading/> )
       :
       (
           <>
@@ -41,9 +30,8 @@ export const InfoProfile = () => {
         <LogSignSVG/>
       </div>
       <div className='info-profile-container'>
-        <img className='info-profile-image' src={(userinfo.profilePictureUrl) ? userinfo.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'}/>
+        <img className='info-profile-image' src={(userinfo.profilePictureUrl) ? userinfo.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'} alt='profile'/>
         <div className='info-fields-container'>
-          {/*NOTE: must implement a mapper*/}
           <label className='info-field'>Nombre de usuario:</label>
           <label className='info-field-value'>{userinfo.username}</label>
           <label className='info-field'>Correo electronico:</label>
@@ -72,43 +60,41 @@ export const InfoProfile = () => {
   )
 }
 
-const UpdateForm = ({hide, setHide}) => {
+const UpdateForm = ({ hide, setHide }: { hide: string; setHide: (hide: boolean) => void }) => {
+  const { userinfo, setUserinfo } = useSessionContext();
+  const [user, setUser] = useState<Profile>((userinfo ?? {}) as Profile);
 
-  const { userinfo, setUserinfo } = useContext(userContext)
-  const [user, setUser] = useState(userinfo)
-
-  const handleUpdate = async(e) => {
-    e.preventDefault()
+  const handleUpdate = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!userinfo) return;
 
     try {
-      console.log('userinfo to upload',userinfo)
-      await setDoc(doc(db, 'users', userinfo.uid), { ...user })
-      setHide(true)
-      console.log('profile uploaded to firebase')
-    } catch (error) {
-      alert('no se pudo actualizar el perfil')
+      await saveProfile({ ...user, uid: userinfo.uid });
+      setUserinfo({ ...userinfo, ...user });
+      setHide(true);
+    } catch {
+      alert('no se pudo actualizar el perfil');
     }
-  }
+  };
 
-  const handleUploadImage = async(e) => {
-    const image = e.target.files[0]
-    if(!image) return null
-    const profilePictureRef = ref(storage, `profile-images/${image.name}`)
-    await uploadBytes(profilePictureRef, image)
-    const getImageRef = ref(storage, `gs://jayani-power.appspot.com/profile-images/${image.name}`)
-    const downloadURL = await getDownloadURL(getImageRef)
-    return downloadURL
-  }
+  const handleUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const image = e.target.files?.[0];
+    if (!image) return null;
+    const profilePictureRef = ref(storage, `profile-images/${image.name}`);
+    await uploadBytes(profilePictureRef, image);
+    const getImageRef = ref(storage, `gs://jayani-power.appspot.com/profile-images/${image.name}`);
+    const downloadURL = await getDownloadURL(getImageRef);
+    return downloadURL;
+  };
 
-  //WARN: validate options before update
   return (
     <form className={`update-info-form ${hide}`} onSubmit={handleUpdate}>
       <div className='update-form-top'>
-        <img className='info-profile-image-1' src={(userinfo.profilePictureUrl) ? userinfo.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'}/>
+        <img className='info-profile-image-1' src={(userinfo?.profilePictureUrl) ? userinfo.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'} alt='profile'/>
         <input id='image-input' className='new-profile-picture' type='file' name='image' accept='.jpg, .png, .jpeg'
           onChange={async(e) => {
-            if(e.target.files[0]) {
-              const pic = await handleUploadImage(e)
+            if(e.target.files?.[0]) {
+              const pic = await handleUploadImage(e);
               setUser({
                 ...user,
                 profilePictureUrl: pic,
@@ -127,7 +113,7 @@ const UpdateForm = ({hide, setHide}) => {
           className='update-input-form'
           type='text'
           name='name'
-          value={user.username}
+          value={user.username ?? ''}
           onChange={e => setUser({
             ...user,
             username: e.target.value})}
@@ -139,7 +125,7 @@ const UpdateForm = ({hide, setHide}) => {
           className='update-input-form'
           type='number'
           name='weight'
-          value={user.weight}
+          value={user.weight ?? ''}
           onChange={e => setUser({
             ...user,
             weight: parseFloat(e.target.value)})}
@@ -151,7 +137,7 @@ const UpdateForm = ({hide, setHide}) => {
           className='update-input-form'
           type='text'
           name='food'
-          value={user.foodRestrictions}
+          value={user.foodRestrictions ?? ''}
           onChange={e => setUser({
             ...user,
             foodRestrictions: e.target.value})}
@@ -163,7 +149,7 @@ const UpdateForm = ({hide, setHide}) => {
           className='update-input-form'
           type='text'
           name='body'
-          value={user.physicalLimitations}
+          value={user.physicalLimitations ?? ''}
           onChange={e => setUser({
             ...user,
             physicalLimitations: e.target.value})}
@@ -175,7 +161,7 @@ const UpdateForm = ({hide, setHide}) => {
           className='update-input-form'
           type='text'
           name='goal'
-          value={user.goal}
+          value={user.goal ?? ''}
           onChange={e => setUser({
             ...user,
             goal: e.target.value})}

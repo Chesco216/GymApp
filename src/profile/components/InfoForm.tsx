@@ -1,27 +1,24 @@
-import React, { useContext } from 'react'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import './InfoForm.css'
-import { doc, setDoc } from 'firebase/firestore'
-import { db } from '../services/firebase'
-import { userContext } from '../context/UserProvider'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./InfoForm.css";
+import { useSessionContext } from "../../auth/hooks/session.context";
+import { saveProfile } from "../repositories/profile.repository";
 
 export const InfoForm = () => {
+  const navigate = useNavigate();
+  const context = useSessionContext();
+  const [age, setAge] = useState<string>("");
+  const [weight, setWeight] = useState<string>("");
+  const [height, setHeight] = useState<string>("");
+  const [food, setFood] = useState<string>("");
+  const [body, setBody] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
+  const [goal, setGoal] = useState<string>("");
 
-  const navigate = useNavigate()
-  const context = useContext(userContext)
-  // console.log(context)
-  const [age, setAge] = useState()
-  const [weight, setWeight] = useState()
-  const [height, setHeight] = useState()
-  const [food, setFood] = useState()
-  const [body, setBody] = useState()
-  const [gender, setGender] = useState()
-  const [goal, setGoal] = useState()
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    const currDate = new Date()
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!context.userinfo) return;
+    const currDate = new Date();
     const userObj = {
       age: parseFloat(age),
       createdAt: currDate,
@@ -36,21 +33,17 @@ export const InfoForm = () => {
       gender: gender,
       foodRestrictions: food,
       physicalLimitations: body,
-      goal: goal
-    }
+      goal: goal,
+    };
 
     try {
-      console.log('context: ', context)
-      console.log('userinfo:', context.userinfo)
-      console.log('userObj: ', userObj)
-      await setDoc(doc(db, 'users', userObj.uid), { ...userObj })
-      navigate('/profile')
+      await saveProfile(userObj);
+      navigate('/profile');
     } catch (error) {
-      console.log(error)
-      alert('error al cargar los datos')
-      // navigate('/login')
+      console.log(error);
+      alert('error al cargar los datos');
     }
-  }
+  };
 
   return (
     <div className='info-form-container'>
@@ -64,7 +57,7 @@ export const InfoForm = () => {
             <input
               className='info-input'
               type='number'
-              name={age}
+              name='age'
               value={age}
               onChange={e => setAge(e.target.value)}
             />
@@ -76,7 +69,7 @@ export const InfoForm = () => {
             <input
               className='info-input'
               type='number'
-              name={weight}
+              name='weight'
               value={weight}
               onChange={e => setWeight(e.target.value)}
             />
@@ -88,7 +81,7 @@ export const InfoForm = () => {
             <input
               className='info-input'
               type='number'
-              name={height}
+              name='height'
               value={height}
               onChange={e => setHeight(e.target.value)}
             />
@@ -100,7 +93,7 @@ export const InfoForm = () => {
             <input
               className='info-input'
               type='text'
-              name={gender}
+              name='gender'
               value={gender}
               onChange={e => setGender(e.target.value)}
             />
@@ -112,7 +105,7 @@ export const InfoForm = () => {
             <input
               className='info-input'
               type='text'
-              name={food}
+              name='food'
               value={food}
               onChange={e => setFood(e.target.value)}
             />
@@ -124,7 +117,7 @@ export const InfoForm = () => {
             <input
               className='info-input'
               type='text'
-              name={body}
+              name='body'
               value={body}
               onChange={e => setBody(e.target.value)}
             />
@@ -136,7 +129,7 @@ export const InfoForm = () => {
             <input
               className='info-input'
               type='text'
-              name={goal}
+              name='goal'
               value={goal}
               onChange={e => setGoal(e.target.value)}
             />
@@ -147,4 +140,3 @@ export const InfoForm = () => {
     </div>
   )
 }
-

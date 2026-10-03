@@ -8,6 +8,7 @@ import {
 } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../common/firebase/client";
+import { getUserDoc } from "../../common/repositories/user.repository";
 import { clearSession, saveSessionId } from "../../common/session/session.storage";
 import type { User } from "../interfaces/user";
 
@@ -41,11 +42,8 @@ export const signUpWithEmail = async (
   return user;
 };
 
-export const fetchUserProfile = async (uid: string): Promise<User | null> => {
-  const snapshot = await getDoc(doc(db, "users", uid));
-  const data = snapshot.data();
-  return data ? ({ uid, ...(data as Omit<User, "uid">) } as User) : null;
-};
+export const fetchUserProfile = async (uid: string): Promise<User | null> =>
+  getUserDoc<User>(uid);
 
 /** Port of legacy googleSignin: popup → session → users/{uid} doc. Returns profile or null. */
 export const signInWithGoogle = async (): Promise<User | null> => {

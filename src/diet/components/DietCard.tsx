@@ -19,7 +19,8 @@ export const DietCard = ({ day, meals }: DietCardProps) => {
   return (
     <>
       <div className='diet-card'>
-        <label className='day-title'>{day}</label>
+        <span className='diet-card-day'>{day}</span>
+        <span className='diet-card-meta'>{meals?.length ?? 0} comidas</span>
         <button className='day-button' onClick={ handleModal }>Ver</button>
       </div>
       <DietModal className='diet-modal-component' modalIsOpen={modalIsOpen} setIsOpen={setIsOpen} meals={meals}/>

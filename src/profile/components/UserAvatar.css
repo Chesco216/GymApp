@@ -1,0 +1,18 @@
+.user-avatar-img,
+.user-avatar-initial {
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.user-avatar-img {
+  border: 3px solid var(--brand-accent);
+}
+
+.user-avatar-initial {
+  display: inline-grid;
+  place-content: center;
+  font-weight: 700;
+  color: var(--brand-accent-contrast);
+  background: linear-gradient(135deg, var(--brand-accent), #a30033);
+}

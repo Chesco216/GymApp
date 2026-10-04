@@ -1,0 +1,46 @@
+@import "../../common/components/Skeleton.css";
+
+.plan-skeleton {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.plan-skeleton-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--brand-bg-deep);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--brand-radius);
+  padding: 1rem 1.25rem;
+}
+
+.plan-skeleton-day {
+  width: 90px;
+  height: 22px;
+}
+
+.plan-skeleton-meta {
+  flex: 1;
+  height: 16px;
+}
+
+.plan-skeleton-btn {
+  width: 80px;
+  height: 36px;
+  border-radius: 999px;
+}
+
+@media (min-width: 640px) {
+  .plan-skeleton {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .plan-skeleton {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}

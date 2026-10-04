@@ -2,13 +2,18 @@
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	background: #FF004D;
+	background: var(--brand-bg-deep);
 	justify-content: space-around;
 	width: 100%;
 	padding: 10px 0px;
 	box-sizing: border-box;
 	border-style: none;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 	box-shadow: 0px 0px 5px 0px black;
+	position: sticky;
+	top: 0;
+	z-index: 50;
+	backdrop-filter: blur(8px);
 }
 
 /* #logo-img { */
@@ -29,35 +34,37 @@
 	width: 80px;
 	height: 35px;
 	margin: 0px 10px;
-	border: none;
-	border-radius: 5px;
-	background: #242933;
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 999px;
+	background: transparent;
 	color: white;
 	font-weight: bold;
 	font-size: 15px;
+	cursor: pointer;
 	transition-duration: 500ms;
 }
 
 .log-in-button:hover {
-	background: white;
-	color: #242933;
+	border-color: var(--brand-accent);
+	color: var(--brand-accent);
 }
 
 .sign-in-button {
 	width: 80px;
 	height: 35px;
 	border: none;
-	border-radius: 5px;
-	background: white;
-	color: #242933;
+	border-radius: 999px;
+	background: var(--brand-accent);
+	color: var(--brand-accent-contrast);
 	font-weight: bold;
 	font-size: 15px;
+	cursor: pointer;
 	transition-duration: 500ms;
 }
 
 .sign-in-button:hover {
-	background: #242933;
-	color: white;
+	background: var(--brand-accent-contrast);
+	color: var(--brand-accent);
 }
 
 .header-links {
@@ -96,7 +103,8 @@
 		display: block;
 		cursor: pointer;
 		font-size: 24px;
-		margin-left: 3vw;
+		margin: 0;
+		color: white;
 	}
 
 	.menu {
@@ -115,15 +123,17 @@
 
 	.menu-item {
 		padding: 15px;
-		border-top: 1px solid #ccc;
-		background: #fff;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		background: var(--brand-bg-deep);
 		margin: 5px 0;
 	}
 
 	.hmb {
 		display: flex;
 		align-items: center;
+		justify-content: space-between;
 		flex-direction: row;
+		width: 100%;
 	}
 
 	.log-in-button,
@@ -134,7 +144,7 @@
 	}
 
 	.header-links {
-		color: black;
+		color: white;
 	}
 }
 

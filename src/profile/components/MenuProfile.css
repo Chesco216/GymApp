@@ -1,19 +1,35 @@
 .menu-profile-container {
-  width: fit-content;
-  height: fit-content;
-  background: #FF004D;
-  padding: 20px 20px 20px 20px;
-  color: white;
-  font-size: 20px;
+  width: max-content;
+  background: var(--brand-accent);
+  padding: 0.75rem;
+  color: var(--brand-accent-contrast);
+  font-size: 1rem;
   font-weight: 500;
-  border-radius: 20px;
+  border-radius: var(--brand-radius);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 .menu-profile-span {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.menu-profile-span:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.menu-profile-container hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 0.4rem 0;
 }
 
 .menu-profile-label {
-  margin-left: 20px;
+  margin-left: 0.75rem;
+  cursor: pointer;
 }

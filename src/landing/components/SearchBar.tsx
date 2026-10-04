@@ -47,7 +47,7 @@ export const SearchBar = ({ onDataChanged, onCardChanged, onNotFound }: SearchBa
           <option value='fruto seco'>fruto seco</option>
           <option value='todos'>todos</option>
         </select>
-        <button type='submit' className='search-food-button' style={{margin:20}}> Buscar</button>
+        <button type='submit' className='search-food-button'> Buscar</button>
       </form>
     </div>
   )

@@ -1,29 +1,31 @@
 .routine-card-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  align-content: center;
-  width: 300px;
-  height: 100px;
-  background: #FF004D;
-  color: white;
-  font-size: 20px;
+  gap: 0.75rem;
+  background: var(--brand-bg-deep);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--brand-radius);
+  padding: 1rem 1.25rem;
+  transition: transform 150ms ease, border-color 150ms ease;
+}
+
+.routine-card-container:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-accent);
+}
+
+.routine-card-day {
+  font-family: var(--brand-font-display);
+  font-size: 1.15rem;
   font-weight: 600;
-  margin: 20px 20px 20px 20px;
-  border-radius: 20px;
+  color: var(--brand-text);
+  white-space: nowrap;
 }
 
-.day-title {
-  font-size: 20px;
-  margin-right: 20px;
-}
-
-.day-button {
-  width: 80px;
-  height: 30px;
-  color: black;
-  font-size: 15px;
-  background: white;
-  border: none;
-  border-radius: 10px;
+.routine-card-meta {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--brand-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

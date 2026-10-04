@@ -1,0 +1,46 @@
+.landing-steps-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+  counter-reset: step;
+}
+
+.landing-step {
+  background: var(--brand-surface-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--brand-radius);
+  padding: 1.5rem;
+}
+
+.landing-step-n {
+  display: inline-grid;
+  place-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-weight: 700;
+  color: var(--brand-accent-contrast);
+  background: var(--brand-accent);
+  margin-bottom: 0.75rem;
+}
+
+.landing-step h3 {
+  color: var(--brand-text);
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+}
+
+.landing-step p {
+  color: var(--brand-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  .landing-steps-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

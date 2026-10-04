@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../common/firebase/client";
 import { getGeminiKey } from "../../common/firebase/env";
 import { trainingRoutineSchema } from "../dtos/routine.dto";
@@ -61,6 +61,7 @@ export const createRoutine = async (userinfo: User): Promise<void> => {
       ...formatedData,
       uid: userinfo.uid,
       is_available: true,
+      createdAt: serverTimestamp(),
     });
   } catch (error) {
     console.log("error: ", error);

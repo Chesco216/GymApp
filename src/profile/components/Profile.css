@@ -1,107 +1,155 @@
-.profile-container {
-  width: 100vw;
-  height: 100vh;
-  overflow: scroll;
-  padding: 50px 50px 50px 50px;
-  color: white;
+.profile-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1.5rem 1.25rem 4rem;
 }
 
-.profile-container::-webkit-scrollbar {
-  display: none;
-}
-
-.user-pic-name-email {
-  display: grid;
-  place-content: center;
-  grid-template-columns: 5fr 1fr;
-  align-items: center;
-  width: 80%;
-  height: fit-content;
-  margin-bottom: 40px;
-  padding-bottom: 20px;
-  border-bottom: 2px solid #000;
-}
-
-.user-image {
-  width: 130px;
-  height: 130px;
-  margin-right: 50px;
-  border-radius: 50%;
-}
-
-.user-name-email {
-  height: 100%;
+.profile-hero {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+  background: linear-gradient(135deg, var(--brand-surface), var(--brand-bg-deep));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: calc(var(--brand-radius) + 6px);
+  padding: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-.update-info-button {
+.profile-hero-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.profile-hero-info h1 {
+  color: var(--brand-text);
+  font-family: var(--brand-font-display);
+  font-size: 1.5rem;
+  margin: 0 0 0.25rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-hero-info p {
+  color: var(--brand-muted);
+  margin: 0 0 0.6rem;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profile-goal-chip {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--brand-accent-contrast);
+  background: var(--brand-accent);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+}
+
+.profile-menu-button {
   display: grid;
   place-content: center;
-  padding: 10px 10px 10px 10px;
-  margin-left: 60%;
-  width: fit-content;
-  height: fit-content;
-  color: white;
-  background: #FF004D;
-  font-size: 20px;
-  font-weight: 500;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  color: var(--brand-accent-contrast);
+  background: var(--brand-accent);
   border: none;
-  border-radius: 15px;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(255, 0, 77, 0.35);
+  transition: transform 150ms ease;
 }
 
-.stats-section {
-  display:grid;
-  grid-template-columns:  1fr 1fr 1fr;
-}
-
-.user-stats-span {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.user-stats-value {
-  width: 115px;
-  height: 115px;
-  box-sizing: border-box;
-  display: flex;
-  place-content: center;
-  align-items: center;
-  padding: 10px 10px 10px 10px;
-  border: 15px solid #FF004D;
-  border-radius: 50%;
-}
-
-.stats-value-metric {
-  font-size: 12px;
-  font-weight: 300;
-}
-
-.user-stats-label {
-  width: 115px;
-  height: fit-content;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.profile-diet-content {
-  margin: 50px auto;
+.profile-menu-button:hover {
+  transform: translateY(-2px);
 }
 
 .config-menu-motion {
   position: absolute;
-  right: 20%;
-  top: 15%;
-  display: flex;
-  flex-direction: column;
+  right: 1rem;
+  top: calc(100% + 0.5rem);
+  z-index: 20;
 }
+
+.profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.profile-stat-card {
+  text-align: center;
+  background: var(--brand-surface-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--brand-radius);
+  padding: 1.1rem 0.5rem;
+}
+
+.profile-stat-value {
+  display: block;
+  font-family: var(--brand-font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--brand-text);
+}
+
+.profile-stat-value small {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--brand-muted);
+  margin-left: 0.2rem;
+}
+
+.profile-stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--brand-muted);
+}
+
+.profile-complete-cta {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 1rem;
+  border: none;
+  border-radius: 999px;
+  background: var(--brand-accent);
+  color: var(--brand-accent-contrast);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.profile-plan-card {
+  background: var(--brand-surface-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: calc(var(--brand-radius) + 6px);
+  padding: 1.5rem 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.profile-plan-card h2 {
+  color: var(--brand-text);
+  font-family: var(--brand-font-display);
+  margin: 0 0 1rem;
+  font-size: 1.3rem;
+}
+
 .empty-diet-routine-container {
   width: 100%;
-  height: 100%;
   display: grid;
   place-content: center;
+  padding: 1rem 0;
+}
+
+@media (min-width: 640px) {
+  .profile-hero-info h1 {
+    font-size: 1.8rem;
+  }
 }

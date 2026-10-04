@@ -2,9 +2,9 @@ import { DietCard } from "./DietCard";
 import { useDiets } from "../hooks/useDiets";
 import { useSessionContext } from "../../auth/hooks/session.context";
 
-export const DietGrid = () => {
+export const DietGrid = ({ onChanged }: { onChanged?: () => void | Promise<void> }) => {
   const { userinfo } = useSessionContext();
-  const { diets, handleNewDiet } = useDiets(userinfo);
+  const { diets, handleNewDiet, canRegenerate } = useDiets(userinfo);
 
   return (
     <div className='diet-card-container'>
@@ -19,7 +19,11 @@ export const DietGrid = () => {
       }
       {
         (userinfo?.memberType) &&
-        <button className='diet-card' onClick={handleNewDiet}>Quieres cambiar tu dieta?</button>
+        (canRegenerate ? (
+          <button className='diet-regen-btn' onClick={() => void handleNewDiet(onChanged)}>Quieres cambiar tu dieta?</button>
+        ) : (
+          <button className='diet-regen-btn' disabled>Ya generaste tu dieta hoy, vuelve mañana</button>
+        ))
       }
     </div>
   )

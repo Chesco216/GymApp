@@ -1,36 +1,93 @@
 .diet-card-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
   width: 100%;
 }
 
 .diet-card {
   display: flex;
-  justify-content: center;
   align-items: center;
-  align-content: center;
-  width: 300px;
-  height: 100px;
-  background: #FF004D;
-  color: white;
-  font-size: 20px;
-  font-weight: 600;
-  margin: 20px 20px 20px 20px;
-  border-radius: 20px;
+  gap: 0.75rem;
+  background: var(--brand-bg-deep);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--brand-radius);
+  padding: 1rem 1.25rem;
+  transition: transform 150ms ease, border-color 150ms ease;
 }
 
-.day-title {
-  font-size: 20px;
-  margin-right: 20px;
+.diet-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-accent);
+}
+
+.diet-card-day {
+  font-family: var(--brand-font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--brand-text);
+}
+
+.diet-card-meta {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--brand-muted);
 }
 
 .day-button {
-  width: 80px;
-  height: 30px;
-  color: black;
-  font-size: 15px;
-  background: white;
+  height: 36px;
+  padding: 0 1.25rem;
+  color: var(--brand-accent-contrast);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: var(--brand-accent);
   border: none;
-  border-radius: 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+}
+
+.day-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 0, 77, 0.35);
+}
+
+.diet-regen-btn {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.75rem;
+  min-height: 52px;
+  padding: 0.7rem 1rem;
+  border-radius: var(--brand-radius);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: var(--brand-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.diet-regen-btn:hover:not(:disabled) {
+  border-color: var(--brand-accent);
+  color: var(--brand-accent);
+}
+
+.diet-regen-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (min-width: 640px) {
+  .diet-card-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .diet-card-container {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

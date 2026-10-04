@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getDiets } from "../../diet/repositories/diet.repository.firebase";
 import { getRoutines } from "../../routine/repositories/routine.repository.firebase";
 import type { DietDayPlan } from "../../diet/interfaces/diet";
@@ -21,10 +21,23 @@ export const resolveProfileContent = async (loaders: ContentLoaders): Promise<Pr
 
 export const useProfileContent = () => {
   const [content, setContent] = useState<ProfileContent>({ diets: undefined, routines: undefined });
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    resolveProfileContent({ loadDiets: getDiets, loadRoutines: getRoutines }).then(setContent);
+  // Re-consulta Firestore tras generar dieta/rutina para que la UI cambie
+  // de Empty* a Grid sin recargar la página.
+  const refresh = useCallback(async () => {
+    setIsLoading(true);
+    try {
+      const next = await resolveProfileContent({ loadDiets: getDiets, loadRoutines: getRoutines });
+      setContent(next);
+    } finally {
+      setIsLoading(false);
+    }
   }, []);
 
-  return content;
+  useEffect(() => {
+    void refresh();
+  }, [refresh]);
+
+  return { ...content, refresh, isLoading };
 };

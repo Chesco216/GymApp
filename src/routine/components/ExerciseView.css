@@ -1,10 +1,11 @@
 .sets-container {
-  width: fit-content;
+  width: 100%;
+  box-sizing: border-box;
   height: fit-content;
-  border: 2px solid #FF004D;
-  border-radius: 10px;
-  margin-top: 40px;
-  padding: 25px 20px 25px 20px;
+  border: 1px solid rgba(255, 0, 77, 0.4);
+  border-radius: var(--brand-radius);
+  margin-top: 24px;
+  padding: 20px;
 }
 
 .set-label-title {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createRoutine } from "../repositories/routine.ai.gemini";
 import { getRoutines } from "../repositories/routine.repository.firebase";
 import type { User } from "../../auth/interfaces/user";
@@ -12,19 +12,23 @@ export const useRoutines = () => {
     setRoutines(data);
   };
 
+  useEffect(() => {
+    void refresh();
+  }, []);
+
   return { routines, refresh };
 };
 
 export const useCreateRoutine = () => {
   const [creating, setCreating] = useState(false);
 
-  const generate = async (userinfo: User, after?: () => void) => {
+  const generate = async (userinfo: User, after?: () => void | Promise<void>) => {
     setCreating(true);
     try {
       await createRoutine(userinfo);
+      await after?.();
     } finally {
       setCreating(false);
-      after?.();
     }
   };
 

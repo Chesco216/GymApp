@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useSessionContext } from "../../auth/hooks/session.context";
-import { Loading } from "../../common/components/Loading";
 import "./Profile.css";
+import "./UserAvatar.css";
+import { UserAvatar } from "./UserAvatar";
+import { PlanSkeleton } from "./PlanSkeleton";
+import "./PlanSkeleton.css";
 import { DietGrid } from "../../diet/components/DietGrid";
 import { motion } from "framer-motion";
 import { MenuProfile } from "./MenuProfile";
@@ -18,68 +22,79 @@ const variants = {
 
 export const ProfilePage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
   const { userinfo } = useSessionContext();
-  const { diets, routines } = useProfileContent();
+  const { diets, routines, refresh, isLoading } = useProfileContent();
+
+  if (!userinfo) {
+    return (
+      <div className='profile-page'>
+        <section className='profile-plan-card'>
+          <PlanSkeleton />
+        </section>
+        <section className='profile-plan-card'>
+          <PlanSkeleton />
+        </section>
+      </div>
+    );
+  }
+
+  const displayName = userinfo.username ?? userinfo.displayName ?? userinfo.email ?? "Mi perfil";
 
   return (
-    <div style={{ width: '100vw', height: '100vh' }}>
-      {(!userinfo) ? (<Loading />)
-        :
-        (
-          <div className='profile-container'>
-            <div className='user-pic-name-email'>
-              <div style={{ display: 'flex' }}>
-                <img className='user-image' src={(userinfo.profilePictureUrl) ? userinfo.profilePictureUrl : 'https://t4.ftcdn.net/jpg/03/40/12/49/360_F_340124934_bz3pQTLrdFpH92ekknuaTHy8JuXgG7fi.jpg'} alt='profile-picture' />
-                <span className='user-name-email'>
-                  <h1>{userinfo.username}</h1>
-                  <label>{userinfo.email}</label>
-                </span>
-              </div>
-              <motion.nav
-                className='config-menu-motion'
-                animate={menuOpen ? "open" : "closed"}
-                variants={variants}>
-                <MenuProfile />
-              </motion.nav>
-              <button className='update-info-button' onClick={() => { setMenuOpen(menuOpen => !menuOpen) }}>
-                {
-                  (menuOpen) == true ? (<CloseSVG />)
-                    : (<MenuSVG />)
-                }
-              </button>
-            </div>
-            <div className='stats-section'>
-              <span className='user-stats-span'>
-                <h1 className='user-stats-value'>{userinfo.weight}<label className='stats-value-metric'>kg</label></h1>
-                <label className='user-stats-label'>PESO</label>
-              </span>
-              <span className='user-stats-span'>
-                <h1 className='user-stats-value'>{userinfo.height}<label className='stats-value-metric'>cm</label></h1>
-                <label className='user-stats-label'>ALTURA</label>
-              </span>
-              <span className='user-stats-span'>
-                <h1 className='user-stats-value'>{userinfo.age}<label className='stats-value-metric'>años</label></h1>
-                <label className='user-stats-label'>EDAD</label>
-              </span>
-            </div>
-            <div className='profile-diet-content'>
-              <h1>Tu dieta semanal </h1>
-              {
-                (diets) ? <DietGrid />
-                  :
-                  <EmptyDiet />
-              }
-            </div>
-            <div className='profile-routine-section'>
-              <h1>Tu rutina semanal</h1>
-              {
-                (routines) ? <RoutineGrid />
-                  :
-                  <EmptyRoutine />
-              }
-            </div>
-          </div>
-        )}
+    <div className='profile-page'>
+      <header className='profile-hero'>
+        <UserAvatar name={displayName} photoUrl={userinfo.profilePictureUrl} size={96} />
+        <div className='profile-hero-info'>
+          <h1>{displayName}</h1>
+          <p>{userinfo.email}</p>
+          {userinfo.goal && <span className='profile-goal-chip'>{userinfo.goal}</span>}
+        </div>
+        <button
+          className='profile-menu-button'
+          onClick={() => { setMenuOpen(menuOpen => !menuOpen) }}
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+        >
+          {(menuOpen) == true ? (<CloseSVG />) : (<MenuSVG />)}
+        </button>
+        <motion.nav
+          className='config-menu-motion'
+          animate={menuOpen ? "open" : "closed"}
+          variants={variants}>
+          <MenuProfile />
+        </motion.nav>
+      </header>
+
+      <section className='profile-stats' aria-label='Tus medidas'>
+        <div className='profile-stat-card'>
+          <span className='profile-stat-value'>{userinfo.weight ?? "—"}<small>kg</small></span>
+          <span className='profile-stat-label'>PESO</span>
+        </div>
+        <div className='profile-stat-card'>
+          <span className='profile-stat-value'>{userinfo.height ?? "—"}<small>cm</small></span>
+          <span className='profile-stat-label'>ALTURA</span>
+        </div>
+        <div className='profile-stat-card'>
+          <span className='profile-stat-value'>{userinfo.age ?? "—"}<small>años</small></span>
+          <span className='profile-stat-label'>EDAD</span>
+        </div>
+      </section>
+
+      {(userinfo.weight == null || userinfo.height == null || userinfo.age == null) && (
+        <button className='profile-complete-cta' onClick={() => navigate("/info-form")}>
+          Completa tu perfil para generar tu plan
+        </button>
+      )}
+
+      <section className='profile-plan-card'>
+        <h2>Tu dieta semanal</h2>
+        {isLoading ? <PlanSkeleton /> : (diets) ? <DietGrid onChanged={refresh} /> : <EmptyDiet onGenerated={refresh} />}
+      </section>
+
+      <section className='profile-plan-card'>
+        <h2>Tu rutina semanal</h2>
+        {isLoading ? <PlanSkeleton /> : (routines) ? <RoutineGrid onChanged={refresh} /> : <EmptyRoutine onGenerated={refresh} />}
+      </section>
     </div>
   )
 }

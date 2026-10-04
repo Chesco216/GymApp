@@ -1,35 +1,24 @@
 import { Header } from "../../common/components/Header";
-import "./Landing.css";
-import { NavLink } from "react-router-dom";
-import { LogoSVG } from "../../common/components/SVGS";
+import { LandingHero } from "./LandingHero";
+import { LandingFeatures } from "./LandingFeatures";
+import { LandingSteps } from "./LandingSteps";
+import { LandingFinalCta, LandingFooter } from "./LandingFooter";
+import "./LandingHero.css";
+import "./LandingFeatures.css";
+import "./LandingSteps.css";
+import "./LandingFooter.css";
 
 export const LandingPage = () => {
-
   return (
-    <div className='landing-header-container'>
-      <Header/>
-      <div className='landing-container'>
-        <div className='landing-left'>
-          <span className='landing-title'>
-            <div className='landing-logo'>
-              <LogoSVG/>
-            </div>
-            JAYANI POWER
-          </span>
-          <label className='landing-desc-title'>
-            ¡Transforma tu Cuerpo y Tu Vida!
-          </label>
-          <label className='get-started-text'>
-            En Jayani Power, estamos dedicados a empoderarte en tu viaje hacia un estilo de vida más saludable y equilibrado. Entendemos que cada persona es única, por lo que ofrecemos un enfoque personalizado para ayudarte a alcanzar tus objetivos de salud y bienestar. Nuestro equipo de expertos en nutrición y fitness ha diseñado cuidadosamente planes adaptados a diferentes necesidades, ya sea que desees perder peso, tonificar tu cuerpo o mejorar tu salud en general.
-          </label>
-          <NavLink to='signin'>
-            <button className='get-started-button'>Get Started</button>
-            </NavLink>
-        </div>
-        <div className='Landing-right'>
-          <img className='landing-right-image' src='../../public/openart-image_sVzkasfZ_1714275645837_raw.jpg'/>
-        </div>
-      </div>
+    <div className='landing-page'>
+      <Header />
+      <main>
+        <LandingHero />
+        <LandingFeatures />
+        <LandingSteps />
+        <LandingFinalCta />
+      </main>
+      <LandingFooter />
     </div>
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { db } from "../../common/firebase/client";
 import { getGeminiKey } from "../../common/firebase/env";
 import { dietPlanSchema } from "../dtos/diet.dto";
@@ -95,6 +95,7 @@ export const createDiet = async (userinfo: User): Promise<void> => {
       day_5: { ...diet[4] },
       is_available: true,
       uid: userinfo.uid,
+      createdAt: serverTimestamp(),
     };
     await addDoc(collection(db, "dietas-personalizadas"), { ...formatedData });
   } catch (error) {

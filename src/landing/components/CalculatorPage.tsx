@@ -32,57 +32,70 @@ export const CalculatorPage = () => {
   return (
     <>
       <Header />
-      <div className='calculator-screen-container'>
-        <form className='calc-form-div' onSubmit={getMacros}>
-          <label className='input-label-calc'>Edad</label>
-          <input name='agein' className='calc-input' type='number' />
+      <main className='calc-page'>
+        <div className='calc-head'>
+          <h1>Calcula tus macros</h1>
+          <p>Descubre cuántas proteínas y calorías necesitas al día según tu cuerpo y tu actividad.</p>
+        </div>
+        <div className='calc-grid'>
+          <form className='calc-card' onSubmit={getMacros}>
+            <label className='input-label-calc'>Edad</label>
+            <input name='agein' className='calc-input' type='number' min={1} placeholder='Ej. 28' />
 
-          <label className='input-label-calc'>Peso (kg)</label>
-          <input name='weightin' className='calc-input' type='number' />
+            <label className='input-label-calc'>Peso (kg)</label>
+            <input name='weightin' className='calc-input' type='number' min={1} placeholder='Ej. 70' />
 
-          <label className='input-label-calc'>Altura (cm)</label>
-          <input name='heightin' className='calc-input' type='number' />
+            <label className='input-label-calc'>Altura (cm)</label>
+            <input name='heightin' className='calc-input' type='number' min={1} placeholder='Ej. 175' />
 
-          <SelectBox title={'Actividad'} options={selectProps} />
+            <SelectBox title={'Nivel de actividad'} options={selectProps} />
 
-          <label className='input-label-calc'>Seleccione el sexo</label>
-          <div className="button r" id="button-1">
-            <input name='gender' type="checkbox" className="checkbox" />
-            <div className="knobs"></div>
-            <div className="layer"></div>
+            <label className='input-label-calc'>Sexo</label>
+            <div className="button r" id="button-1">
+              <input name='gender' type="checkbox" className="checkbox" />
+              <div className="knobs"></div>
+              <div className="layer"></div>
+            </div>
+            <button className='get-macros-button' type='submit'>Calcular</button>
+          </form>
+          <div className='calc-result-card'>
+            <h2>Tu ingesta diaria</h2>
+            <div className='calc-result-stats'>
+              <div className='calc-result-stat'>
+                <span className='calc-result-value'>{prot}</span>
+                <span className='calc-result-label'>Proteínas (g)</span>
+              </div>
+              <div className='calc-result-stat'>
+                <span className='calc-result-value'>{cal}</span>
+                <span className='calc-result-label'>Calorías (kcal)</span>
+              </div>
+            </div>
+            <p className='calc-result-hint'>Completa el formulario y pulsa Calcular para ver tus números.</p>
           </div>
-          <button className='get-macros-button' type='submit' >OK</button>
-        </form>
-        <div className='prot-cal-div'>
-          <label><h3>Tu ingesta diaria:</h3><br></br>{`Proteinas: ${prot}   |   Calorias: ${cal}`}</label>
-          <span>
-            <h2>
-              Porque las proteinas son importantes?
-            </h2>
-            <label>
-              Las proteínas son esenciales para la reparación y construcción muscular, la síntesis de enzimas y hormonas, el mantenimiento de la salud ósea y de la piel, el apoyo al sistema inmunológico y la regulación del apetito y la saciedad. Actúan como bloques de construcción en nuestro cuerpo, desempeñando un papel vital en una amplia gama de funciones fisiológicas. Consumir suficientes proteínas de alta calidad en nuestra dieta es fundamental para mantener un cuerpo fuerte, saludable y en funcionamiento óptimo.
-            </label>
+        </div>
+        <div className='calc-info-grid'>
+          <span className='calc-info-card'>
+            <h2>¿Por qué las proteínas son importantes?</h2>
+            <p>
+              Las proteínas son esenciales para la reparación y construcción muscular, la síntesis de enzimas y hormonas, el mantenimiento de la salud ósea y de la piel, el apoyo al sistema inmunológico y la regulación del apetito y la saciedad. Consumir suficientes proteínas de alta calidad es fundamental para mantener un cuerpo fuerte y saludable.
+            </p>
           </span>
-          <span>
-            <h2>
-              Mas o menos calorias?
-            </h2>
-            <label>
-              El equilibrio calórico es crucial para la salud y el peso adecuado. Consumir más calorías de las que se queman puede llevar al aumento de peso, mientras que consumir menos calorías puede resultar en pérdida de peso. Sin embargo, más allá del simple conteo de calorías, la calidad de los alimentos es fundamental. Optar por alimentos nutritivos y equilibrados, como frutas, verduras, proteínas magras y granos enteros, es esencial para garantizar una nutrición adecuada, independientemente de si estamos buscando aumentar o reducir nuestra ingesta calórica. Priorizar estos alimentos sobre opciones procesadas y ultraprocesadas puede promover una mejor salud y bienestar general.
-            </label>
+          <span className='calc-info-card'>
+            <h2>¿Más o menos calorías?</h2>
+            <p>
+              Consumir más calorías de las que quemas lleva al aumento de peso, mientras que consumir menos resulta en pérdida de peso. Más allá del conteo, la calidad importa: prioriza frutas, verduras, proteínas magras y granos enteros sobre opciones ultraprocesadas.
+            </p>
           </span>
         </div>
-        <div className='go-to-macros'>
+        <div className='calc-macros-cta'>
           <label className='which-meals-label'>
-            Que alimentos contienen las proteinas y  minerales que necesito?
+            ¿Qué alimentos contienen las proteínas y minerales que necesitas?
           </label>
-          <NavLink to='/macros' style={{ textDecoration: 'none', color: 'inherit' }}>
-            <label className='go-to-macros-label'>
-              Ir a la tabla de macronutrientes
-            </label>
+          <NavLink to='/macros' className='calc-cta-button'>
+            Ir a la tabla de macronutrientes
           </NavLink>
         </div>
-      </div>
+      </main>
     </>
   )
 }

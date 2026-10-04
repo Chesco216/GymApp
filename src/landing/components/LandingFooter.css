@@ -1,0 +1,75 @@
+.landing-cta {
+  text-align: center;
+  background: linear-gradient(135deg, var(--brand-surface), var(--brand-bg-deep));
+  border: 1px solid rgba(255, 0, 77, 0.35);
+  border-radius: calc(var(--brand-radius) + 6px);
+  padding: 3rem 1.5rem;
+  box-shadow: 0 0 90px rgba(255, 0, 77, 0.12);
+}
+
+.landing-cta h2 {
+  font-family: var(--brand-font-display);
+  color: var(--brand-text);
+  font-size: 1.8rem;
+  margin: 0 0 0.5rem;
+}
+
+.landing-cta p {
+  color: var(--brand-muted);
+  margin: 0 0 1.5rem;
+}
+
+.landing-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--brand-bg-deep);
+  margin-top: 2rem;
+}
+
+.landing-footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  text-align: center;
+}
+
+.landing-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  color: var(--brand-text);
+}
+
+.landing-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.25rem;
+}
+
+.landing-footer-links a {
+  color: var(--brand-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.landing-footer-links a:hover {
+  color: var(--brand-accent);
+}
+
+.landing-footer small {
+  color: var(--brand-muted);
+  font-size: 0.8rem;
+}
+
+@media (min-width: 900px) {
+  .landing-footer-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}

@@ -2,11 +2,34 @@
   width: 100vw;
   height: 100vh;
   font-family: "Poppins", sans-serif;
-  background: #242933;
+  background: var(--brand-bg);
   position: absolute;
   left: 0;
   top: 0;
   overflow: scroll;
+}
+
+/*
+ * Paleta de marca (único lugar donde se cambian colores).
+ * Para cambiar el tema, edita solo estas variables.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}:root {
+  color-scheme: dark;
+  --brand-bg: #242933;
+  --brand-bg-deep: #1a1f28;
+  --brand-surface: #2f3644;
+  --brand-surface-soft: rgba(255, 255, 255, 0.06);
+  --brand-text: #ffffff;
+  --brand-muted: #b7bfce;
+  --brand-accent: #ff004d;
+  --brand-accent-contrast: #ffffff;
+  --brand-radius: 14px;
+  --brand-font-display: "Outfit", "Poppins", sans-serif;
 }
 
 #root::-webkit-scrollbar {

@@ -3,25 +3,31 @@ import "./EmptyDiet.css";
 import { useSessionContext } from "../../auth/hooks/session.context";
 import { useCreateDiet } from "../hooks/useDiets";
 
-export const EmptyDiet = () => {
+export const EmptyDiet = ({ onGenerated }: { onGenerated?: () => void | Promise<void> }) => {
   const { userinfo } = useSessionContext();
   const { creating, generate } = useCreateDiet();
 
   const handleClick = async () => {
-    if (userinfo) await generate(userinfo);
+    if (userinfo) await generate(userinfo, onGenerated);
   };
 
   return (
-    <div className='empty-diet-routine-container'>
-      {
-        (creating) ? <div className='loader-card'></div>
-          :
-          <span className='empty-diet-container'>
+    <div className='empty-plan'>
+      {creating ? (
+        <div className='empty-plan-loading'>
+          <div className='loader-card'></div>
+          <p>Generando tu dieta… esto puede tomar unos segundos</p>
+        </div>
+      ) : (
+        <>
+          <span className='empty-plan-icon'>
             <EmptyDietSVG />
-            <label className='empty-diet-label'>En este momento no tienes una dieta</label>
-            <button className='empty-diet-btn' onClick={handleClick}>Generar</button>
           </span>
-      }
+          <h3>Aún no tienes tu dieta</h3>
+          <p>Generamos un plan de 5 días con desayuno, almuerzo y cena según tu perfil.</p>
+          <button className='empty-plan-btn' onClick={handleClick}>Generar mi dieta</button>
+        </>
+      )}
     </div>
   )
 }

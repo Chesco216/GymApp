@@ -1,6 +1,45 @@
 .routines-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-content: center;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
   width: 100%;
+}
+
+.routine-regen-btn {
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.75rem;
+  min-height: 52px;
+  padding: 0.7rem 1rem;
+  border-radius: var(--brand-radius);
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: var(--brand-text);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.routine-regen-btn:hover:not(:disabled) {
+  border-color: var(--brand-accent);
+  color: var(--brand-accent);
+}
+
+.routine-regen-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (min-width: 640px) {
+  .routines-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .routines-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

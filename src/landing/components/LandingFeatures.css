@@ -1,0 +1,78 @@
+.landing-section {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.landing-section-title {
+  font-family: var(--brand-font-display);
+  font-size: 1.9rem;
+  color: var(--brand-text);
+  margin: 0 0 0.5rem;
+  text-align: center;
+}
+
+.landing-section-sub {
+  color: var(--brand-muted);
+  text-align: center;
+  margin: 0 0 2rem;
+}
+
+.landing-features-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.landing-feature-card {
+  display: block;
+  height: 100%;
+  box-sizing: border-box;
+  text-decoration: none;
+  background: var(--brand-surface-soft);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--brand-radius);
+  padding: 1.5rem;
+  transition: transform 150ms ease, border-color 150ms ease;
+}
+
+.landing-feature-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--brand-accent);
+}
+
+.landing-feature-card h3 {
+  color: var(--brand-text);
+  font-size: 1.1rem;
+  margin: 0.9rem 0 0.5rem;
+}
+
+.landing-feature-card p {
+  color: var(--brand-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.landing-feature-icon {
+  display: inline-grid;
+  place-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: rgba(255, 0, 77, 0.12);
+}
+
+/* PlanSVG trae relleno oscuro: lo invertimos a claro sobre fondo oscuro. */
+.landing-feature-icon--light svg {
+  filter: brightness(0) invert(1);
+}
+
+@media (min-width: 900px) {
+  .landing-features-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .landing-section-title {
+    font-size: 2.3rem;
+  }
+}

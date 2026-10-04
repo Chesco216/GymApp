@@ -1,22 +1,22 @@
 import Modal from "react-modal";
 import "./DietModal.css";
-import { LogoSVG } from "../../common/components/SVGS";
 import type { DietMeal } from "../interfaces/diet";
 
 const customStyles = {
   content: {
-    height: '80%',
-    overflow: 'scroll',
-    border: '5px solid #FF004D',
+    width: 'min(92vw, 640px)',
+    maxHeight: '85vh',
+    height: 'auto',
+    overflow: 'auto' as const,
+    border: '1px solid rgba(255, 0, 77, 0.4)',
     borderRadius: '20px',
     scrollbarWidth: 'none' as const,
-    width: '50%',
     top: '50%',
     left: '50%',
     right: 'auto',
     bottom: 'auto',
     marginRight: '-50%',
-    padding: '30px',
+    padding: '24px',
     transform: 'translate(-50%, -50%)',
     background: '#242933'
   },
@@ -61,7 +61,7 @@ export const DietModal = ({ modalIsOpen, setIsOpen, meals }: DietModalProps) => 
                   <tbody>
                   <tr>
                     <th key={'ingrediente'} className='table-headder'>Ingrediente</th>
-                    <th key={'cantidad'} className='table-headder'>Catidad</th>
+                    <th key={'cantidad'} className='table-headder'>Cantidad</th>
                   </tr>
                   {
                     item.ingredients.map((ingredient) => {
@@ -93,8 +93,7 @@ export const DietModal = ({ modalIsOpen, setIsOpen, meals }: DietModalProps) => 
         })
       }
 
-      <div className='powered-by'><label className='powered-by-label'>Powered by</label> <LogoSVG className='powered-by-logo,' /> <img src='../../public/gpt_logo.png' className='gpt-logo' alt='logo' /></div>
-      <button className='close-modal-btn' onClick={closeModal}>close</button>
+      <button className='close-modal-btn' onClick={closeModal}>Cerrar</button>
     </Modal>
   )
 }
